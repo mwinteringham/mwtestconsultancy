@@ -1,23 +1,35 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
+        <!-- <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" /> -->
+        <script src="{{ '/js/jquery-3.2.1.slim.min.js' | relative_url }}" ></script>
+        <script src="{{ '/js/popper.min.js' | relative_url }}" ></script>
+        <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}" />
+        <script src="{{ '/js/bootstrap.min.js' | relative_url }}" ></script>
     </head>
     <body>
-        <header>
-            <div class="clearfix">
-                <div id="logo">
-                    <span>MW Test Consultancy</span>
-                </div>
-                <nav >
-                    <ul id="links">
-                        <li><a href="/" alt="Home">Home</a> |</li>
-                        <li><a href="/training/">Training</a> |</li>
-                        <li><a href="/resources/">Resources</a> |</li>
-                        <li><a href="/archive/">Archive</a></li>
-                    </ul>
-                </nav>
+        <!-- 4 - contained in center example -->
+        <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+            <a href="/" class="navbar-brand d-flex w-50 mr-auto">MW Test Consultancy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+                <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training/">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/resources/">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/archive/">Archive</a>
+                    </li>
+                </ul>
             </div>
-        </header>
+        </nav>
         
         <section>
             {{ content }}
