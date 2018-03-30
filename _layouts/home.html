@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <script src="{{ '/js/jquery-3.2.1.slim.min.js' | relative_url }}" ></script>
         <script src="{{ '/js/popper.min.js' | relative_url }}" ></script>
@@ -31,13 +32,16 @@
                 </ul>
             </div>
         </nav>
-    <h1>Home layout</h1>
 
-    {% for post in site.posts limit:1 %}	
-    <h3>{{ post.title }}</a></h3>
-    <div id="content">
-        {{ post.content }}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% for post in site.posts limit:1 %}	
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    {% endfor %}
 
     {% include footer.html %}

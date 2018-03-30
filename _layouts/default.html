@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <script src="{{ '/js/jquery-3.2.1.slim.min.js' | relative_url }}" ></script>
         <script src="{{ '/js/popper.min.js' | relative_url }}" ></script>
@@ -32,8 +33,8 @@
             </div>
         </nav>
         
-        <section>
+        <div class="container">
             {{ content }}
-        </section>
+        </div>
         
         {% include footer.html %}
