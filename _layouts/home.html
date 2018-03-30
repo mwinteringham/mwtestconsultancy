@@ -1,0 +1,16 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+            <a href="/">Home</a> | <a href="/archive/">Archive</a> | <a href="/resources/">Resources</a> | <a href="/training/">Training</a>
+        <h1>Home layout</h1>
+
+        {% for post in site.posts limit:1 %}	
+        <h3>{{ post.title }}</a></h3>
+        <div id="content">
+            {{ post.content }}
+        </div>
+        {% endfor %}
+
+        {% include footer.html %}

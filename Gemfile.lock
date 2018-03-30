@@ -41,10 +41,6 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     mercenary (0.3.6)
-    minima (2.4.1)
-      jekyll (~> 3.5)
-      jekyll-feed (~> 0.9)
-      jekyll-seo-tag (~> 2.1)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.2)
@@ -65,7 +61,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 3.7.2)
   jekyll-feed (~> 0.6)
-  minima (~> 2.0)
   tzinfo-data
 
 BUNDLED WITH
