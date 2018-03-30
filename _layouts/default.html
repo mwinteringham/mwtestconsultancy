@@ -1,9 +1,26 @@
 <html>
     <head>
-
+        <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
     </head>
     <body>
-        <a href="/">Home</a> | <a href="/archive/">Archive</a> | <a href="/resources/">Resources</a> | <a href="/training/">Training</a>
-        {{ content }}
-    
+        <header>
+            <div class="clearfix">
+                <div id="logo">
+                    <span>MW Test Consultancy</span>
+                </div>
+                <nav >
+                    <ul id="links">
+                        <li><a href="/" alt="Home">Home</a> |</li>
+                        <li><a href="/training/">Training</a> |</li>
+                        <li><a href="/resources/">Resources</a> |</li>
+                        <li><a href="/archive/">Archive</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <section>
+            {{ content }}
+        </section>
+        
         {% include footer.html %}
