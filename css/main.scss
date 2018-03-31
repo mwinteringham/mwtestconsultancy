@@ -4,20 +4,21 @@
 ---
 
 @import 'navbar';
+@import 'post-header';
 @import 'footer';
 
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif
 }
 
-.title {
-    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif
-}
-
 img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.title {
+    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif
 }
 
 .banner {
