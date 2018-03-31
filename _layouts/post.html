@@ -2,7 +2,13 @@
 layout: default
 ---
 
-<h1>Blog post</h1>
-<div id="post">
-    {{ content }}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Blog post</h1>
+            {{ content }}
+        </div>
+    </div>
 </div>
+
+{% include banner.html %}

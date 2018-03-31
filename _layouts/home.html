@@ -7,10 +7,12 @@
         <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}" />
         <script src="{{ '/js/bootstrap.min.js' | relative_url }}" ></script>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
         <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
     </head>
     <body>
-        <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+    <div class="container">
+        <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center nav-custom">
             <a href="/" class="navbar-brand d-flex w-50 mr-auto">MW Test Consultancy</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
                 <span class="navbar-toggler-icon"></span>
@@ -32,8 +34,7 @@
                 </ul>
             </div>
         </nav>
-
-    <div class="container">
+        <div class="border"></div>
         <div class="row">
             <div class="col-sm-12">
                 {% for post in site.posts limit:1 %}	
@@ -43,5 +44,7 @@
             </div>
         </div>
     </div>
+
+    {% include banner.html %}
 
     {% include footer.html %}
