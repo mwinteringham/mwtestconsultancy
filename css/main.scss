@@ -5,6 +5,7 @@
 
 @import 'navbar';
 @import 'post-header';
+@import 'content';
 @import 'footer';
 
 body {
@@ -15,10 +16,6 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-.title {
-    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif
 }
 
 .banner {

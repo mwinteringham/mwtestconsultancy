@@ -1,30 +1,11 @@
-.post-title {
-    color: white;
-    position: absolute;
-    z-index: 100;
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-.post-title h1{
-    font-size: 70px;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    top: 50%;
-    transform: translateY(100%);
-}
-
 .post-header-image {
     width: 100%;
-    height: 480px;
+    height: 380px;
 }
 
 .overlay {
     position: absolute;
     width: 100%;
-    height: 480px;
+    height: 380px;
     background-color: rgba(0,0,0,.3);
 }

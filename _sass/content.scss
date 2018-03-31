@@ -1,0 +1,35 @@
+.content {
+    margin-top: 40px;
+}
+
+.content-body {
+    text-align: justify;
+}
+
+.title {
+    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+    font-size: 3.0rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.details { 
+    text-align: left;
+    color: grey;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+}
+
+.details > p {
+    float: left;
+}
+
+.details > div {
+    text-align: right;
+}
+
+.social i{
+    color: #007bff;
+}
