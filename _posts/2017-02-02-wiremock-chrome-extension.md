@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Wiremock chrome extension: Simple UI for programming stubs"
-date:   2018-03-30 18:38:12 +0100
-categories: jekyll update
+date:   2017-02-02 12:00:00 +0100
+permalink: wiremock-chrome-extension
+tags: exploratory-testing chrome-extensions
 image: /img/test.jpg
 ---
 
@@ -12,7 +13,7 @@ If you've not come across [Wiremock](http://wiremock.org/) before, it's a great 
 
 You can [download the extension from here](https://chrome.google.com/webstore/detail/wiremock-extension/ikiaofdpbmofgmlhajfnhdjelkleljbl) but if you want to know more, check out some of the features in more detail...
 
-## Creating stubs with Wiremock chrome extension
+<h2>Creating stubs with Wiremock chrome extension</h2>
 
 <a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-1.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-1-243x300.png" alt="Wiremock chrome extension - Create stub" width="300" height="300" class="alignleft size-medium wp-image-583" style="border: 1px solid #000000" /></a>
 
@@ -25,7 +26,7 @@ Wiremock chrome extension allows you to easily create and update stubs from a si
 
 Download [ Wiremock chrome extension here](https://chrome.google.com/webstore/detail/wiremock-extension/ikiaofdpbmofgmlhajfnhdjelkleljbl)
 
-## Mapping management with Wiremock chrome extension
+<h2 style='margin-top: 250px'>Mapping management with Wiremock chrome extension</h2>
 
 <a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-2.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-2-242x300.png" alt="Wiremock chrome extension - Mappings view" width="300" height="300" class="alignright size-medium wp-image-584" style="border: 1px solid #000000" /></a>
 
@@ -37,7 +38,7 @@ Wiremock chrome extension hooks into Wiremock's mapping features to give users:
 
 Download [ Wiremock chrome extension here](https://chrome.google.com/webstore/detail/wiremock-extension/ikiaofdpbmofgmlhajfnhdjelkleljbl)
 
-## Connecting to your Wiremock with Wiremock chrome extension
+<h2  style='margin-top: 270px'>Connecting to your Wiremock with Wiremock chrome extension</h2>
 
 <a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-3.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/02/wiremock-chrome-extension-slide-3-242x300.png" alt="Wiremock chrome extension - Settings" width="300" height="300" class="alignleft size-medium wp-image-585" style="border: 1px solid #000000" /></a>
 
