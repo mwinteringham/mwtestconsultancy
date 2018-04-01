@@ -7,7 +7,6 @@
 }
 
 .title {
-    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
     font-size: 3.0rem;
     text-align: center;
     text-transform: uppercase;
@@ -32,4 +31,21 @@
 
 .social i {
     color: #007bff;
+}
+
+.archive-list {
+    list-style: none;
+}
+
+.archive-list > li {
+    display: block; 
+    height: 25px;
+}
+
+.archive-title { 
+    float: left 
+}
+
+.archive-content {
+    float: right
 }
