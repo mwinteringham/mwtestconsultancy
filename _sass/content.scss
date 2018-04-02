@@ -44,12 +44,15 @@
     font-size: 0.9em;
 }
 
+.indent .row {
+    margin-left: -27px;
+}
+
 .row {
     text-align: left;
 }
 
 .column-edit .row {
-    margin-left: -27px;
     border-top: 1px solid grey;
     padding-top: 15px;
 }
