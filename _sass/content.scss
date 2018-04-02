@@ -13,6 +13,13 @@
     font-weight: bold;
 }
 
+.subtitle {
+    text-align: center;
+    color: grey;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
 .details { 
     text-align: left;
     color: grey;
@@ -42,14 +49,22 @@
 }
 
 .column-edit .row {
-    padding-bottom: 10px;
     margin-left: -27px;
+    border-top: 1px solid grey;
+    padding-top: 15px;
 }
 
-.podcast-entry {
+.resource-entry {
     margin-top: -15px;
 }
 
 .date {
+    color: grey;
+}
+
+.tags {
+    text-transform: uppercase;
+    margin-top: -15px;
+    font-size: 0.7rem;
     color: grey;
 }

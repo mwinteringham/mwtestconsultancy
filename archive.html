@@ -5,47 +5,47 @@ permalink: /archive/
 image: /img/test.jpg
 ---
 
-<div class="container content"></div>
-  <div class="row">
-      <div class="col-sm-12">
-          <h1 class="title">{{ page.title }}</h1>
-      </div>
-  </div>
+<div class="container content">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="title">{{ page.title }}</h1>
+        </div>
+    </div>
+</div>
 
-    <div class="container text-center text-md-left content" >
-        <div class="row">
-            <div class="col-md-9">
-                <h2>Previous posts</h2>
+<div class="container text-center text-md-left content" >
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="subtitle">Browse the archive for insights and tutorials into various aspects of software testing including automation, BDD and test tools</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Previous posts</h2>
 
-                <div class="col column-edit">
-                    {% for post in site.posts %}
-                        <div class="row">
-                            <div class="col mini-box">
-                                <p><a href="{{ post.url }}">{{ post.title }}</a></p>
-                            </div>
-                            <div class="col mini-box">
-                                <p class="date">{{ post.date | date: "%B %e, %Y" }}</p>
-                            </div>
+            <div class="col column-edit">
+                {% for post in site.posts %}
+                    <div class="row">
+                        <div class="col-md-9 mini-box">
+                            <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+                            <p class="tags">{{ post.tags | sort | join: ", "}}</p>
                         </div>
-                    {% endfor %}
-                </div>
-
-                <!-- <ul class="list-unstyled archive-list">
-                        <li>
-                            <div class="archive-title"></div><div class="archive-content"></div>
-                        </li>
-                </ul> -->
-            </div>
-            <div class="col-md-3">
-                <h2>Categories</h2>
-                <ul class="list-unstyled"></ul>
-                    {% for tag in site.tags %}
-                        {% assign tag_name = tag | first %}
-                        <li>{{ tag | first | capitalize }} ({{ site.tags[tag_name].size }})</li>
-                    {% endfor %}
-                </ul>
+                        <div class="col-md-3 mini-box">
+                            <p style="text-align: right" class="date">{{ post.date | date: "%B %e, %Y" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
+        <!-- <div class="col-md-4">
+            <h2>Categories</h2>
+            <ul class="list-unstyled"></ul>
+                {% for tag in site.tags %}
+                    {% assign tag_name = tag | first %}
+                    <li>{{ tag | first | capitalize }} ({{ site.tags[tag_name].size }})</li>
+                {% endfor %}
+            </ul>
+        </div> -->
     </div>
 </div>
 
