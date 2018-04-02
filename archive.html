@@ -17,13 +17,24 @@ image: /img/test.jpg
             <div class="col-md-9">
                 <h2>Previous posts</h2>
 
-                <ul class="list-unstyled archive-list">
+                <div class="col column-edit">
                     {% for post in site.posts %}
-                        <li>
-                            <div class="archive-title"><a href="{{ post.url }}">{{ post.title }}</a></div><div class="archive-content">{{ post.date | date: "%B %e, %Y" }}</div>
-                        </li>
+                        <div class="row">
+                            <div class="col mini-box">
+                                <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+                            </div>
+                            <div class="col mini-box">
+                                <p class="date">{{ post.date | date: "%B %e, %Y" }}</p>
+                            </div>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
+
+                <!-- <ul class="list-unstyled archive-list">
+                        <li>
+                            <div class="archive-title"></div><div class="archive-content"></div>
+                        </li>
+                </ul> -->
             </div>
             <div class="col-md-3">
                 <h2>Categories</h2>

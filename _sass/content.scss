@@ -33,19 +33,23 @@
     color: #007bff;
 }
 
-.archive-list {
-    list-style: none;
+.videos {
+    font-size: 0.9em;
 }
 
-.archive-list > li {
-    display: block; 
-    height: 25px;
+.row {
+    text-align: left;
 }
 
-.archive-title { 
-    float: left 
+.column-edit .row {
+    padding-bottom: 10px;
+    margin-left: -27px;
 }
 
-.archive-content {
-    float: right
+.podcast-entry {
+    margin-top: -15px;
+}
+
+.date {
+    color: grey;
 }
