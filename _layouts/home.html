@@ -2,15 +2,21 @@
 layout: default
 ---
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            {% for post in site.posts limit:1 %}	
-                <h3>{{ post.title }}</h3>
+{% for post in site.posts limit:1 %}
+
+    <section class="home-page-image" style="background-image:url('{{ post.image }}')">
+        <div class="container"> 
+            <h1 class="text-center home-title">{{ post.title }}</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
                 <p>{{ post.content }}</p>
-            {% endfor %}
+            </div>
         </div>
     </div>
-</div>
+{% endfor %}
 
 {% include banner.html %}

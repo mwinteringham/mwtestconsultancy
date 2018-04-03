@@ -13,7 +13,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div class="border">
+        {% if page.url == '/' %}
+            <div class="home">
+        {% elsif page.url != '/' %}
+            <div class="border">
+        {% endif %}
             <div class="container">
                 <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
                     <a href="/" class="navbar-brand d-flex w-50 mr-auto logo">MW Test Consultancy</a>
@@ -39,9 +43,12 @@
                 </nav>    
             </div>
         </div>
+
+        {% if page.url != "/" %}
         <section style="background:url('{{ page.image }}') no-repeat center;background-size: cover;" class="post-header-image">
             <div class="overlay"></div>
         </section>
+        {% endif %}
         
         {{ content }}
 
