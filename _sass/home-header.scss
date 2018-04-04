@@ -1,15 +1,37 @@
-.home a{
-    color: white !important;
+@media (min-width: 768px){
+    .home a{
+        color: white !important;
+    }
+
+    .home-page-image {
+        padding-top: 140px;
+        height: 100vh;
+        min-height: 400px;
+        background-size: cover;
+        margin-top: -55px;
+        background-color: rgba(0,0,0,.3);
+    }
+
+    .home-page-image h1{
+        margin-top: 20%;
+    }
 }
 
-.home-page-image {
-    padding-top: 140px;
-    height: 100vh;
-    min-height: 400px;
-    background-size: cover;
-    margin-top: -55px;
+@media (max-width: 768px){
+
+    .home-page-image {
+        height: 100vh;
+        min-height: 400px;
+        background-size: cover;
+    }
+
+    .home-page-image h1{
+        padding-top: 150px;
+    }
 }
 
 .home-title {
     color: white;
+    text-transform: uppercase;
+    font-weight: bold;
 }
