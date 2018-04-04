@@ -12,7 +12,17 @@ layout: default
         </div>
     </section>
 
-    <div class="container">
+    <div class="container content">
+        <div class="row">
+            <div class="col-sm-12 details">
+                <p>{{ post.date | date_to_long_string }}</p>
+                
+                <div>
+                    <p class="social"><a href="{{site.url}}/{{post.permalink}}" alt="{{post.title}}">PERMALINK</a> | <a href="https://twitter.com/share?url={{site.url}}/{{post.permalink}}/&text={{post.title}}%20written%20by%20@2bittester" target="_blank"><i class="fa fa-twitter"></i></a> | <a href="https://www.facebook.com/sharer/sharer.php?u={{site.url}}/{{post.permalink}}" target="_blank"><i class="fa fa-facebook"></i></a> | <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}/{{post.permalink}}" target="_blank"><i class="fa fa-linkedin"></i></a></p>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <p>{{ post.content }}</p>
