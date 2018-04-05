@@ -2,7 +2,7 @@
 layout: training
 title: Testing web services
 image: /img/test.jpg
-description: A hands workshop focusing on API testing and exploring web services
+description: Hands workshop focusing on API testing and exploring web services
 ---
 
 ## Why You Should Take This Course

@@ -9,7 +9,7 @@
 
 .training-event {
     width: 350px;
-    height: 125px;
+    height: 200px;
     background-size: cover;
     display: table-cell;
     vertical-align: middle;
@@ -17,15 +17,16 @@
 }
 
 .training-event-title {
-    font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+    font-family: 'Cabin', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
-// .training-event a:hover, a:visited, a:link, a:active{
-    // color: rgb(201, 201, 201);
-    // text-decoration: none;
-// }
+.training-event p {
+    color: black;
+    text-decoration: none;
+}
 
 .training-padding {
     margin-bottom: 15px;
