@@ -1,16 +1,32 @@
+.profile-details {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.profile {
+    border-radius: 50%;
+}
+
 .training-event {
-    width: 100%;
+    width: 350px;
     height: 125px;
-    margin-bottom: 10px;
     background-size: cover;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
-.training-event p {
-    margin-top: 40px;
-}
-
-.training-event a {
+.training-event-title {
     font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
-    color: white;
     text-transform: uppercase;
+    color: white;
+}
+
+.training-event a:hover, a:visited, a:link, a:active{
+    color: rgb(201, 201, 201);
+    text-decoration: none;
+}
+
+.training-padding {
+    margin-bottom: 15px;
 }

@@ -2,8 +2,8 @@
 layout: training
 title: Online training
 image: /img/test.jpg
+description: Online lessons in testing skills and tools 
 ---
-
 
 Some details on online training
 

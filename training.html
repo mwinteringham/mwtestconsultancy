@@ -13,26 +13,36 @@ image: /img/test.jpg
 	</div>
 </div>
 
-<div class="container text-center text-md-left content" >
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="subtitle">I help teams solve their testing and automation problems by offering training in different testing techniques and skills. Feel free to browse details on each training course I offer.</h2>
+<div class="container" >
+	<div class="row profile-details">
+		<div class="col-md-3 ">
+			<img src="/img/profile.png" alt="Mark Winteringham" class="profile" />
+		</div>
+		<div class="col-md-9">
+			<p>I help teams solve their testing and automation problems by offering training in different testing techniques and skills. Feel free to browse details on each training course I offer.</p>
 		</div>
 			{% for page in site.training %}
 				{% assign loopindex = forloop.index | modulo: 3 %}
 				{% if loopindex == 1 %}
-				</div>
-				<div class="row text-center">
-					<div class="col-md-1"></div>
-					<div class="col-md-3 training-event" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ page.image }}')">
-						<p><a href="{{ page.url }}">{{ page.title }}</a></p>
+	</div>
+				<div class="row">
+					<div class="col-md-4 training-padding">
+						<a href="{{ page.url }}">
+							<div class="training-event" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ page.image }}')">
+								<p class="training-event-title">{{ page.title }}</p>
+								<p>{{ page.description }}</p>
+							</div>
+						</a>
 					</div>
-					<div class="col-md-1"></div>
 				{% else %}
-					<div class="col-md-3 training-event" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ page.image }}')">
-						<p class="text-xs-center"><a href="{{ page.url }}">{{ page.title }}</a></p>
+					<div class="col-md-4 training-padding">
+						<a href="{{ page.url }}">
+							<div class="training-event" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ page.image }}')">
+								<p class="training-event-title">{{ page.title }}</p>
+								<p>{{ page.description }}</p>
+							</div>
+						</a>
 					</div>
-					<div class="col-md-1"></div>
 				{% endif %}
 			{% endfor %}
 	</div>
