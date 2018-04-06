@@ -1,12 +1,24 @@
 <div class="banner">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="row banner-details">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
                 <h1>Would you like to know more?</h1>
-                <p>I offer practical advice to help teams with their test automation and testing problems.</p>
-            
-                <p>Training</p>
+                <p>I offer training and advice to help teams with their test automation and testing problems. If you want to learn more, check out the links courses and materials avaiable below.</p>
             </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            {% for page in site.training limit:3%}
+                <div class="col-md-4 training-padding">
+                    <a href="{{ page.url }}">
+                        <div class="training-event" style="background-image:linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('{{ page.image }}')">
+                            <p class="training-event-title">{{ page.title }}</p>
+                            <p>{{ page.description }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
