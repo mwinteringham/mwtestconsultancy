@@ -4,7 +4,7 @@ title:  "How to build an automated API test framework - Part 3"
 date:   2016-05-09 20:26:00 +0100
 permalink: automated-api-framework-part-3
 tags: automation API-testing
-image: /img/test.jpg
+image: /img/article/scaffolding.jpg
 ---
 
 So here we are.  The final post on building an automated API framework.  We've covered a lot of ground already so if you if you haven't already I would recommend reading [the first post on creating a framework with basic checks](http://www.mwtestconsultancy.co.uk/automated-api-framework-part-1) followed by [the second post on extending the framework to handle POST requests](http://www.mwtestconsultancy.co.uk/automated-api-framework-part-2).  If you are all caught up then let's continue...
@@ -28,7 +28,7 @@ For our next check, we want to turn our attention to the DELETE endpoint of [res
 
 Before we create the check itself lets extend our API library.  First, We need to add an additional method in _api/booking.rb_ 
 
-```Ruby
+```ruby
 def delete_booking(id, token)
     begin
       return RestClient.delete 'http://localhost:3001/booking/' + id.to_s, :cookie => 'token=' + token
@@ -40,7 +40,7 @@ def delete_booking(id, token)
 
 Next, we need to create a new file in _api/_ named _authorise.rb_ and add the following:
 
-```Ruby
+```ruby
 require 'rest-client'
 
 module Authorise
@@ -58,7 +58,7 @@ end
 
 Next, ```/auth``` requires a payload with our username and password so let's create a new builder in _payloads_
 
-```Ruby
+```ruby
 class AuthorisePayload
 
   attr_accessor :username, :password
@@ -82,13 +82,13 @@ Also don't forget to add ```require './api/authorise'``` and ```require './paylo
 
 With the _api_ and _payloads_ files added let's create our check first include the ```Authorise``` module from _api_ in _integration_spec.rb_ by adding the following under the ```Booking``` include
 
-```Ruby
+```ruby
 include Authorise
 ```
 
 Then create the check itself
 
-```Ruby
+```ruby
 it('DELETE /booking/{id} should return a 200') do
     payload = BookingPayload.new do
       self.firstname = 'Sally'

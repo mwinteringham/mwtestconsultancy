@@ -1,7 +1,7 @@
 ---
 layout: training
 title: Testing web services
-image: /img/test.jpg
+image: /img/training/structure.jpg
 description: Hands workshop focusing on API testing and exploring web services
 ---
 

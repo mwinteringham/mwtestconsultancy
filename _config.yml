@@ -28,6 +28,9 @@ github_username:  mwinteringham
 markdown: kramdown
 kramdown:
   parse_block_html: true
+
+highlighter: rouge
+
 plugins:
   - jekyll-feed
 
@@ -38,6 +41,7 @@ collections:
 
 sass:
   style: compact
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

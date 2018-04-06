@@ -4,7 +4,7 @@ title:  "Say TaTTa to your TuTTu: Liverpool tester gathering"
 date:   2016-11-22 15:45:00 +0100
 permalink: say-tatta-to-your-tuttu-talk
 tags: automation video public-talk workshop
-image: /img/test.jpg
+image: /img/article/tuttu.jpg
 ---
 
 Over the summer I gave a new talk called 'Say TaTTa to your TuTTu' at [Liverpool tester gathering](https://www.meetup.com/Liverpool-Tester-Gathering/) which expands upon my previous blog post [Anti-pattern: Cross browser checking](http://www.mwtestconsultancy.co.uk/cross-browser-checking-anti-pattern/)

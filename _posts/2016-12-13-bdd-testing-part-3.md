@@ -4,7 +4,7 @@ title:  "Is BDD testing? Outside in development and testers"
 date:   2016-12-13 17:35:00 +0100
 permalink: bdd-testing-part-3
 tags: BDD
-image: /img/test.jpg
+image: /img/article/bdd.jpg
 ---
 
 In the [previous posts](http://www.mwtestconsultancy.co.uk/category/bdd/) I've introduced a model to help me understand BDD, shown below. I've also discussed the [collaboration side of the model](http://www.mwtestconsultancy.co.uk/bdd-testing-part-2/) and the Testers role with it.  All with the intent to ask, is BDD Testing?

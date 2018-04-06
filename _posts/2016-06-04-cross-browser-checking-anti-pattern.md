@@ -4,7 +4,7 @@ title:  "Anti-pattern: Cross browser checking"
 date:   2016-06-04 14:21:00 +0100
 permalink: cross-browser-checking-anti-pattern
 tags: automation
-image: /img/test.jpg
+image: /img/article/devices.png
 ---
 
 Recently I was reading a discussion on the Testing community's automation slack channel in which one of the members was asking others about options around extending their smoke checks to run against multiple browsers.  The others gave great advice around using tools such as [Sauce labs](saucelabs.com) or Virtual machines which are perfectly valid, but unknowingly they fell into a trap.  They were demonstrating what I believe is an important anti-pattern when it comes to checking which I want to discuss today.

@@ -4,7 +4,7 @@ title:  "Proxies: Setting up POSTMAN proxy"
 date:   2015-07-27 17:32:00 +0100
 permalink: proxies-setting-up-postman-proxy
 tags: proxies
-image: /img/test.jpg
+image: /img/article/binocular.jpg
 ---
 
 Since being introduced to <a href="https://www.getpostman.com/" target="_blank">POSTMAN</a> a few years back it's become one of the main tools I use in my day to day testing and it's a cracking piece of kit for testing with a lot of great features to boot. For those unfamiliar with <a href="https://www.getpostman.com/" target="_blank">POSTMAN</a> it's an app for Chrome that allows you to create HTTP requests for Web and API testing as well as save requests into collections for future use.

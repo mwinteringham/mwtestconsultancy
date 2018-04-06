@@ -4,7 +4,7 @@ title:  "How to build an automated API test framework - Part 1"
 date:   2016-04-28 15:07:00 +0100
 permalink: automated-api-framework-part-1
 tags: automation API-testing
-image: /img/test.jpg
+image: /img/article/scaffolding.jpg
 ---
 
 For a while now I've wanted to do a series of posts on how to build an automated API / web service / integration testing framework and especially how to build one in a robust way.  There is a lot to go over so I plan to break this series up into three posts to focus on specific areas of the framework and in this one we'll focus on getting the framework up and running with a handful of automated checks.

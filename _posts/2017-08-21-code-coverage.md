@@ -4,7 +4,7 @@ title:  "Code coverage and automated checks: Is 100% coverage enough?"
 date:   2017-08-21 17:00:00 +0100
 permalink: code-coverage
 tags: automation devops
-image: /img/test.jpg
+image: /img/article/whackamole.jpg
 ---
 
 <h2><a id="Questions_on_code_coverage_0"></a>Questions on code coverage</h2>

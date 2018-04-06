@@ -4,7 +4,7 @@ title:  "Is BDD Testing? Collaboration and testers"
 date:   2016-12-09 12:00:00 +0100
 permalink: bdd-testing-part-2
 tags: BDD
-image: /img/test.jpg
+image: /img/article/bdd.jpg
 ---
 
 This is the second part of my blog series looking into exploring the question, is BDD testing? In the [previous post](http://www.mwtestconsultancy.co.uk/bdd-testing-part-1/) I discussed my motivations for creating this series and I also shared this model:

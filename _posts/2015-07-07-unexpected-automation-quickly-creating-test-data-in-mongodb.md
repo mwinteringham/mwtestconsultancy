@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Quickly creating test data in MongoDB"
 date:   2015-07-07 21:57:00 +0100
 permalink: unexpected-automation-quickly-creating-test-data-in-mongodb
 tags: automation
-image: /img/test.jpg
+image: /img/article/containers.jpg
 ---
 
 Part of my workshop 'Understanding and testing RESTful Web serivces' relies on attendees testing my demo web service <a href="https://github.com/mwinteringham/restful-booker" target="_blank">restful-booker</a> and when <a href="https://github.com/mwinteringham/restful-booker" target="_blank">restful-booker</a> starts up it generates a group of records for the attendees to use.

@@ -4,7 +4,7 @@ title:  "Postman cheat sheet - Quick guide to automating APIs"
 date:   2017-05-14 16:56:00 +0100
 permalink: postman-cheat-sheet
 tags: API-testing postman
-image: /img/test.jpg
+image: /img/article/cheatsheet.jpg
 ---
 
 Postman cheat sheet is something I have wanted to put together for a while as a response to helping attendees of my [Testing API and Web services training](http://www.mwtestconsultancy.co.uk/testing-web-services-training/). The cheat contains a high-level collection of the features available in Postman to help you to automate APIs and Web services. Unless stated otherwise the methods below are used in the __Tests tab__ and some can be found on the right-hand section of the Tests tab labelled __snippets__.

@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Creating dashboards with ExpressJS and JQuery - 
 date:   2015-03-31 20:52:00 +0100
 permalink: unexpected-automation-creating-dashboards-with-expressjs-and-jquery-part-2
 tags: automation node
-image: /img/test.jpg
+image: /img/article/cockpit.jpg
 ---
 
 And we're back!  So far we've looked at using ExpressJS to create a small Web framework which contains various endpoints that encapsulate actions to get data from Event Generator's log files and database.  Now we need to create the UI to complete the work.

@@ -4,7 +4,7 @@ title:  "Automation in Testing is live!"
 date:   2018-02-04 18:45:00 +0100
 permalink: automation-in-testing
 tags: automation automation-in-testing
-image: /img/test.jpg
+image: /img/article/tools.jpg
 ---
 
 During my career as a software tester, there have been many memorable points. But two that are very important was the point when I gave my talk first talk [What's so great about WebDriver](https://www.slideshare.net/mwinteringham/whats-so-great-about-web-driver) where I first shared my thoughts on our industries obsession with end-to-end UI driven automation with WebDriver and when Richard Bradshaw came up to me afterwards and said "I'm thinking the same thing". I'm paraphrasing (it was a long time ago) but since then I've been fortunate to work with Richard to create something I am immensely proud of Automation in Testing (AiT), a mindset, approach and series of courses that can help you with your automation.

@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Create a simple API monitoring tool in 5 steps"
 date:   2017-05-09 11:08:00 +0100
 permalink: api-monitoring-tool-simple
 tags: API-testing postman unexpected-automation
-image: /img/test.jpg
+image: /img/article/heartbeat.jpg
 ---
 
 API Monitoring of your application is an essential tool for any team. It's fast to feedback the state of your application, can be graphed or presented in many different ways for your team to consume and a great testing tool to use alongside exploratory testing. However, a lot of the options for API Monitoring are paid for and can require a bit of setup which may be a hard sell when your team is up against the clock to deliver the next big feature. This might be a time-consuming activity to carry out, especially if you just need basic API monitoring when you are executing your testing. So why not build your own, even if you have very little coding experience, using these five steps:

@@ -4,7 +4,7 @@ title:  "Restful-Booker: Your one stop API testing demo"
 date:   2017-08-18 07:10:00 +0100
 permalink: api-testing-demo
 tags: API-testing automation postman
-image: /img/test.jpg
+image: /img/article/tubemap.jpg
 ---
 
 <h3>You get an API testing demo, you get an API testing demo, everybody gets an API testing demo!</h3>

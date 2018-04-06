@@ -1,7 +1,7 @@
 ---
 layout: training
 title: Automation in Testing
-image: /img/test.jpg
+image: /img/training/tools.jpg
 description: Learn how to strategise and succeed with automation
 ---
 

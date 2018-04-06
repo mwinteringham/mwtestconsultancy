@@ -4,7 +4,7 @@ title:  "Wiremock chrome extension: Simple UI for programming stubs"
 date:   2017-02-02 12:00:00 +0100
 permalink: wiremock-chrome-extension
 tags: exploratory-testing chrome-extensions
-image: /img/test.jpg
+image: /img/article/wiremock.png
 ---
 
 I'm proud to announce a new project that I've just released, a [chrome extension for Wiremock](https://chrome.google.com/webstore/detail/wiremock-extension/ikiaofdpbmofgmlhajfnhdjelkleljbl).  The [ Wiremock chrome extension ](https://chrome.google.com/webstore/detail/wiremock-extension/ikiaofdpbmofgmlhajfnhdjelkleljbl) provides users with a simple GUI that allows you to create, view, edit and delete stubs that are stored within Wiremock.

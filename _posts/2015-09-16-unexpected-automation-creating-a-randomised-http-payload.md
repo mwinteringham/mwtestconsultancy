@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Creating a randomised HTTP payload"
 date:   2015-09-16 00:36:00 +0100
 permalink: unexpected-automation-creating-a-randomised-http-payload
 tags: node
-image: /img/test.jpg
+image: /img/article/dice.jpg
 ---
 
 After a bit of a break for the summer holiday, and as promised in <a href='http://www.mwtestconsultancy.co.uk/unexpected-automation-quickly-creating-test-data-in-mongodb/' title='Quickly creating test data in MongoDB' />Quickly creating test data in MongoDB</a>, here is a look at how we can use the randomisation script script from <a href='http://www.mwtestconsultancy.co.uk/unexpected-automation-quickly-creating-test-data-in-mongodb/' title='Quickly creating test data in MongoDB' />Quickly creating test data in MongoDB</a> to create a randomised HTTP payload for POST requests.

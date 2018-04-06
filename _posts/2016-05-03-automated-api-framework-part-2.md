@@ -4,7 +4,7 @@ title:  "How to build an automated API test framework - Part 2"
 date:   2016-05-03 21:09:00 +0100
 permalink: automated-api-framework-part-2
 tags: automation API-testing
-image: /img/test.jpg
+image: /img/article/scaffolding.jpg
 ---
 
 In the [previous post on creating an automated api framework](http://www.mwtestconsultancy.co.uk/automated-api-framework-part-1) we created a framework and a series of automated checks that will run some basic GET request checks against [restful-booker](https://github.com/mwinteringham/restful-booker). If you haven't gone through  the [previous post](http://www.mwtestconsultancy.co.uk/automated-api-framework-part-1) I would recommend you do so before you continue. 

@@ -4,7 +4,7 @@ title:  "Data driven testing: Moving your Gherkin scenarios to API"
 date:   2017-01-04 22:16:00 +0100
 permalink: data-driven-testing-gherkin-api
 tags: automation postman API-testing
-image: /img/test.jpg
+image: /img/article/cucumbers.jpg
 ---
 
 For this post, I want to cover something a bit more practical.   I want to bring together my posts on [BDD](http://www.mwtestconsultancy.co.uk/is-bdd-testing/) and [anti-patterns](http://www.mwtestconsultancy.co.uk/cross-browser-checking-anti-pattern/) demonstrate how to build robust automated data driven testing.
@@ -41,7 +41,7 @@ Now ask yourself, is this a scenario for guiding Developers to build a feature c
 <h4>Problems first, Tools second</h4>
 It's very easy to be seduced by tools, they're all shiny and new and fun to play with.  But it's important to remember to ask before choosing a tool, what am I testing?  I've talked before about [using the mnemonic TuTTu](http://www.mwtestconsultancy.co.uk/cross-browser-checking-anti-pattern/) to ask the question am I 'Testing the UI Testing Through the UI'.  So what is the scenario above actually testing?
 
-</h5>Is it testing the UI?</h5>
+<h5>Is it testing the UI?</h5>
 The examples table contains lots of different data types, perhaps there is some sort of JavaScript validation that we want to test?  This would mean that the backend isn't necessarily required and we could remove it.  Perhaps a JavaScript unit testing framework such as [Jasmine](https://jasmine.github.io/) or [JSDom](https://github.com/tmpvar/jsdom)/[Mocha](https://mochajs.org/) could be used?
 
 <h5>Is it testing through the UI?</h5>

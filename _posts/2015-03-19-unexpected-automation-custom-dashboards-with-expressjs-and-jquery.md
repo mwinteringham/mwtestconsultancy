@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Creating dashboards with ExpressJS and JQuery - 
 date:   2015-03-19 13:51:00 +0100
 permalink: unexpected-automation-custom-dashboards-with-expressjs-and-jquery
 tags: automation node
-image: /img/test.jpg
+image: /img/article/cockpit.jpg
 ---
 
 After giving my talk on the testing community's focus on a small subset of automation tools I decided to put this blog together to share ways in which I've used automation for tasks other than simply asserting a check.  Since these are outside the normal sphere of what is considered automation I've named these blogs 'Unexpected Automation'

@@ -4,7 +4,7 @@ title:  "Is BDD testing? Answers and test strategy"
 date:   2016-12-23 12:12:00 +0100
 permalink: bdd-testing-part-4
 tags: BDD
-image: /img/test.jpg
+image: /img/article/bdd.jpg
 ---
 
 Over the [past few posts I've been exploring the BDD process](http://www.mwtestconsultancy.co.uk/category/bdd/) in an attempt to answer the question, is BDD testing?  I've done this by building a model of BDD and explored both the collaborative and Outside in development sections.  If you've not already read them [I would recommend you do to give some context](http://www.mwtestconsultancy.co.uk/category/bdd/) to my conclusion on is BDD testing?

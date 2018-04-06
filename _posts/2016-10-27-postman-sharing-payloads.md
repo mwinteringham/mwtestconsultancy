@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Postman - Parsing HTML responses"
+title:  "Postman - Sharing payloads"
 date:   2016-10-27 14:29:00 +0100
 permalink: postman-sharing-payloads
 tags: automation postman API-testing
-image: /img/test.jpg
+image: /img/article/sharing.jpg
 ---
 
 <a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" /></a>

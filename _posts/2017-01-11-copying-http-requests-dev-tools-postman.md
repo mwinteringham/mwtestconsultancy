@@ -4,7 +4,7 @@ title:  "Quick copying HTTP requests from Developer tools to Postman"
 date:   2017-01-11 13:00:00 +0100
 permalink: copying-http-requests-dev-tools-postman
 tags: postman proxies
-image: /img/test.jpg
+image: /img/article/photocopy.jpg
 ---
 
 My last few blogs have been fairly full on, so this post I wanted to give a quick demonstration on copying HTTP requests from Developer tools to Postman.  Before I begin it's worth mentioning that this works for both Developer Tools and Firebug.

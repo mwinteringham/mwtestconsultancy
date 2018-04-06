@@ -4,7 +4,7 @@ title:  "Proxies: Setting up and using BurpSuite"
 date:   2015-07-27 20:00:00 +0100
 permalink: proxies-setting-up-burpsuite-proxy
 tags: proxies
-image: /img/test.jpg
+image: /img/article/binocular.jpg
 ---
 
 I recently blogged about one of my favourite tools POSTMAN and how to set up its proxy server.  POSTMAN is a great a tool but there are a few limitations I find with it:

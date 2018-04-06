@@ -4,7 +4,7 @@ title:  "Debug API checks quickly with proxy tools"
 date:   2017-09-28 20:26:00 +0100
 permalink: debug-api-check-proxy-tools
 tags: API-testing
-image: /img/test.jpg
+image: /img/article/police.jpg
 ---
 
 TL;DR You can debug API checks by pointing them at a proxy tool to view and compare captured HTTP requests to discover the issue

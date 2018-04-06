@@ -4,7 +4,7 @@ title:  "Testing lessons learnt: Anything build party & TestLab @ AgileTD 2015"
 date:   2015-11-23 21:06:00 +0100
 permalink: testing-lessons-anything-buildtd-2015-review
 tags: conference
-image: /img/test.jpg
+image: /img/article/rube.jpg
 ---
 
 <h2>Day 1</h2>

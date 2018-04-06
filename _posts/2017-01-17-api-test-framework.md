@@ -4,7 +4,7 @@ title:  "API test framework templates - A quick start repository"
 date:   2017-01-17 17:53:00 +0100
 permalink: api-test-framework
 tags: automation API-testing
-image: /img/test.jpg
+image: /img/article/steelwork.jpg
 ---
 
 I'm pretty busy at the moment preparing for awesome workshops for [CASTx with Abby Bangser](https://www.associationforsoftwaretesting.org/conference/castx17/) and TestBash Brighton with [Software testing clinic](dojo.ministryoftesting.com/events/testbash-brighton-2017).  So sadly it means another short post for now, but it's still one I think that's very exciting.  I want to share with you all a repository I've created that contains templates of framework written in different languages for you to use to create an API test framework.

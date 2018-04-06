@@ -4,7 +4,7 @@ title:  "Postman - Parsing HTML responses"
 date:   2016-11-13 15:44:00 +0100
 permalink: postman-parsing-html-responses
 tags: automation postman API-testing
-image: /img/test.jpg
+image: /img/article/decipher.png
 ---
 
 <a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" alt="Postman - Parsing HTML response" /></a>

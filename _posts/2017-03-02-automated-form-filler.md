@@ -4,7 +4,7 @@ title:  "Unexpected Automation: Creating an automated form filler with Chrome Ex
 date:   2017-03-02 13:15:00 +0100
 permalink: automated-form-filler
 tags: automation unexpected-automation chrome-extensions
-image: /img/test.jpg
+image: /img/article/steelwork.jpg
 ---
 
 It's been a while since I've done an unexpected automation themed post due to my work on my API Testing tutorial at CASTx2017. So I thought given I recently created the [Wiremock Chrome Extension](http://www.mwtestconsultancy.co.uk/wiremock-chrome-extension/), why not demonstrate how easy it is to create your own Chrome extension.  So for this post, I want to share my experience of how you can quickly create an automated form filler in the form of a chrome extension that can fill in test data for you.  This is based upon a new project I started recently and how one of the first things I looked to automate was quickly populating a large form that I regularly testing in an exploratory testing context.

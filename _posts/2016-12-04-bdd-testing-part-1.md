@@ -4,7 +4,7 @@ title:  "Is BDD Testing? A model for testers"
 date:   2016-12-04 12:00:00 +0100
 permalink: bdd-testing-part-1
 tags: BDD
-image: /img/test.jpg
+image: /img/article/bdd.jpg
 ---
 
 _Is BDD testing?  No. Well, some of the activities involve Testers, but it's not REAL testing, right?_
