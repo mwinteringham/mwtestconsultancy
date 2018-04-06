@@ -19,12 +19,13 @@ image: /img/test.jpg
 			<img src="/img/profile.png" alt="Mark Winteringham" class="profile" />
 		</div>
 		<div class="col-md-9">
-			<p>I help teams solve their testing and automation problems by offering training in different testing techniques and skills. Feel free to browse details on each training course I offer.</p>
+			<p>My name is Mark Winteringham and I help teams and individuals with their software testing problems. I offer training in test automation and software testing techniques based on my years of experience working on award-winning projects across a wide variety of technology sectors.</p>
+			<p>All of my workshops are experiential in nature and offer attendees the opportunity to learn new tools and techniques to succeed in their day to day testing activities. Details of my workshops can be found below.</p>
 		</div>
 			{% for page in site.training %}
 				{% assign loopindex = forloop.index | modulo: 3 %}
 				{% if loopindex == 1 %}
-	</div>
+				</div>
 				<div class="row">
 					<div class="col-md-4 training-padding">
 						<a href="{{ page.url }}">
