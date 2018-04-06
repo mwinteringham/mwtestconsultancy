@@ -9,7 +9,7 @@ image: /img/test.jpg
 
 In the [previous posts](http://www.mwtestconsultancy.co.uk/category/bdd/) I've introduced a model to help me understand BDD, shown below. I've also discussed the [collaboration side of the model](http://www.mwtestconsultancy.co.uk/bdd-testing-part-2/) and the Testers role with it.  All with the intent to ask, is BDD Testing?
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
+<a href="/img/2016/12/BDD-Model.png"><img src="/img/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
 
 In this post, I want to look at the Outside in Development side of BDD and explore how Testing fits into it.
 

@@ -19,16 +19,16 @@ I will be in the middle of testing an application when an error occurs on the pa
 
 <h5>1. With the network tab open, right click on the request and select 'copy as Curl'</h5>
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep1.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep1-300x133.png" alt="Copying HTTP requests from Dev Tools to Postman Step 1" width="300" height="133" class="aligncenter size-medium wp-image-526" /></a>
+<a href="/img/2017/01/devToolsPostmanStep1.png"><img src="/img/2017/01/devToolsPostmanStep1-300x133.png" alt="Copying HTTP requests from Dev Tools to Postman Step 1" width="300" height="133" class="aligncenter size-medium wp-image-526" /></a>
 
 <h5>2. Next open up Postman and click on Import</h5>
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep2.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep2-300x93.png" alt="Copying HTTP requests from Dev Tools to Postman Step 2" width="300" height="93" class="aligncenter size-medium wp-image-527" /></a>
+<a href="/img/2017/01/devToolsPostmanStep2.png"><img src="/img/2017/01/devToolsPostmanStep2-300x93.png" alt="Copying HTTP requests from Dev Tools to Postman Step 2" width="300" height="93" class="aligncenter size-medium wp-image-527" /></a>
 
 <h5>3. Select past raw text and copy in the Curl request</h5>
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep3.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep3-263x300.png" alt="Copying HTTP requests from Dev Tools to Postman Step 2" width="263" height="300" class="aligncenter size-medium wp-image-528" /></a>
+<a href="/img/2017/01/devToolsPostmanStep3.png"><img src="/img/2017/01/devToolsPostmanStep3-263x300.png" alt="Copying HTTP requests from Dev Tools to Postman Step 2" width="263" height="300" class="aligncenter size-medium wp-image-528" /></a>
 
 <h5>4. Click import and your request will be imported to use and save in collections</h5>
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep4.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/01/devToolsPostmanStep4-300x135.png" alt="Copying HTTP requests from Dev Tools to Postman Step 4" width="300" height="135" class="aligncenter size-medium wp-image-529" /></a>
+<a href="/img/2017/01/devToolsPostmanStep4.png"><img src="/img/2017/01/devToolsPostmanStep4-300x135.png" alt="Copying HTTP requests from Dev Tools to Postman Step 4" width="300" height="135" class="aligncenter size-medium wp-image-529" /></a>

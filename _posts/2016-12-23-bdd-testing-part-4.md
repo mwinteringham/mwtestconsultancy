@@ -9,7 +9,7 @@ image: /img/test.jpg
 
 Over the [past few posts I've been exploring the BDD process](http://www.mwtestconsultancy.co.uk/category/bdd/) in an attempt to answer the question, is BDD testing?  I've done this by building a model of BDD and explored both the collaborative and Outside in development sections.  If you've not already read them [I would recommend you do to give some context](http://www.mwtestconsultancy.co.uk/category/bdd/) to my conclusion on is BDD testing?
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
+<a href="/img/2016/12/BDD-Model.png"><img src="/img/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
 
 <h3>Well come on then, is BDD Testing?!</h3>
 

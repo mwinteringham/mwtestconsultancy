@@ -23,7 +23,7 @@ Sometimes when I am working with API checks there is something incorrect in my c
 
 I started by using the BurpSuite proxy to capture the original HTTP request from the browser and sent it to the repeater feature. The captured request was a login request to Bugzilla which you can see below (with all the optional headers removed):
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/09/apidebug1.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/09/apidebug1.png" alt="API Debug screenshot 1" width="1541" height="480" class="alignnone size-full wp-image-759" /></a>
+<a href="/img/2017/09/apidebug1.png"><img src="/img/2017/09/apidebug1.png" alt="API Debug screenshot 1" style="width: 100%" class="alignnone size-full wp-image-759" /></a>
 
 Whenever I re-sent that request via the BurpSuite repeater I could see from the HTML in the response that I was logged in. But, whenever I attempted to do the same HTTP request within my API check I found that I was not logged in. What was wrong?
 
@@ -35,7 +35,7 @@ The API check was written using [RestAssured](http://rest-assured.io) so I use t
 
 I could have also updated my network settings too but this did the job. With RestAssured now hooked into BurpSuite, I ran the API check again and captured the request in the proxy before sending it over to the Repeater:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/09/apidebug2.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/09/apidebug2.png" alt="API Debug screenshot 2" width="1618" height="368" class="alignnone size-full wp-image-760" /></a>
+<a href="/img/2017/09/apidebug2.png"><img src="/img/2017/09/apidebug2.png" alt="API Debug screenshot 2" style="width: 100%" class="alignnone size-full wp-image-760" /></a>
 
 Once I had both HTTP requests within BurpSuite I could compare the two requests to see what was different. I could have used a [diff tool](https://www.diffchecker.com) but I quick glance showed me that I was missing an a specific header. Knowing that I was missing a header, I updated my code and re-ran the check. After the check ran the requests were now the same and I could now log into Bugzilla within my check.
 

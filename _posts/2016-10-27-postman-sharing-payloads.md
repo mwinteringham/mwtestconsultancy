@@ -7,7 +7,7 @@ tags: automation postman API-testing
 image: /img/test.jpg
 ---
 
-<a href="https://www.getpostman.com/"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" /></a>
+<a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" /></a>
 
 As part of my workshops, I offer support afterwards to help answer questions attendees have once they are back at work and applying what they've learnt in the real world.  I was asked a question recently about Postman around sharing and comparing payloads across requests.  It's a question that has popped up a few times, so I thought I would share my solutions towards how you can get Postman to store payloads and then retrieve them to use as a comparator in later requests.
 

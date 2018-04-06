@@ -17,14 +17,14 @@ Let's say part of your application has a large form that contains multiple field
 
 For this blog, we will be working with this [Google form](https://docs.google.com/forms/d/e/1FAIpQLSeqsM_T5WbKRjBJUdh8c7BIuLj52GJqxpDql1Gxvjcfmcn9DA/viewform), although If you want to try this out on a different form the example will apply.
 
-To get started I have prepared a basic project for you that you can <a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/04/chrome-extension.zip">download from here</a>.  The project contains two files to get your extension up and running, the manifest file and index.html file.  Let's take a quick look at them:
+To get started I have prepared a basic project for you that you can <a href="/img/2017/04/chrome-extension.zip">download from here</a>.  The project contains two files to get your extension up and running, the manifest file and index.html file.  Let's take a quick look at them:
 
 * manifest.json - The manifest file is a required part of a Chrome Extension. The file provides the browser with the extension's name, description, version number and so on. It's also responsible for declaring to Chrome what the extension is going to do, and what permissions it requires in order to do those things.
 * index.html - You will notice in the manifest file that it has a ```default_popup``` setting that refers to the index.html.  This means when you click on the extension in the browser it will load the HTML and create a mini web page, complete with its own DOM.
 
 To load the extension into the browser navigate to the extensions manager page, click on ```Load unpacked extension...``` and select the src folder.  You will see a new icon appear in your browser and clicking on it will load a page like so:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/03/formfillerextensions.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/03/formfillerextensions-300x187.png" alt="" width="300" height="187" alt="Automated form filler - Extension example" class="size-medium wp-image-634" /></a>
+<a href="/img/2017/03/formfillerextensions.png"><img src="/img/2017/03/formfillerextensions-300x187.png" alt="" width="300" height="187" alt="Automated form filler - Extension example" class="size-medium wp-image-634" /></a>
 
 <h3>Trigger JavaScript in browser</h3>
 
@@ -60,7 +60,7 @@ Let's look in more in detail what some of these methods do:
 
 Head to your extensions manager page and refresh the extension to load in the latest code and head over to the [Google form](https://docs.google.com/forms/d/e/1FAIpQLSeqsM_T5WbKRjBJUdh8c7BIuLj52GJqxpDql1Gxvjcfmcn9DA/viewform) and open your extension and click on the button.  You should see a popup similar to this:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/03/formfillerinjection.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/03/formfillerinjection-300x159.png" alt="" width="300" height="159" alt="Automated form filler - Injection example" class="size-medium wp-image-635" /></a>
+<a href="/img/2017/03/formfillerinjection.png"><img src="/img/2017/03/formfillerinjection-300x159.png" alt="" width="300" height="159" alt="Automated form filler - Injection example" class="size-medium wp-image-635" /></a>
 
 <h3>Inject data into fields</h3>
 

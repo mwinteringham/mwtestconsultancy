@@ -9,7 +9,7 @@ image: /img/test.jpg
 
 This is the second part of my blog series looking into exploring the question, is BDD testing? In the [previous post](http://www.mwtestconsultancy.co.uk/bdd-testing-part-1/) I discussed my motivations for creating this series and I also shared this model:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
+<a href="/img/2016/12/BDD-Model.png"><img src="/img/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
 
 For this next post, I want to explore the first part of this model, collaboration, in more detail.
 

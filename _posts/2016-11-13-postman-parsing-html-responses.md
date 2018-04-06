@@ -7,7 +7,7 @@ tags: automation postman API-testing
 image: /img/test.jpg
 ---
 
-<a href="https://www.getpostman.com/"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" alt="Postman - Parsing HTML response" /></a>
+<a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" alt="Postman - Parsing HTML response" /></a>
 
 I recently did a blog post on [sharing and comparing values in XML and JSON payloads](http://www.mwtestconsultancy.co.uk/postman-sharing-payloads/) after getting some questions around the topic.  Another common question I get in my training sessions that are similar to parsing payloads is around parsing HTML so that you can store values or assert on them for checking purposes, so again I thought I would share my solution on how you can parse an HTML response.
 
@@ -15,7 +15,7 @@ I recently did a blog post on [sharing and comparing values in XML and JSON payl
 
 Let's say we have a web page like the one below that we are running checks against:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/11/parsing-html-postman-example.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/11/parsing-html-postman-example-1024x458.png" alt="Parsing HTML response - a screenshot of w3schools list page" width="768" height="344" class="aligncenter size-large wp-image-345" /></a>
+<a href="/img/2016/11/parsing-html-postman-example.png"><img src="/img/2016/11/parsing-html-postman-example-1024x458.png" alt="Parsing HTML response - a screenshot of w3schools list page" width="768" height="344" class="aligncenter size-large wp-image-345" /></a>
 
 What if we wanted to check, say for example, that the correct text was added to the first and second items of the ordered list?  When HTML is retrieved by [Postman](https://www.getpostman.com/) it's stored as a string in a variable named ```responseBody``` meaning we could do a string comparison asserting that the sub-string 'First item' and 'Second item' exist in ```responseBody```.  However, this is a very simplistic way of asserting with little flexibility.  What if there was more than one 'First item' or 'Second item' on the page, what if you wanted to get the values from those items to use in a future request?
 

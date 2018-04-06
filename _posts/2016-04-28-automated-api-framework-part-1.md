@@ -162,6 +162,6 @@ So let's try running <em>rake</em> again in our command line. Hopefully we shoul
 <h2><strong>Conclusion</strong></h2>
 So to recap, we've set up RSpec to run using Rake, created a small automated API library that we then use to create our automated checks.  Hopefully, your framework should look similar to this in structure:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/04/file-structure-itp1.png"><img class="aligncenter wp-image-266 size-full" src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2016/04/file-structure-itp1.png" alt="automated api framework structure" width="538" height="341" /></a>
+<a href="/img/2016/04/file-structure-itp1.png"><img class="aligncenter wp-image-266 size-full" src="/img/2016/04/file-structure-itp1.png" alt="automated api framework structure" width="538" height="341" /></a>
 
 In the next post, we'll focus on checks around POST endpoints which will involve extending our API library and creating a payload library.

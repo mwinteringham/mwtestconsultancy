@@ -13,17 +13,17 @@ API Monitoring of your application is an essential tool for any team. It's fast 
 
 The first step is to create a request you can send to monitor an API. For this example, I am using [restful-booker](https://github.com/mwinteringham/restful-booker) which has a simple GET request to the endpoint /ping that I can call to get a health check on the API. The resulting [Postman](https://www.getpostman.com/) request looks like this:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring1.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring1.png" alt="API Monitoring tool - Postman request example" width="2739" height="705" class="alignnone size-full wp-image-665" /></a>
+<a href="/img/2017/05/apimonitoring1.png"><img src="/img/2017/05/apimonitoring1.png" alt="API Monitoring tool - Postman request example" style="width: 100%" class="alignnone size-full wp-image-665" /></a>
 
 ## 2. Generate the Request code for Postman
 
 Once you have created your request the next step is to generate the code that will call your API endpoint. We can do this by clicking on the 'Code' link in [Postman](https://www.getpostman.com/), located here:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring2.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring2.png" alt="API Monitoring tool - Postman code link guide" width="2739" height="705" class="alignnone size-full wp-image-667" /></a>
+<a href="/img/2017/05/apimonitoring2.png"><img src="/img/2017/05/apimonitoring2.png" alt="API Monitoring tool - Postman code link guide" style="width: 100%" class="alignnone size-full wp-image-667" /></a>
 
 Once you have the generate code snippets pop up selected, select NodeJS and Request from the drop down to be presented with generated code to use, like so:
 
-<a href="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring3.png"><img src="http://www.mwtestconsultancy.co.uk/wp-content/uploads/2017/05/apimonitoring3.png" alt="API Monitoring tool - Postman code example" width="1485" height="1226" class="alignnone size-full wp-image-668" /></a>
+<a href="/img/2017/05/apimonitoring3.png"><img src="/img/2017/05/apimonitoring3.png" alt="API Monitoring tool - Postman code example" style="width: 100%" class="alignnone size-full wp-image-668" /></a>
 
 ## 3. Create your API monitoring script
 
