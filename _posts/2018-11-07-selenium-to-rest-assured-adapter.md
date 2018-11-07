@@ -48,7 +48,7 @@ io.restassured.http.Cookie adaptedCookie = cookieAdapter.convertToRestAssured(se
 
 I find this particularly helpful if I am doing API testing with an application that has a complex login process. I can log into the application via the UI, grab the necessary logged in Cookies from the browser, close the browser down, and then use the Cookies in my HTTP requests like so:
 
-```Java
+```java
 given()
   .cookie(convertedCookie) // I add in the converted cookie here
   .get("http://my-url");
