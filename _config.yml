@@ -3,7 +3,9 @@ email: mark@mwtestconsultancy.co.uk
 description: >- # this means to ignore newlines until "baseurl:"
   Training and insights into test automation and automation in testing practises
 baseurl: ""
-author: Mark Winteringham
+author: 
+  name: Mark Winteringham
+  twitter: 2bittester
 url: "http://www.mwtestconsultancy.co.uk/"
 twitter:
   username: 2bittester
