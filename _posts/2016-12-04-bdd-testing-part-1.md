@@ -40,6 +40,6 @@ And I have been.  And whilst I am by no means finished, I found creating it to b
 
 So here is my model.  As you can see straight away there is a lot more to BDD than just Gherkin syntax and automation.  Over the next few blogs, I will describe in more details of the model and answer the question.  Is BDD testing? 
 
-<a href="/img/2016/12/BDD-Model.png"><img src="/img/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" class="aligncenter size-large wp-image-383" /></a>
+<img src="/img/2016/12/BDD-Model-1024x652.png" alt="Is BDD Testing? A model to help testers understand BDD better" style="width: 100%" />
 
 For now, I am interested in hearing what people think about the model, so send me any feedback on Twitter on [@2bittester](https://twitter.com/2bittester)
