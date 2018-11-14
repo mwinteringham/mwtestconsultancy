@@ -4,7 +4,11 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <h1>Would you like to know more?</h1>
-                <p>I offer training and advice to help teams with their test automation and testing problems. If you want to learn more, check out the links courses and materials avaiable below.</p>
+                
+                {% for event in site.data.events limit:1%}
+                    <p>I offer training and advice to help teams with their test automation and testing problems. If you want to learn more, check out the links courses and materials avaiable below. Alternatively, you can attend my next upcoming public event:</p>
+                    <p><a href="/training">{{event.name}} @ {{event.country}} - {{ event.startdate | date: "%e" }}-{{ event.enddate | date: "%e %B %Y" }}</a></p>
+                {% endfor %}
             </div>
             <div class="col-sm-2"></div>
         </div>
