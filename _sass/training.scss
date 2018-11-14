@@ -28,8 +28,21 @@
 .training-event p {
     color: black;
     text-decoration: none;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .training-padding {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    padding: 0px;
+}
+
+.training h3{
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.training .entry{
+    border-top: 1px solid grey;
+    padding-top: 10px;
 }

@@ -20,15 +20,22 @@ image: /img/page/training.png
 		</div>
 		<div class="col-md-9">
 			<p>My name is Mark Winteringham and I help teams and individuals with their software testing problems. I offer training in test automation and software testing techniques based on my years of experience working on award-winning projects across a wide variety of technology sectors.</p>
-			<p>All of my workshops are experiential in nature and offer attendees the opportunity to learn new tools and techniques to succeed in their day to day testing activities. Details of my workshops can be found below.</p>
+			<p>All of my workshops are experiential in nature and offer attendees the opportunity to learn new tools and techniques to succeed in their day to day testing activities. Details of my workshops can be found below. Alternatively, you can check out the public events I am running that you can attend.</p>
 			<p>If you would like to know more about the training I offer or have any other questions <a href="mailto:training@mwtestconsultancy.co.uk">contact me to discuss your training requirements</a>.</p>
 		</div>
-			{% for page in site.training %}
-				{% assign loopindex = forloop.index | modulo: 3 %}
-				{% if loopindex == 1 %}
+	</div>
+	<div class="row training">
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Available training</h3>
 				</div>
+			</div>
+			{% for page in site.training %}
+				{% assign loopindex = forloop.index | modulo: 2 %}
+				{% if loopindex == 1 %}
 				<div class="row">
-					<div class="col-md-4 training-padding">
+					<div class="col-md-6 training-padding">
 						<a href="{{ page.url }}">
 							<div class="training-event" style="background-image:linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('{{ page.image }}')">
 								<p class="training-event-title">{{ page.title }}</p>
@@ -37,7 +44,7 @@ image: /img/page/training.png
 						</a>
 					</div>
 				{% else %}
-					<div class="col-md-4 training-padding">
+					<div class="col-md-6 training-padding">
 						<a href="{{ page.url }}">
 							<div class="training-event" style="background-image:linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('{{ page.image }}')">
 								<p class="training-event-title">{{ page.title }}</p>
@@ -45,7 +52,24 @@ image: /img/page/training.png
 							</div>
 						</a>
 					</div>
+				</div>
 				{% endif %}
 			{% endfor %}
+		</div>
+		<div class="col-sm-4">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Upcoming training</h3>
+				</div>
+			</div>
+			{% for event in site.data.events %}
+				<div class="row entry">
+					<div class="col-md-12">
+						<p><a href="{{ event.url }}" target="_blank">{{event.name}}</a></p>
+						<p><a href="https://www.google.co.uk/maps?q={{ event.location }}" target="_blank">{{event.country}}</a> - {{ event.startdate | date: "%e" }}-{{ event.enddate | date: "%e %B %Y" }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
