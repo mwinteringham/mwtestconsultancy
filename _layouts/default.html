@@ -15,6 +15,9 @@
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
         <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% if jekyll.environment == 'production' %}
+        {% include analytics.html %}
+        {% endif %}
     </head>
     <body>
         {% if page.url == '/' %}
@@ -105,8 +108,5 @@
                 <a href="https://www.mwtestconsultancy.co.uk"> Mark Winteringham, All rights reserved </a>
             </div>
         </footer>
-        {% if jekyll.environment == 'production' %}
-        {% include analytics.html %}
-        {% endif %}
     </body>
 </html>
