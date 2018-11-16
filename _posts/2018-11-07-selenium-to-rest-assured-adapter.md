@@ -10,7 +10,9 @@ description: Learn about a new adapter that allows you to easily convert Cookies
 
 Last year I gave a talk at the Selenium Conference in Berlin about using API calls to help speed up automated checks and make them more deterministic. The main point of the talk was that some of the actions we carry out in the UI, such as creating data or configuring an app to be in a certain state, can sometimes be carried out on the HTTP API level. The talk itself went down very well and I'm glad to hear that a lot of people have tried out the techniques that I presented in Berlin.
 
+<div class="videoWrapper">
 <iframe width="560" height="315" style="display:block;  margin: 0 auto;"  src="https://www.youtube.com/embed/ugAlCZBMOvM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <br />
 
 Which brings me to the adapter. At one part in the talk, I demonstrate how we can use HTTP tools like [Rest-assured](http://rest-assured.io/) to:
