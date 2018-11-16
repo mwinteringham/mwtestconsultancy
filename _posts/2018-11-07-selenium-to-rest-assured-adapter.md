@@ -18,10 +18,10 @@ Which brings me to the adapter. At one part in the talk, I demonstrate how we ca
 2. Take the Cookies from the response and store them in the browser using Selenium.
 3. Refresh the UI to use the Cookies to log into the application.
 
-This results in you being able to log in quickly and cleanly but it does require a bit of work to support converting the Cookies. Since the talk, I've had numerous requests for help around sharing Cookies between [Rest-assured](http://rest-assured.io/) and [Selenium](https://www.seleniumhq.org/). So I have created a small adapter to help people writing checks to quickly share Cookies between [Rest-assured](http://rest-assured.io/) and [Selenium](https://www.seleniumhq.org/).
+This results in you being able to log in quickly and cleanly but it does require a bit of work to support converting the Cookies. Since the talk, I've had numerous requests for help around sharing Cookies between Rest-assured and [Selenium](https://www.seleniumhq.org/). So I have created a small adapter to help people writing checks to quickly share Cookies between Rest-assured and Selenium.
 
 ## What does the adapter do?
-The adapter is [a small Jar file](https://github.com/mwinteringham/selenium-to-restassured/releases) that you can add to your project that gives you two options. You can either convert Cookies from [Rest-assured](http://rest-assured.io/) to [Selenium](https://www.seleniumhq.org/):
+The adapter is [a small Jar file](https://github.com/mwinteringham/selenium-to-restassured/releases) that you can add to your project that gives you two options. You can either convert Cookies from Rest-assured to Selenium:
 
 ```java
 io.restassured.http.Cookie cookieToConvert = response.getDetailedCookie("COOKIE NAME")
@@ -37,7 +37,7 @@ driver.manage().addCookie(convertedCookie);
 driver.navigate().refresh(); // We refresh the page so it reads the newly added cookies
 ```
 
-Alternatively, you can convert from [Selenium](https://www.seleniumhq.org/) to [Rest-assured](http://rest-assured.io/):
+Alternatively, you can convert from Selenium to Rest-assured:
 
 ```java
 org.openqa.selenium.Cookie cookieToConvert = driver.manage().getCookieNamed("COOKIE NAME");
