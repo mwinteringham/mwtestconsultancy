@@ -31,7 +31,7 @@ layout: default
                 <p id="date">{{ post.date | date_to_long_string }}</p>
                 
                 <div>
-                    <p class="social"><a href="{{site.url}}/{{post.permalink}}" alt="{{post.title}}">PERMALINK</a> | <a href="https://twitter.com/share?url={{site.url}}/{{post.permalink}}/&text={{post.title}}%20written%20by%20@2bittester" target="_blank"><i class="fa fa-twitter"></i></a> | <a href="https://www.facebook.com/sharer/sharer.php?u={{site.url}}/{{post.permalink}}" target="_blank"><i class="fa fa-facebook"></i></a> | <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}/{{post.permalink}}" target="_blank"><i class="fa fa-linkedin"></i></a></p>
+                    <p class="social"><a href="{{site.url}}/{{post.permalink}}" alt="{{post.title}}">PERMALINK</a> | <a href="https://twitter.com/share?url={{site.url}}/{{post.permalink}}/&text={{post.title}}%20written%20by%20@2bittester" alt="Share on Twitter: {{page.title}}" target="_blank"><i class="fa fa-twitter"></i><span hidden>Share on Twitter</span></a> | <a href="https://www.facebook.com/sharer/sharer.php?u={{site.url}}/{{post.permalink}}" alt="Share on Facebook: {{page.title}}" target="_blank"><i class="fa fa-facebook"></i><span hidden>Share on Facebook</span></a> | <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}/{{post.permalink}}" alt="Share on Linkedin: {{page.title}}" target="_blank"><i class="fa fa-linkedin"></i><span hidden>Share on Linkedin</span></a></p>
                 </div>
             </div>
         </div>
