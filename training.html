@@ -55,6 +55,12 @@ image: /img/page/training.png
 				</div>
 				{% endif %}
 			{% endfor %}
+			
+			{% assign trainingcount = site.training.size | modulo: 2 %}
+			{% if trainingcount == 1 %}
+				<div class="col-md-6 training-padding"></div>
+			</div>
+			{% endif %}
 		</div>
 		<div class="col-sm-4">
 			<div class="row">
