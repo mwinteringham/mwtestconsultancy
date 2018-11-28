@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Exploring and modelling Web services</title>
+
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>Exploring and modelling Web services - Created by <a href="http://mwtestconsultancy.co.uk">Mark Winteringham</a> / <a href="http://twitter.com/mwtestconsult">@2bittester</a> &#169; 2017</small></p>
+
+				<section>
+					<h3 style='font-size: 1.4em'>Exploring and modelling Web services</h3>
+					<p style='font-size: 0.6em'>Available at <a href='http://mwtestconsultancy.co.uk/presentations/exploring_web_services/' alt='slide location'>http://mwtestconsultancy.co.uk/presentations/exploring_web_services/</a></p>
+					<br />
+					<p style="font-size: 0.75em">Please install the following</p>
+					<table style="font-size: 0.6em;">
+						<tr class='first-slide-row'><td>POSTMAN</td><td><a href="https://www.getpostman.com/apps">www.getpostman.com/apps</a></tr></td>
+						<tr><td>BURPSUITE</td><td><a href="https://portswigger.net/burp/">www.portswigger.net/burp/</a></td>
+					</table>
+
+				</section>
+
+				<section>
+					<div style="float: left; text-align: left">
+						<h3>About me...</h3>
+						<p><small><img src="./images/www.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://mwtestconsultancy.co.uk/blog">www.mwtestconsultancy.co.uk</a></small></p>
+						<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://twitter.com/mwtestconsult">@2bittester</a></small></p>
+						<p><small><img src="./images/linkedin.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"> - <a href="linkedin.com/in/markwinteringham">linkedin.com/in/markwinteringham</a></small></p>
+					</div>
+
+					<div>
+						<img src="./images/profile.png" alt="profile.png" />
+					</div>
+				</section>
+
+				<section>
+					<div>
+						<h3>Workshop goals</h3>
+						<p class="fragment">Explore the behaviour of a web service</p>
+						<p class="fragment">Model our observations of a web service</p>
+						<p class="fragment">Create a test suite of checks based on our model</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>Welcome to 'The best at rest ltd'</h3>
+					<br />
+					<p>Creators of RESTFUL-BOOKER-PLATFORM</p>
+					<div style="width: 500px; text-align: center; border-top: 1px dotted #000; font-size: 0.75em; margin-left: 230px">
+						<p>A SaaS platform for management to manage their hotels and bookings</p>
+					</div>
+				</section>
+
+				<section>
+					<h4>RESTFUL-BOOKER-PLATFORM requirements</h4>
+					<ol style="font-size: 0.9em; width: 650px">
+						<li class="fragment">Be able to retrieve, create, update and delete a hotel</li>
+						<li class="fragment">Be able to retrieve, create, update and delete bookings for a hotel</li>
+						<li class="fragment">Require a user to be logged in to create, update and delete data</li>
+					</ol>
+				</section>
+
+				<section>
+					<p>A service-oriented architecture</p>
+					<img src='./images/soa-new.png' style="border: none; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<h2>Explore</h2>
+				</section>
+
+				<section>
+					<h4>How do we explore how a Web service?</h4>
+				</section>
+
+				<section>
+					<h3>Proxy Server</h3>
+					<p>'A server... that acts as an intermediary for requests from clients seeking resources from other servers.'</p>
+					<br />
+					<ul>
+						<li>Caching content</li>
+						<li>Security</li>
+						<li>Monitoring and filtering</li>
+					</ul>
+					<br />
+					<br />
+					<small><a href="https://en.wikipedia.org/wiki/Proxy_server">https://en.wikipedia.org/wiki/Proxy_server</a></small>
+				</section>
+
+				<section>
+					<h3>How does a proxy server work?</h3>
+					<div style="padding-top: 80px; ">
+						<div style="width: 300px; height: 220px; margin-left: 40px; float: left">
+							<img src="./images/ui.png" alt="Browser" style="width: 150px; border: none; background: none; box-shadow: none"/>
+							<p style='margin: 0px'><small>User Interface</small></p>
+						</div>
+						<div style="width: 290px; height: 220px; float: left" class='fragment'>
+							<div style='border: 2px solid blue; position: absolute; width: 140px; margin-left: -70px; margin-top: 70px'></div>
+							<img src="./images/proxy.png" alt="Proxy" style="width: 150px; border: none; background: none; box-shadow: none"/>
+							<p style='margin-top: -17px'><small>Proxy</small></p>
+						</div>
+						<div style="width: 290px; height: 220px; float: left" class='fragment'>
+							<div style='border: 2px solid blue; position: absolute; width: 140px; margin-left: -70px; margin-top: 70px'></div>
+							<img src="./images/server.png" alt="Service" style="width: 150px; border: none; background: none; box-shadow: none"/>
+							<p style='margin-top: -17px'><small>Service</small></p>
+						</div>
+						<div>
+							<div style='border: 2px solid green; position: absolute; width: 140px; margin-left: 560px; margin-top: 90px' class='fragment'></div>
+							<div style='border: 2px solid green; position: absolute; width: 140px; margin-left: 270px; margin-top: 90px' class='fragment'></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Proxy Servers</h3>
+					<div style='padding-top: 50px;'>
+						<a href='http://www.telerik.com/download/fiddler'><img style='border: none; background: none; box-shadow: none; width: 250px; padding-right: 200px'src='./images/fiddler.png'></a>
+						<a href='https://www.getpostman.com/'><img src='./images/postman.png' alt='POSTMAN logo' style='border: none; background: none; box-shadow: none; width: 250px; height: 88px;'/></a>
+					</div>
+					<div style='padding-top: 50px;'>
+						<a href='http://www.charlesproxy.com'><img style='border: none; background: none; box-shadow: none; width: 310px; padding-right: 200px' src='./images/charles.jpg'></a>
+						<a href='https://portswigger.net/burp/'><img src='./images/burpsuite.png' alt='Burp suite logo' style='border: none; background: none; box-shadow: none; width: 250px; height: 88px'/></a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Using proxy servers</h3>
+				</section>
+
+				<section>
+					<h3>Iteration one - Explore proxies</h3>
+					<ul>
+						<li>Setup BurpSuite and intercept HTTP requests</li>
+						<li>Setup Postman proxy and intercept HTTP requests</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Firebug / Developer tools</h3>
+					<img style='border: none; background: none; box-shadow: none;' src='./images/devtools.png' />
+				</section>
+
+				<section>
+					<h3>Log files</h3>
+					<img style='border: none; background: none; box-shadow: none;' src='./images/log.png' />
+				</section>
+
+				<section>
+					<h3>Source code</h3>
+					<small><a href="https://github.com/mwinteringham/restful-booker-platform" />https://github.com/mwinteringham/restful-booker-platform</a></small>
+				</section>
+
+				<section>
+					<h3>Iteration two - Explore other tools</h3>
+					<ul>
+						<li>Use Developer tools/Firebug tools</li>
+						<li>Discover different log files and trigger events</li>
+						<li>View source code and discover more about the application</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h2>Modelling</h2>
+				</section>
+
+				<section>
+					<h3>Modelling?</h3>
+					<img src='./images/flowchart.png' alt='Flow chart' style='width: 550px; border: 1px solid #444'/>
+					<h4>An abstract representation of the application</h4>
+				</section>
+
+				<section>
+					<h3>Why Model?</h3>
+
+					<div style='float: left; width: 400px; margin-left: -25px'>
+						<img src='./images/pedal.png' alt='Pedal schematic' style='width: 550px; border: none; background: none; box-shadow: none'/>
+						<small style='margin-left: 114px; margin-top: -9px; float: left'>How many tests?</small>
+					</div>
+
+					<div style='float: left; width: 500px; margin-left: 75px' class='fragment'>
+						<img src='./images/schematic.gif' alt='Pedal schematic' style='width: 500px; border: 1px solid #444'/>
+						<small style='margin-left: 170px; float: left'>How many tests?</small>
+					</div>
+
+				</section>
+
+				<!-- <section>
+					<h3>Focusing on a model</h3>
+					<br />
+					<div style='float: left; width: 400px' class='fragment'>
+						<p style='font-weight: bold; font-size: 1.5em; margin-top: 40px'>SFDIPOT</p>
+						<p><a href='http://www.satisfice.com/tools/htsm.pdf'>'San Francisco Depot'</a></p>
+					</div>
+					<div style='float: left; width: 500px; font-size: 0.75em' class='fragment'>
+						<ul style='list-style: none; width: 500px;'>
+							<li><span style='font-weight: bold; color: red'>S</span>tructure <span style='float: right'>How it's built</span></li>
+							<li><span style='font-weight: bold; color: red'>F</span>unction <span style='float: right'>How it works</span></li>
+							<li><span style='font-weight: bold; color: red'>D</span>ata <span style='float: right'>What it processes</span></li>
+							<li><span style='font-weight: bold; color: red'>I</span>nterface <span style='float: right'>How it's expressed</span</li>
+							<li><span style='font-weight: bold; color: red'>P</span>latform <span style='float: right'>What it depends on</span></li>
+							<li><span style='font-weight: bold; color: red'>O</span>perations <span style='float: right'>How it will be used</span></li>
+							<li><span style='font-weight: bold; color: red'>T</span>ime <span style='float: right'>How it works with time</span></li>
+						</ul>
+						<div style='border: 2px solid green; width: 520px; height: 70px; margin-top: -208px; margin-left: 15px' class='fragment'></div>
+					</div>
+				</section> -->
+
+				<section>
+					<h3>How might you model</h3>
+					<p>No right or wrong way</p>
+				</section>
+
+				<section>
+					<h3>Modelling by API</h3>
+					<img src='./images/api_model.png' style='padding: 10px; border: none; background: #fff; box-shadow: none'/>
+
+					<p class='fragment'>Doesn't give us feedback on how the API is used</p>
+				</section>
+
+				<section>
+					<h3>Modelling by behaviour</h3>
+					<img src='./images/api_behaviour.png' style='padding: 10px; border: none; background: #fff; box-shadow: none'/>
+
+					<p class='fragment'>Models can get quite complicated</p>
+				</section>
+
+				<section>
+					<h3>Iteration three - Model!</h3>
+					<ul>
+						<li>Record the requests flowing between services</li>
+						<li>Build a model of the application</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h3>Ensuring coverage</h3>
+					<br />
+					<ul>
+						<li>Work collaboratively</li>
+						<li>Try using web spidering tools</li>
+						<li>Look at source code for <a href='https://github.com/mwinteringham/PlayStartApp' alt='routes example'>routes</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Design</h2>
+				</section>
+
+				<section>
+					<h3>POSTMAN Tests</h3>
+					<div style='float: left; width: 400px; margin-left: 0px'>
+						<img src='./images/postmantest.png' style='border: none; background: none; box-shadow: none'/>
+					</div>
+					<div style='float: left; width: 500px; height: 100px; margin-left: 0px; margin-top: 0px;'>
+						<h4>Setup</h4>
+						<ol style='font-size: 0.85em; margin-left: 100px'>
+							<li>Select the Test tab</li>
+							<li>Enter your JavaScript test</li>
+							<li>Save your request to a collection</li>
+							<li>Click the arrow on your collection to reveal the run option</li>
+						</ol>
+					</div>
+				</section>
+
+				<section>
+					<h3>Resource / Query string</h3>
+					<br />
+					<div style='float: left; width: 400px; margin-left: 0px'>
+						<h4>URIs</h4>
+						<ul>
+							<li>Valid and invalid paths</li>
+							<li>Resource identifiers</li>
+						</ul>
+					</div>
+					<div style='float: left; width: 400px; margin-left: 150px'>
+					<h4>Query strings</h4>
+						<ul>
+							<li>Data types</li>
+							<li>Boundaries</li>
+							<li>Robustness principle</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h3>Headers</h3>
+					<br />
+					<ul>
+						<li>Missing headers</li>
+						<li>Positive/negative values</li>
+						<li>Redundant headers</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Status codes</h3>
+					<br />
+					<table>
+						<tr><td>Positive codes</td><td>- 200, 201, 304</td></tr>
+						<tr><td>Negative codes</td><td>- 400, 500, 404</td></tr>
+					</table>
+					<br />
+					<small>Do status codes match the way you expect the service to respond?</small>
+				</section>
+
+				<section>
+					<h3>Payloads</h3>
+					<br />
+					<ul>
+						<li>Data types</li>
+						<li>Boundaries</li>
+						<li>Robustness principle</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Iteration four - Design!</h3>
+					<ul>
+						<li>Using POSTMAN collections create a suite of API tests</li>
+						<li>Use your model of the application as reference</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h2>Wrapping up</h2>
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+					<small><p>Slides - <a href="http://mwtestconsultancy.co.uk/presentations/exploring_web_services/">http://mwtestconsultancy.co.uk/presentations/exploring_web_services/</a></p></small>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

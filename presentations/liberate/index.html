@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Liberation not replication: Automation to support testing not replace it</title>
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>Liberation not replication: Automation to support testing not replace it - Created by Mark Winteringham / @2bittester &#169; 2017</small></p>
+
+				<section>
+					<h2>Liberation not replication:</h2>
+					<h4>Automation to support testing not replace it</h4>
+				</section>
+
+				<section>
+					<img src="./images/profile.png" style="border: 0px; width: 15%; box-shadow: none; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcu3Z7PQAGsgKSR5YZ3AAAAABJRU5ErkJggg==); padding: 5px 10px 5px 5px;"/>
+					<h3>Mark Winteringham</h3>
+					<p style='margin-top: -20px'>2bittester</p>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/www.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>mwtestconsultancy.co.uk</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/twitter.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>@2bittester</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/linkedin.png" style="width: 20%; border: 0px; box-shadow: none; background: none">
+						<p><small style='margin-top: -20px'>lnked.in/markwinteringham</small></p>
+					</div>
+
+				</section>
+
+				<!-- <section>
+						<img src="./images/swtc.png" style="border: 0px; width: 100%; box-shadow: none; background: none"/>
+				</section> -->
+
+				<section>
+					<h3>What is the purpose of test automation?</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>Ask the audience</li>
+							<li>Refer to printed notes</li>
+							<li>Highlight some common terms</li>
+							<li>The focus is on trying to replicate testing</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Automation in testing</h3>
+					<p>is a means</p>
+					<h3>to augment my testing</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>This definition is a work in progress</li>
+							<li>I use automation to liberate my testing and not replace it</li>
+							<li>
+								<ul>
+									<li>Automation in testing is a mindset and it helps me in different ways</li>
+								</ul>
+							</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<div style="float: left; margin-left: -200px; width: 675px">
+						<img src="./images/uiwithjs.png" style="width: 100%; border: 1px solid black; margin-top: 50px; box-shadow: none; background: none"/>
+					</div>
+					<div style="float: left; margin-right: -200px; width: 675px">
+						<img src="./images/uiwithnojs.png" style="width: 80%; border: 1px solid black; box-shadow: none; background: none; margin-top: 50px"/>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>It encourages me to be critical of my tools</li>
+							<li>The value of tools in test automation is overestimated</li>
+							<li>For example asserting values retrieved from WebDriver with these two images results in the same output</li>
+							<li>I question and learn what my tools can and can't do</li>
+							<li>Knowing the strengths and weaknesses of tools help me strategise what to use and where to help me</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/curvedarrow.png" style="width: 20%; border: none; box-shadow: none; background: none; margin-top: 0px"/>
+					<h3>User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tool</h3>
+					<img src="./images/curvedarrow.png" style="width: 20%; transform: rotate(180deg); border: none; box-shadow: none; background: none; margin-top: 0px"/>
+
+					<aside class="notes">
+						<ul>
+							<li>'If all you have is a hammer then everything looks like a nail' - The law of instruments</li>
+							<li>If I'm not critical of my tools then I it could lead to me attempting replicate my testing and expose myself to the potential risks</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<div>
+						<p>"We shape our tools and afterwards our tools shape us"</p>
+						<p style="text-align: right; margin-right: 40px; color: grey">Marshall McLuhan</p>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>'If all you have is a hammer then everything looks like a nail' - The law of instruments</li>
+							<li>If I'm not critical of my tools then I it could lead to me attempting replicate my testing and expose myself to the potential risks</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<table>
+						<tr><td style="text-align: center; border-right: 1px solid black; height: 150px; width: 300px; vertical-align:middle">Enhance</td><td style="text-align: center; width: 300px; vertical-align:middle;">Reverse</td></tr>
+						<tr><td style="text-align: center; border-right: 1px solid black; height: 150px; width: 300px; vertical-align:middle">Retrieves</td><td style="text-align: center; width: 300px; vertical-align:middle">Obsolesces</td></tr>
+					</table>
+
+					<aside class="notes">
+						<ul>
+							<li>McLuhan's work is interesting to me as someone who uses tools</li>
+							<li>I was introduced to his work by Michael Bolton</li>
+							<li>McLuhan was a Canadian professor whose field of study was Media</li>
+							<li>What is relevant about his work is his Law of Media</li>
+							<li>Anything that augments or extends a humans ability is a media</li>
+							<li>So the tools we use as testers for automation are medias and we can look at their influences on us using the law of media</li>
+							<li>
+								<ul>
+									<li>Enhancement (figure): What the medium amplifies or intensifies. For example, an API tool can increase my data driven testing</li>
+									<li>Obsolescence (ground): What the medium drives out of prominence. It may mean I have less use for other tools for data driven testing</li>
+									<li>Retrieval (figure): What the medium recovers which was previously lost. It may retrieve issues I wouldn't have found</li>
+									<li>Reversal (ground): What the medium does when pushed to its limits. It may mean that I have to spend hours reading through results and fixing code</li>
+								</ul>
+							</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/humantorobot.jpg" style="width: 80%; border: 0px; margin-top: 50px; box-shadow: none; background: none" alt="Human to robot"/>
+
+					<aside class="notes">
+						<ul>
+							<li>The enhancement part of the law is very interesting. When I discussed with this with Michael he reminded me that a media can just as easily enhance bad work as good work</li>
+							<li>Therefore I need to be critical of how I test and how tools can work within that knowledge</li>
+							<li>Talk about the typical progression of a tester who automates</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px;">SDET / DIT</p>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">QA AUTOMATION SPECIALIST</p>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px">QA SPECIALIST</p>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">AUTOMATION TESTER</p>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px">AUTOMATION QA</p>
+					<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">AUTOMATION TEST ANALYST</p>
+
+					<div class="fragment">
+							<h1 style="width: 100%; background-color: red; margin-top: -300px; z-index: 5; position: absolute">TOOLSMITH!</h1>
+					</div>
+
+					<aside class="notes">
+						<p>We see this reflected in the role names for those responsible of automation</p>
+						<p>I am a toolsmith, creating and using tools to support and augment my testing</p>
+					</aside>
+				</section>
+
+				<section>
+						<img src="./images/tester.png" style="width: 30%; border: 0px; margin-top: 50px; box-shadow: none; background: none"/>
+						<p>Data | State | Assert | Report </p>
+
+						<div style="border: 3px solid red; width: 430px; height: 1px; background-color: red; margin-left: 260px"></div>
+						<div style="border: 3px solid red; width: 1px; height: 30px; background-color: red; margin-left: auto; margin-right: auto"></div>
+
+						<h3>Automated</h3>
+
+						<aside class="notes">
+							<ul>
+								<li>So I should be critical of my testing activities</li>
+								<li>Commonly automation design ignores thes nuances of what makes up a test</li>
+								<li>Resulting in the typical full stack automated checks that run e2e that we struggle with</li>
+							</ul>
+						</aside>
+				</section>
+
+				<section>
+						<img src="./images/tester.png" style="width: 30%; border: 0px; margin-top: 50px; box-shadow: none; background: none"/>
+						<p>  Data   | State | Assert  |  Report </p>
+						<p><span style="color: red">Automate</span> | Human |  Human  | <span style="color: red">Automate</span></p>
+
+						<aside class="notes">
+							<ul>
+								<li>AiT encourages me to look at what I do as a tester and break down the actions</li>
+								<li>Some can be automated easily, some can't</li>
+							</ul>
+						</aside>
+				</section>
+
+				<section>
+					<div style="width: 480px; float: left">
+						<img src="./images/my_guitar.jpg" alt="My PRS" style="border: 0px; width: 60%; box-shadow: none; background: none" />
+					</div>
+					<div style="width: 480px; float: left" class="fragment">
+						<br />
+						<br />
+						<p style="font-size: 0.95em">'Always let a machine do what a machine is good at, and never get a person to try and do that. And never try to get a machine to do something a person has to do'</p>
+						<small style="font-size: 0.4em">Jack Higginbotham - <a href="www.youtube.com/watch?v=5mA6UVS-PWc">www.youtube.com/watch?v=5mA6UVS-PWc</a></small>
+					</div>
+
+					<aside class="notes">
+						<p>A guitar builder knows what a good guitar neck feels like and how it slots into the body of a guitar</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Problems first, tools second</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>Finally AiT helps me to strategise</li>
+							<li>Knowing what I want to do as a tester in a specific context through deep analysis will present me with problems</li>
+							<li>If I know what the problem is, then I can start thinking about the tools I might want to use</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- <section>
+					<img src="./images/manyrobots.jpeg" style="width: 100%; border: 0px; margin-top: 50px; box-shadow: none; background: none"/>
+					<small><a href="pandawhale.com">pandawhale.com</a></small>
+
+					<aside class="notes">
+						<p>Why as an industry are we focused on replicating testing with automation?</p>
+					</aside>
+				</section>
+
+				<section>
+					<div style="float: left; width: 450px">
+						<h3 style="margin-top: -50px">TOOLS</h3>
+						<img src="./images/sel.png" style="width: 30%; border: 0px; box-shadow: none; background: none" />
+
+						<img src="./images/uft.png" style="width: 30%; border: 0px; box-shadow: none; background: none" />
+
+						<br />
+
+						<img src="./images/ranorex.png" style="width: 50%; border: 0px; box-shadow: none; background: none" />
+
+						<br />
+
+						<img src="./images/testcomplete.png" style="width: 50%; border: 0px; box-shadow: none; background: none" />
+
+						<img src="./images/arrow.png" style="position: absolute; margin-top: -140px; margin-left: 30px; width: 10%; border: 0px; box-shadow: none; background: none" />
+					</div>
+
+					<div style="float: left; width: 450px">
+						<img src="./images/automation-example.png" style="margin-left: 30px; border: 0px; box-shadow: none; background: none" />
+					</div>
+
+					<aside class="notes">
+						<p>What do you mean by replicating testing?</p>
+						<p>Why do we attempt to solve problems with automation in the same way as we solve problems as humans</p>
+					</aside>
+				</section> -->
+
+				<!-- <section>
+					<img src="./images/lazyhumanrobot.jpg" style="border: 0px; width: 80%; box-shadow: none; background: none" alt="Lazy human and robot" />
+
+					<aside class="notes">
+						<p>The belief that the breadth of information that can be yielded from a human tester and a machine is the same</p>
+					</aside>
+				</section> -->
+
+				<!-- <section>
+					<div class="fragment">
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px; margin-top: 80px">SDET / DIT</p>
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">QA AUTOMATION SPECIALIST</p>
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px">QA SPECIALIST</p>
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">AUTOMATION TESTER</p>
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 100px">AUTOMATION QA</p>
+						<p style="background-color: blue; width: 650px; color: orange; weight: bold; margin-left: 200px">AUTOMATION TEST ANALYST</p>
+					</div>
+
+					<img src="./images/identitycrisis.jpg" style="border: 0px; width: 50%; box-shadow: none; background: none; margin-top: -460px; z-index: -1; position: relative" alt="Identity crisis"/>
+					<br />
+					<small style="font-size: 0.4em"><a href="http://www.sebastienmillon.com/Identity-Crisis-Cow">www.sebastienmillon.com/Identity-Crisis-Cow</a></small>
+
+					<aside class="notes">
+						<p>We have an identity crisis when it comes to automation</p>
+						<p>We are biased by market forces - Observe the titles</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Why do we attempt to replicate testing with automation?</h4>
+
+					<br />
+
+					<p class="fragment">Automation is equal to humans in finding information</p>
+					<p class="fragment">Our experiences and skills as testers bias how we automate</p>
+					<p class="fragment">Market forces</p>
+				</section>
+
+				<section>
+					<h3>Where should automation sit in the world of testing?</h3>
+				</section> -->
+
+				<!-- <section>
+						<img src="./images/machine1.jpg" alt="Machine 1" style="border: 0px; width: 58%; box-shadow: none; background: none"/>
+
+						<br />
+
+						<small style="font-size: 0.3em"><a href="designworldonline.com/automated-welding-machines-improve-product-quality-and-safety">designworldonline.com/automated-welding-machines-improve-product-quality-and-safety</a></small>
+				</section>
+
+				<section>
+					<img src="./images/machine2.jpg" alt="Machine 2" style="border: 0px; width: 70%; box-shadow: none; background: none"/>
+
+					<br />
+
+					<small style="font-size: 0.3em"><a href="en.wikipedia.org/wiki/Gantry_crane">en.wikipedia.org/wiki/Gantry_crane</a></small>
+				</section>
+
+				<section>
+					<img src="./images/machine3.jpg" alt="Machine 2" style="border: 0px; width: 70%; box-shadow: none; background: none"/>
+
+					<br />
+
+					<small style="font-size: 0.3em"><a href="i.imgur.com/KqoTo.jpg">i.imgur.com/KqoTo.jpg</a></small>
+				</section>
+
+				<section>
+					<h4>Automation means creating tools to liberate testing not replace it</h4>
+
+					<br />
+
+					<h3 class="fragment">Automation in testing</h3>
+
+					<aside class="notes">
+						<p>By tools I mean: 'any human contrivance that aids in fulfilling a human purpose' by Bach and Bolton</p>
+					</aside>
+				</section> -->
+
+				<!-- <section>
+					<img src="./images/taxonomyofproblems.png" style="border: 0px; width: 100%; box-shadow: none; background: none" alt="Taxonomy of problems"/>
+				</section> -->
+
+				<section>
+					<img src="./images/revealinginformation.png" style="border: 0px; width: 100%; margin-top: -20px; box-shadow: none; background: none" alt="Revealing information"/>
+				</section>
+
+				<section>
+					<img src="./images/settingupstate.png" style="border: 0px; width: 100%; box-shadow: none; background: none" alt="Setting up state"/>
+				</section>
+
+				<section>
+					<img src="./images/complextestideas.png" style="border: 0px; width: 100%; box-shadow: none; background: none" alt="Complex test ideas"/>
+				</section>
+
+				<section>
+					<h3>The benefits?</h3>
+
+					<br />
+
+					<p class="fragment">Empowers testers to test rapidly</p>
+					<p class="fragment">Supports your team as a whole</p>
+					<p class="fragment">It's satisfying</p>
+				</section>
+
+				<section>
+					<h3>Wrapping up</h3>
+					<p class="fragment">Automation should be used to augment our testing rather than replicate our current activites</p>
+					<p class="fragment">Learn to be critical of your tools and your testing skills</p>
+					<p class="fragment">There are many opportunities for automation in testing</p>
+					<p class="fragment">Be a tester and a toolsmith</p>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> @2bittester</small></p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

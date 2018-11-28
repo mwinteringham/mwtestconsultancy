@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Understanding and Testing Web Services</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>Understanding and testing RESTful Web Services - Created by <a href="http://mwtestconsultancy.co.uk">Mark Winteringham</a> / <a href="http://twitter.com/2bittester">@2bittester</a> &#169; 2017</small></p>
+
+				<section>
+					<h3>Understanding and testing Web Services</h3>
+
+					<p style='font-size: 0.6em'>Available at <a href='http://mwtestconsultancy.co.uk/presentations/understanding_web_services/' alt='slide location'>http://mwtestconsultancy.co.uk/presentations/understanding_web_services/</a></p>
+					<br />
+					<p style="font-size: 0.75em">Please install the standalone POSTMAN app</p>
+					<table style="font-size: 0.6em;">
+						<tr class='first-slide-row'><td>POSTMAN</td><td><a href="https://www.getpostman.com/apps">https://www.getpostman.com/apps</a></tr></td>
+					</table>
+				</section>
+
+				<section>
+					<div style="float: left; text-align: left">
+						<h3>About me...</h3>
+						<p><small><img src="./images/www.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://mwtestconsultancy.co.uk/blog">www.mwtestconsultancy.co.uk</a></small></p>
+						<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://twitter.com/2bittester">@2bittester</a></small></p>
+						<p><small><img src="./images/linkedin.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"> - <a href="linkedin.com/in/markwinteringham">linkedin.com/in/markwinteringham</a></small></p>
+					</div>
+
+					<div>
+						<img src="./images/profile.png" alt="profile.png" />
+					</div>
+				</section>
+
+				<section>
+					<h3>Workshop goals</h3>
+					<p class="fragment">Explore what is a Web Service</p>
+					<p class="fragment">Discover different test design techniques</p>
+					<p class="fragment">Build different requests to query and manipulate data</p>
+					<p class="fragment">Going forward with the skills you've learnt</p>
+
+					<aside class="notes">
+						<ul>
+							<li>Determine roles.  Who is a tester, who is a dev</li>
+							<li>Ask if any of the group have experience of testing REST and HTTP</li>
+							<li>To people who have prior exp.  It may seem basic but we want to explore how these elements affect our test design</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Welcome to 'The best at rest ltd'</h3>
+					<br />
+					<p>Creators of RESTFUL-BOOKER</p>
+					<div style="width: 500px; text-align: center; border-top: 1px dotted #000; font-size: 0.75em; margin-left: 230px">
+						<p>A webservice that allows hotels to store booking details about their guests</p>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>I'm the product owner as well as the speaker</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Restful-booker requirements</h3>
+					<ol style="font-size: 0.9em; width: 650px">
+						<li class="fragment">Be able store Bookings with the following items
+						<ul>
+							<li>Guests name</li>
+							<li>The price of their booking</li>
+							<li>Whether they have paid a deposit</li>
+							<li>The dates of their booking</li>
+							<li>Any additional needs</li>
+						</ul></li>
+						<li class="fragment">Must be able to create, read, update and delete bookings</li>
+						<li class="fragment">Bookings must be searchable</li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>Restful-booker API</h3>
+					<div style="font-size: 0.8em">
+						<p>Restful booker: <a href="https://github.com/mwinteringham/restful-booker">www.github.com/mwinteringham/restful-booker</a></p>
+						<p>API details are in the README</p>
+					</div>
+
+					<aside class="notes">
+						<p>Code is available on GitHub but I encourage using the Services I have setup rather than attempting to run the service locally</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>POSTMAN</h3>
+					<p>Our test tool for the workshop</p>
+
+					<aside class="notes">
+						Fire up POSTMAN and go through the basics
+					</aside>
+				</section>
+
+				<section>
+					<h3>Web Service</h3>
+					<img src='./images/server.png' style="width: 100px; border: none; background: none; box-shadow: none" alt='web server'>
+					<p style="font-size: 0.9em">'A Web service is a software system designed to support interoperable machine-to-machine interaction over a network.'</p>
+					<small style="margin-left: 490px; font-size: 0.4em"><a href="http://www.w3.org/TR/2004/NOTE-ws-gloss-20040211/#webservice">http://www.w3.org/TR/2004/NOTE-ws-gloss-20040211/#webservice</a></small>
+					<div class="fragment" style="width: 483px; height: 25px; border-bottom: 2px solid red; position: absolute; margin-left: 220px; margin-top: -95px"></div>
+
+					<aside class="notes">
+						<ul>
+							<li>When looking for a short intro on a web service I found W3Cs description quite succint</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>Mobile to Web Service</p>
+					<div style="width: 300px; height: 200px; margin-left: 100px; float: left">
+						<div style="margin-top: 6px; margin-left: 20px">
+							<img src='./images/smart_phone_icon.png' style="width: 49px; border: none; background: none; box-shadow: none;" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -12px">UI</p>
+						</div>
+					</div>
+					<div style="width: 100px; height: 200px; float: left">
+						<div style="border: 1px solid #000; width: 350px; margin-left: -105px; margin-top: 50px"></div>
+					</div>
+					<div style="width: 300px; height: 200px; float: left">
+						<div style="margin-left: 120px;">
+							<img src='./images/server.png' style="width: 100px; border: none; background: none; box-shadow: none" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -20px">Backend</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<p>Web Service to Web Service</p>
+					<div style="width: 300px; height: 200px; margin-left: 0px; float: left">
+						<div style="margin-left: 180px;">
+							<img src='./images/server.png' style="width: 100px; border: none; background: none; box-shadow: none" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -20px">Reports</p>
+						</div>
+					</div>
+					<div style="width: 200px; height: 200px; float: left">
+						<div style="border: 1px solid #000; width: 350px; margin-left: 0px; margin-top: 50px"></div>
+					</div>
+					<div style="width: 300px; height: 200px; float: left">
+						<div style="margin-left: 120px;">
+							<img src='./images/server.png' style="width: 100px; border: none; background: none; box-shadow: none" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -20px">Search</p>
+						</div>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Reports store search queries and run them when the report is being retrieved</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>A service-oriented architecture</p>
+					<img src='./images/soa-new.png' style="border: none; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<h3>A Web Service example</h3>
+					<img src='./images/service.png' alt='services' style='border: none; background-color: white; padding: 10px;'/>
+					<small style='font-size: 0.4em; margin-left: 150px; margin-top: -20px'><a href='http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/' />http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></small>
+				</section>
+
+				<section>
+					<h3>A typical HTTP Read request</h3>
+					<br />
+					<div style="position: absolute; margin-top: -12px; margin-left: 75px; text-align: left; color: green">
+						<small>URI Path</small>
+						<div style="margin-top: -19px; border: 3px solid green; width: 130px; height: 26px; "></div>
+					</div>
+					<div style="position: absolute; margin-top: 44px; margin-left: -70px; color: blue">
+						<small>URI Host</small>
+						<div style="position: absolute; margin-left: 95px; margin-top: -46px; border: 3px solid blue; width: 260px; height: 24px; "></div>
+					</div>
+					<img src="./images/readhttp.png" style="border: 0px"/>
+
+					<aside class="notes">
+						<li>Start by looking at URI part of request</li>
+						<li>What is a URI?</li>
+					</aside>
+				</section>
+
+				<section>
+					<h3><span style="font-size: 1.2em;color: #c13636;">U</span>niform <span style="font-size: 1.2em;color: #c13636;">R</span>esource <span style="font-size: 1.2em;color: #c13636;">I</span>dentifiers</h3>
+					<p><span class="fragment"><span style="color: red;">scheme</span></span><span class="fragment">://<span style="color: blue;">host</span></span><span class="fragment">:<span style="color: purple;">port</span></span><span class="fragment">/<span style="color: green;">path/to/resource</span></span><span class="fragment">?<span style="color: orange;">queryString</span></span></p>
+					<p class="fragment"><span style="color: red;">http</span>://<span style="color: blue;">localhost</span>:<span style="color: purple;">3001</span>/<span style="color: green;">booking/1</span>?<span style="color: orange;">name=mary</span></p>
+
+					<aside class="notes">
+						Demonstrate creating a request in POSTMAN by starting a new request with a URI on /booking and /booking/{id}
+						<br />
+						<br />
+						Consider test ideas when using URIs.  Correct, missing resource, malformed.
+					</aside>
+				</section>
+
+				<section>
+					<h3><span style="font-size: 1.2em;color: #c13636;">U</span>niform <span style="font-size: 1.2em;color: #c13636;">R</span>esource <span style="font-size: 1.2em;color: #c13636;">I</span>dentifiers</h3>
+
+					<h4 style="border-top: 1px dotted #000; border-bottom: 1px dotted #000; width: 200px; margin-right: auto; margin-left: auto">Scheme</h4>
+
+					<br />
+
+					<table>
+						<tr><td><h4>HTTP</h4></td><td>-</td><td><h4 style="text-align: right">Web</h4></td></tr>
+						<tr><td><h4>FTP</h4></td><td>-</td><td><h4 style="text-align: right">File transfer</h4></td></tr>
+						<tr><td><h4>SMTP</h4></td><td>-</td><td><h4 style="text-align: right">Mail</h4></td></tr>
+					</table>
+
+					<br />
+				</section>
+
+				<section>
+					<h4><span style="font-size: 1.2em;color: #c13636;">U</span>niform <span style="font-size: 1.2em;color: #c13636;">R</span>esource <span style="font-size: 1.2em;color: #c13636;">I</span>dentifiers</h4>
+
+					<h4 style="border-top: 1px dotted #000; border-bottom: 1px dotted #000; width: 200px; margin-right: auto; margin-left: auto">Hosts</h4>
+
+					<div class="fragment" style="width: 300px; height: 400px; float: left">
+						<br />
+						<br />
+						<h4>192.168.1.254</h4>
+						<br />
+						<br />
+						<h4>hostname.com</h4>
+					</div>
+					<div class="fragment" style="width: 240px; height: 400px; float: left">
+						<div style="border: 1px solid black; height: 0px; width: 360px; margin: 113px 0px 0px -10px"></div>
+						<div style="border: 1px solid black; height: 0px; width: 360px; margin: 153px 0px 0px -10px"></div>
+						<img src="./images/server.png" alt="server" style="width: 120px; margin: -50px -100px 0px 0px; border: none; background: none; box-shadow: none;"/>
+						<p style="font-size: 0.5em; margin: -110px -350px 0px 0px">192.168.1.254</p>
+					</div>
+					<div class="fragment" style="width: 400px; height: 400px; float: left; margin-left: 20px">
+						<img src="./images/server.png" alt="server" style="border: none; background: none; box-shadow: none; margin-top: 60px; margin-left: 60px"/>
+					</div>
+				</section>
+
+				<section>
+					<h3><span style="font-size: 1.2em;color: #c13636;">U</span>niform <span style="font-size: 1.2em;color: #c13636;">R</span>esource <span style="font-size: 1.2em;color: #c13636;">I</span>dentifiers</h3>
+
+					<h4 style="border-top: 1px dotted #000; border-bottom: 1px dotted #000; width: 200px; margin-right: auto; margin-left: auto">Ports</h4>
+
+					<div class="fragment" style="width: 300px; height: 400px; float: left">
+						<br />
+						<br />
+						<h4>192.168.1.254:<span style="color: red">80</span></h4>
+						<br />
+						<br />
+						<h4>192.168.1.254:<span style="color: red">443</span></h4>
+					</div>
+					<div class="fragment" style="width: 240px; height: 400px; float: left">
+						<div style="border: 1px solid black; height: 0px; width: 360px; margin: 113px 0px 0px -30px"></div>
+						<p style="font-size: 0.75em; margin: 0px -380px 0px 0px; color: red">80</p>
+						<div style="border: 1px solid black; height: 0px; width: 360px; margin: 120px 0px 0px -30px"></div>
+						<p style="font-size: 0.75em; margin: 0px -380px 0px 0px; color: red">443</p>
+					</div>
+					<div class="fragment" style="width: 400px; height: 400px; float: left; margin-left: 20px">
+						<img src="./images/server.png" alt="server" style="border: none; background: none; box-shadow: none; margin-top: 60px; margin-left: 60px"/>
+					</div>
+				</section>
+
+				<section>
+					<h3><span style="font-size: 1.2em;color: #c13636;">U</span>niform <span style="font-size: 1.2em;color: #c13636;">R</span>esource <span style="font-size: 1.2em;color: #c13636;">I</span>dentifiers</h3>
+
+					<h4 style="border-top: 1px dotted #000; border-bottom: 1px dotted #000; width: 200px; margin-right: auto; margin-left: auto">Paths</h4>
+
+					<div class="fragment" style="width: 300px; height: 400px; float: left">
+						<div style="border: 2px solid black; width: 300px; height: 300px; margin: 50px -100px 0px 8px; background-color: black; color: white; font-size: 0.5em">
+							<p>Resource</p>
+							<div style="border: 1px dotted white; width: 250px; margin-left: 25px">
+								<p>Booking resource:</p>
+								<p>id: 1</p>
+							</div>
+							<p>Something the service exposes to the end user to interact with such as an image, video, html, text, etc.</p>
+						</div>
+					</div>
+					<div class="fragment" style="width: 240px; height: 400px; float: left">
+						<div style="border: 1px solid red; height: 0px; width: 500px; margin: 172px 0px 0px -50px"><small style="font-size: 0.5em; margin-left: -80px">GET /booking/1</small></div>
+					</div>
+					<div class="fragment" style="width: 400px; height: 400px; float: left; margin-left: 20px">
+						<img src="./images/jsonresource.png" alt="jsonresource" style="border: 0px; margin-top: 60px; margin-left: 60px"/>
+					</div>
+				</section>
+
+				<section>
+					<h3>Query strings</h3>
+					<p>A query string indicates additional actions you might want to apply to the resource you want</p>
+					<div class="fragment">
+						<pre><code>GET /booking?checkin=2014-03-13&amp;checkout=2014-05-21</code></pre>
+						<p>Returns all bookings between two dates whereas:</p>
+					</div>
+					<div class="fragment">
+						<pre><code>GET /booking</code></pre>
+						<p>Returns all the bookings</p>
+					</div>
+
+					<aside class="notes">
+						Demonstrate creating a request in POSTMAN by appending /booking
+					</aside>
+				</section>
+
+				<section>
+					<h3>Creating query strings</h3>
+					<ul>
+						<li>Query strings start with a <span style="color: blue">?</span> after the resource path</li>
+						<li>Are declared as <span style="color: red">key</span>=<span style="color: green">value</span></li>
+						<li>Multiple query declarations are joined using <span style="color: purple">&amp;</span></li>
+					</ul>
+					<br />
+					<div class="fragment">
+						<p style="text-align: left">For example:</p>
+						<pre><code>GET /booking?checkin=2014-03-13&amp;checkout=2014-05-21</code></pre>
+					</div>
+
+					<aside class="notes">
+						Consider test ideas when using query string.  Check out the Test heuristics cheat sheet
+					</aside>
+				</section>
+
+				<section>
+					<h3>A typical HTTP request</h3>
+					<br />
+					<div style="position: absolute; margin-top: -12px; margin-left: 25px; color: red">
+						<small>HTTP method</small>
+						<div style="margin-top: -19px; margin-left: -1px; border: 3px solid red; width: 42px; height: 26px; "></div>
+					</div>
+					<img src="./images/readhttp.png" style="border: 0px"/>
+				</section>
+
+				<section>
+					<h3>HTTP methods</h3>
+					<p>HTTP methods indicate an action the user would like to do on a resource</p>
+					<p>rest-reporter is a C.R.U.D. service</p>
+					<table>
+						<tr><td><h3>Create</h3></td><td>=</td><td><h3 style="text-align: right">POST</h3></td></tr>
+						<tr><td><h3>Read</h3></td><td>=</td><td><h3 style="text-align: right">GET</h3></td></tr>
+						<tr><td><h3>Update</h3></td><td>=</td><td><h3 style="text-align: right">PUT</h3></td></tr>
+						<tr><td><h3>Delete</h3></td><td>=</td><td><h3 style="text-align: right">DELETE</h3></td></tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>Methods in action</h3>
+					<table style="font-size: 0.8em">
+						<tr><td><p>GET <a href="#">http://localhost:3001/booking</a><p></td><td>-</td><td>Returns current bookings</td></tr>
+						<tr><td><p>POST <a href="#">http://localhost:3001/booking</a></p></td><td>-</td><td>Creates a new booking</td></tr>
+					</table>
+					<p style="font-size: 0.8em">OPTION http://localhost:3001/booking</p>
+					<p style="font-size: 0.8em">Returns which Methods can be used on a URI</p>
+
+					<aside class="notes">
+						Demonstrate in POSTMAN
+					</aside>
+				</section>
+
+				<section>
+					<h3>A typical HTTP response</h3>
+					<div style="position: absolute; margin-top: 80px; margin-left: -60px; color: green"><small>Payload</small><div style="position: absolute; margin-left: 84px; margin-top: -45px; border: 3px solid green; width: 620px; height: 350px; "></div></div>
+					<img src="./images/response.png" alt="response" style="border: none"/>
+
+					<aside class="notes">
+						<p>Break this into two parts.  The response and the link part of the response</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Types of Payloads</h3>
+					<div class="fragment" style="width: 450px; height: 400px; float: left">
+						<h4>JSON</h4>
+						<pre style="font-size: 0.4em; border: 1px solid #000; padding: 5px; width: 425px;">
+
+"booking": {
+  "firstname": "Sally",
+  "lastname": "Brown",
+  "totalprice": 111,
+  "depositpaid": true,
+  "additionalneeds": "Breakfast",
+  "bookingdates": {
+    "checkin": "2013-02-23",
+    "checkout": "2014-10-23"
+  }
+}
+
+</pre>
+					</div>
+					<div class="fragment" style="width: 450px; height: 400px; float: left;">
+						<h4>XML</h4>
+						<pre style="font-size: 0.4em; border: 1px solid #000; padding: 5px; width: 425px; text-align: left">&lt;created-booking>
+  &lt;booking>
+    &lt;firstname>Sally&lt;/firstname>
+    &lt;lastname>Brown&lt;/lastname>
+    &lt;totalprice>111&lt;/totalprice>
+    &lt;depositpaid>true&lt;/depositpaid>
+    &lt;additionalneeds>Breakfast&lt;/additionalneeds>
+    &lt;bookingdates>
+      &lt;checkin>2013-02-23&lt;/checkin>
+      &lt;checkout>2014-10-23&lt;/checkout>
+    &lt;/bookingdates>
+  &lt;/booking>
+&lt;/created-booking></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3>A typical HTTP response</h3>
+					<div style="position: absolute; margin-top: -10px; margin-left: 134px; color: red"><small>HTTP Status code</small><div style="position: absolute; margin-left: 0px; margin-top: -15px; border: 3px solid red; width: 86px; height: 20px; "></div></div>
+					<img src="./images/response.png" alt="response" style="border: none"/>
+				</section>
+
+				<section>
+					<h3>100 - Informational</h3>
+
+					<div style="width: 480px; height: 400px; float: left">
+						<img src="./images/status/100.jpeg" alt="100" style="border: none; background: none; box-shadow: none;" />
+					</div>
+					<div style="width: 480px; height: 400px; float: left;">
+						<img src="./images/status/101.jpeg" alt="101" style="border: none; background: none; box-shadow: none;" />
+					</div>
+
+					<a style="font-size: 0.5em; margin-left: 800px" href="https://http.cat/" alt="http cat">https://http.cat</a>
+				</section>
+
+				<section>
+					<h3>200 - Success</h3>
+
+					<div style="width: 480px; height: 400px; float: left">
+						<img src="./images/status/200.jpeg" alt="200" style="border: none; background: none; box-shadow: none;" />
+					</div>
+					<div style="width: 480px; height: 400px; float: left;">
+						<img src="./images/status/201.jpeg" alt="201" style="border: none; background: none; box-shadow: none;" />
+					</div>
+
+					<a style="font-size: 0.5em; margin-left: 800px" href="https://http.cat/" alt="http cat">https://http.cat</a>
+				</section>
+
+				<section>
+					<h3>300 - Redirection</h3>
+
+					<div style="width: 480px; height: 400px; float: left">
+						<img src="./images/status/301.jpeg" alt="301" style="border: none; background: none; box-shadow: none;" />
+					</div>
+					<div style="width: 480px; height: 400px; float: left;">
+						<img src="./images/status/302.jpeg" alt="302" style="border: none; background: none; box-shadow: none;" />
+					</div>
+
+					<a style="font-size: 0.5em; margin-left: 800px" href="https://http.cat/" alt="http cat">https://http.cat</a>
+				</section>
+
+				<section>
+					<h3>400 - Client error</h3>
+
+					<div style="width: 480px; height: 400px; float: left">
+						<img src="./images/status/400.jpeg" alt="400" style="border: none; background: none; box-shadow: none;" />
+					</div>
+					<div style="width: 480px; height: 400px; float: left;">
+						<img src="./images/status/403.jpeg" alt="403" style="border: none; background: none; box-shadow: none;" />
+					</div>
+
+					<a style="font-size: 0.5em; margin-left: 800px" href="https://http.cat/" alt="http cat">https://http.cat</a>
+				</section>
+
+				<section>
+					<h3>500 - Server error</h3>
+
+					<div style="width: 480px; height: 400px; float: left">
+						<img src="./images/status/500.jpeg" alt="500" style="border: none; background: none; box-shadow: none;" />
+					</div>
+					<div style="width: 480px; height: 400px; float: left;">
+						<img src="./images/status/503.jpeg" alt="503" style="border: none; background: none; box-shadow: none;" />
+					</div>
+
+					<a style="font-size: 0.5em; margin-left: 800px" href="https://http.cat/" alt="http cat">https://http.cat</a>
+				</section>
+
+				<section>
+					<h3>Iteration one - Investigating Read</h3>
+					<h4>Users stories</h4>
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em; border-right: 1px dotted #000">
+						<div style="text-align: left">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to view all current booking IDs</small>
+							<br />
+							<br />
+							<small>So that I can choose an ID to view the booking of</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#get-booking">GET /booking</a></small>
+					</div>
+
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em; border-right: 1px dotted #000">
+						<div style="text-align: center">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to search on the booking dates</small>
+							<br />
+							<br />
+							<small>So that I can filter the relevant booking IDs I require</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#get-booking">GET /booking?checkin=*&amp;checkout=*</a></small>
+					</div>
+
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em">
+						<div style="text-align: right">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to retrieve a booking using its ID</small>
+							<br />
+							<br />
+							<small>So that I can view the details of that booking</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#get-bookingid">GET /booking/{id}</a></small>
+					</div>
+
+					<small>API can be found at: <a href="https://github.com/mwinteringham/restful-booker">github.com/mwinteringham/restful-booker</a></small>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h3>A typical HTTP create request</h3>
+					<br />
+					<div style="position: absolute; margin-top: -19px; margin-left: 25px; color: red">
+						<small>Change in HTTP Verb</small>
+						<div style="border: 3px solid red; width: 54px; height: 26px; margin-top: -9px"></div>
+					</div>
+					<div style="position: absolute; margin-top: 300px; margin-left: -70px; color: blue"><small>Payload</small><div style="position: absolute; margin-left: 95px; margin-top: -178px; border: 3px solid blue; width: 760px; height: 264px; "></div></div>
+					<img src='./images/createhttp.png' style='border: 0px' />
+				</section>
+
+				<section>
+					<h3>Payload</h3>
+					<p>A representation of the resource you want to create through the service</p>
+					<br />
+					<p>The parameters and the structure of the payload have strict rules</p>
+					<p>Which can also be known as a 'contract'</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						### XML Payloads
+						```
+						<booking>
+							<firstName>Mark</firstName>
+							<lastName>test</lastName>
+							<totalPrice>300.00</totalPrice>
+							<depositPaid>true</depositPaid>
+							<additionalNeeds>Breakfast</additionalNeeds>
+							<bookingDates>
+							    <checkIn>11/11/2014</checkIn>
+							    <checkOut>12/11/2014</checkOut>
+							</bookingDates>
+						</booking>
+						```
+						[https://en.wikipedia.org/wiki/XML](https://en.wikipedia.org/wiki/XML)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						### JSON Payloads
+						```
+						{
+						    "firstName": "Mark",
+							"lastName": "test",
+							"totalPrice": 300.00,
+							"depositPaid": true,
+							"additionalNeeds": "Breakfast",
+							"bookingDates": {
+								"checkIn": "11/11/2014",
+								"checkOut": "12/11/2014"
+							}
+						}
+						```
+						[http://json.org/](http://json.org/)
+					</script>
+				</section>
+
+				<section>
+					<h3>Robustness principle</h3>
+					<div>
+						<p style="font-style: italic; font-size: 0.8em">`Be conservative in what you do, be liberal in what you accept from others`</p>
+						<p style="text-align: right">Postel's law</p>
+					</div>
+					<br />
+					<ul class="fragment" style="font-size: 0.7em;">
+						<li>When sending a payload the service should conform to the contract being sent</li>
+						<li>When receiving a payload the service should accept invalid data without error</li>
+					</ul>
+
+					<aside class="notes">
+						Consider test ideas what happens when you remove, add or change locations of parameters in the payload
+					</aside>
+				</section>
+
+				<section>
+					<h3>Data types</h3>
+					<pre style="box-shadow: none; width: 520px; margin-left: -50px; float: left">
+						<code style="height: 260px;">{
+	"firstName": "Mark",
+	"lastName": "test",
+	"totalPrice": 300.00,
+	"depositPaid": true,
+	"additionalNeeds": "Breakfast",
+	"bookingDates": {
+		"checkIn": "11/11/2014",
+		"checkOut": "12/11/2014"
+	}
+}</code>
+					</pre>
+					<div>
+						<ul style="font-size: 0.75em; margin-top: 70px; list-style: none;">
+							<li class="fragment"><div style="border: 2px solid red; width: 100px; height: 45px; position: absolute; margin-left: -455px; margin-top: -18px"></div><p style="color: red">String</p></li>
+							<li class="fragment"><div style="border: 2px solid green; width: 80px; height: 20px; position: absolute; margin-left: -434px; margin-top: -24px"></div><p style="color: green">Number</p></li>
+							<li class="fragment"><div style="border: 2px solid blue; width: 60px; height: 20px; position: absolute; margin-left: -420px; margin-top: -54px"></div><p style="color: blue">Boolean</p></li>
+							<li class="fragment"><div style="border: 2px solid purple; width: 160px; height: 45px; position: absolute; margin-left: -370px; margin-top: -41px"></div><p style="color: purple">Dates (String)</p></li>
+						</ul>
+					</div>
+
+					<aside class="notes">
+						Consider test ideas when creating payloads. Consider ways you can change data types and boundaries.
+					</aside>
+				</section>
+
+				<section>
+					<h3>A typical HTTP Read request</h3>
+					<br />
+					<div style="position: absolute; margin-top: 80px; margin-left: -70px; color: purple">
+						<small>Headers</small>
+						<div style="position: absolute; margin-left: 94px; margin-top: -58px; border: 3px solid purple; width: 760px; height: 144px; "></div>
+					</div>
+
+					<img src="./images/readhttp.png" style="border: 0px"/>
+				</section>
+
+				<section>
+					<h3>HTTP Headers</h3>
+					<p style="font-size: 0.9em">Define the operating parameters of an HTTP request such as:</p>
+					<ul>
+						<li class="fragment" ><span style="color: red">What is requesting the resource</span></li>
+						<li class="fragment" ><span style="color: green">What format the resource should be in</span></li>
+						<li class="fragment" ><span style="color: blue">Authentication that the resource can be requested</span></li>
+					</ul>
+					<p class="fragment" style="font-size: 0.8em">And more: <a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">https://en.wikipedia.org/wiki/List_of_HTTP_header_fields</a></p>
+				</section>
+
+				<section>
+					<h3>HTTP Headers</h3>
+					<p style="font-size: 0.8em">Adding headers can alter the behaviour of the service and its response</p>
+					<table>
+						<tr><td>Key:</td><td>Value</td><td>Outcome</td>
+						<tr class="fragment"><td>Accept:</td><td>application/json</td><td>JSON is returned</td></tr>
+						<tr class="fragment"><td>Accept:</td><td>application/xml</td><td>XML is returned</td></tr>
+						<tr class="fragment"><td>Content-Type:</td><td>application/json</td><td>JSON is accepted</td></tr>
+						<tr class="fragment"><td>Content-Type:</td><td>text/xml</td><td>XML is accepted</td></tr>
+					</table>
+
+					<aside class="notes">
+						Demonstrate in POSTMAN
+						<br />
+						<br />
+						Consider test ideas when using headers. Consider adding extra headers, consider changing values valid and invalid
+					</aside>
+				</section>
+
+				<section>
+					<h3>Iteration two - Investigating Create</h3>
+					<h4>User stories</h4>
+					<div style="margin-left: 315px; width: 315px; height: 400px; font-size: 0.9em; border-right: 1px dotted #000; border-left: 1px dotted #000">
+						<div style="text-align: center">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to create bookings</small>
+							<br />
+							<br />
+							<small>So that I store new bookings that can be retrieved later</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#post-booking">POST /booking</a></small>
+					</div>
+					<small>API can be found at: <a href="https://github.com/mwinteringham/restful-booker">github.com/mwinteringham/restful-booker</a></small>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h3>Authentication</h3>
+					<p>Services generally have one or more layers of security such as:</p>
+					<ul>
+						<li>Basic access authentication</li>
+						<li>Cookie based authentication</li>
+					</ul>
+					<p>This isn't an exhaustive list</p>
+					<p>There may be other layers of security in place</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					###HTTP Headers - Cookies
+
+					Cookies are also a type of header and can be added to a request
+					```
+					Cookie: COOKIEVAL1=abc; COOKIEVAL2=def;
+					```
+					</script>
+				</section>
+
+				<section>
+					<h3>Basic access authentication</h3>
+					<p>Comes in the form of a header</p>
+					<br />
+					<table style="font-size: 0.75em">
+						<tr><td>Authorization</td><td>Basic Base64(username:password)</td></tr>
+						<tr><td>Authorization</td><td>Basic dXNlcm5hbWU6cGFzc3dvcmQ=</td></tr>
+					</table>
+					<br />
+					<small><a href="https://en.wikipedia.org/wiki/Basic_access_authentication">https://en.wikipedia.org/wiki/Basic_access_authentication</a></small>
+				</section>
+
+				<section>
+					<h3>Cookie based authentication</h3>
+					<div class="fragment" style="width: 315px; margin-top: 50px; float: left; font-size: 0.9em;">
+						<p>POST /auth</p>
+						<pre style="border: 1px solid #000; padding: 5px; margin-top: 61px">{
+  username: admin,
+  password: password123
+}</pre>
+					</div>
+					<div class="fragment" style="width: 315px; margin-top: 50px; float: left; font-size: 0.9em">
+						<p>Response</p>
+						<pre style="border: 1px solid #000; padding: 5px; text-align: center; margin-top: 61px">
+
+Set-Cookie: token=abc123
+
+
+</pre>
+					</div>
+					<div class="fragment" style="width: 315px; margin-top: 50px; float: left; font-size: 0.9em">
+						<p>DELETE /booking/{id}</p>
+						<pre style="border: 1px solid #000; padding: 5px; text-align: center">
+
+Cookie: token=abc123
+
+
+</pre>
+					</div>
+
+					<aside class="notes">
+						Demonstrate in POSTMAN
+					</aside>
+				</section>
+
+				<section>
+					<h3>PUT</h3>
+					<p>Similar to POST but rather than <span style="font-weight: bold">create</span> it <span style="font-weight: bold">updates</span></p>
+					<p>However, in the real world that might not be the case:</p>
+					<p><a href="http://stackoverflow.com/questions/630453/put-vs-post-in-rest">PUT vs POST</a></p>
+
+					<aside class="notes">
+						Demonstrate a PUT in POSTMAN
+					</aside>
+				</section>
+
+				<section>
+					<h3>DELETE</h3>
+					<p>Similar to GET but it <span style="font-weight: bold">deletes</span> rather than <span style="font-weight: bold">reads</span> the resource</p>
+
+					<aside class="notes">
+						Demonstrate a DELETE in POSTMAN
+					</aside>
+				</section>
+
+				<section>
+					<h3>Iteration three - Investigating Update / Delete</h3>
+					<h4>User stories</h4>
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em; border-right: 1px dotted #000">
+						<div style="text-align: left">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to protect create and delete functions</small>
+							<br />
+							<br />
+							<small>So that I can protect the bookings from being changed or deleted</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#post-auth">POST /auth</a></small>
+					</div>
+
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em; border-right: 1px dotted #000">
+						<div style="text-align: center">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to update a pre-existing booking using its ID</small>
+							<br />
+							<br />
+							<small>So that I can correct and errors made in a booking</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#put-bookingid">PUT /booking/{id}</a></small>
+					</div>
+
+					<div style="width: 315px; height: 400px; float: left; font-size: 0.9em">
+						<div style="text-align: right">
+							<br />
+							<small>As a user of restful-booker</small>
+							<br />
+							<br />
+							<small>I want to be able to delete a booking using its ID</small>
+							<br />
+							<br />
+							<small>So that I can remove the booking</small>
+						</div>
+						<br />
+						<br />
+						<small><a href="https://github.com/mwinteringham/restful-booker#delete-bookingid">DELETE /booking/{id}</a></small>
+					</div>
+					<small>API can be found at: <a href="https://github.com/mwinteringham/restful-booker">github.com/mwinteringham/restful-booker</a></small>
+				</section>
+
+				<section>
+					<p>What did you learn?</p>
+				</section>
+
+				<section>
+					<h2>Toolsmithing</h2>
+				</section>
+
+				<section>
+					<h3>How can we support our testing with APIs?</h3>
+				</section>
+
+				<section>
+					<h3>POSTMAN Collections</h3>
+					<div style='float: left; width: 400px; margin-left: 0px'>
+						<img src='./images/collections.png' style='border: none; background: none; box-shadow: none'/>
+					</div>
+					<div style='float: left; width: 500px; height: 100px; margin-left: 0px; margin-top: 80px;'>
+						<h4>Setup</h4>
+						<ol style='font-size: 0.85em; margin-left: 100px'>
+							<li>Select the Collections tab</li>
+							<li>Click on the folder to create a collection</li>
+							<li>Select a request from history</li>
+							<li>Click the save/disk item to add to a collection</li>
+						</ol>
+					</div>
+				</section>
+
+				<section>
+						<h3>Data driven API calls</h3>
+
+						<div style="width: 315px; height: 400px; float: left;">
+							<img src="./images/datadrive1.png" alt="Data driven flow one" style='margin-top: 80px; margin-left: -70px; width: 100%; border: none; background: none; box-shadow: none' />
+							<div style="border: 1px solid black; width: 42px; position: absolute; margin-left: 275px; margin-top: -140px"></div>
+						</div>
+
+						<div style="width: 315px; height: 400px; float: left;">
+							<img src="./images/datadrive2.png" alt="Data driven flow one" style='margin-top: 50px; width: 100%; border: none; background: none; box-shadow: none' />
+							<div style="border: 1px solid black; width: 42px; position: absolute; margin-left: 310px; margin-top: -200px"></div>
+						</div>
+
+						<div style="width: 315px; height: 400px; float: left;">
+							<img src="./images/datadrive3.png" alt="Data driven flow one" style='border: none; background: none; box-shadow: none; margin-left: 20px;' />
+						</div>
+
+						<small style="margin-top: 20px">Guide: <a href="http://www.mwtestconsultancy.co.uk/data-driven-testing-gherkin-api/">www.mwtestconsultancy.co.uk/data-driven-testing-gherkin-api/</a></small>
+				</section>
+
+				<section>
+					<h3>Monitoring tools</h3>
+					<div style='padding-top: 50px;'>
+						<a href='https://www.runscope.com/'><img style='border: none; background: none; box-shadow: none; border: 2px solid white; float: left; margin-top: 0px'src='./images/runscope.png'></a>
+						<a href='https://newrelic.com/'><img src='./images/newrelic.png' alt='Burp suite logo' style='border: none; background: none; box-shadow: none; width: 40%; margin-left: 150px'/></a>
+
+					</div>
+					<div style='padding-top: 50px;'>
+						<a href='https://smartbear.com/product/alertsite/api-monitoring/'><img style='border: none; background: none; box-shadow: none; margin-top: 45px; width: 30%; float: left' src='./images/smartbear.png'></a>
+						<a href='https://www.getpostman.com/'><img src='./images/postman.png' alt='POSTMAN logo' style='border: none; background: none; box-shadow: none; margin-left: 320px; width: 30%; float: left'/></a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Make your own monitoring tool!</h3>
+
+					<a href="http://www.mwtestconsultancy.co.uk/api-monitoring-tool-simple/">http://www.mwtestconsultancy.co.uk/api-monitoring-tool-simple/</a>
+				</section>
+
+				<section>
+					<h4>Iteration four - Implement custom tools</h4>
+				</section>
+
+				<section>
+					<h3>Taking Web Service testing further</h3>
+				</section>
+
+				<section>
+					<p>Mobile to Web Service</p>
+					<div style="width: 300px; height: 200px; margin-left: 100px; float: left">
+						<div style="margin-top: 6px;">
+							<img src='./images/smart_phone_icon.png' style="width: 49px; border: none; background: none; box-shadow: none;" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -12px">UI</p>
+						</div>
+						<div class="fragment" style="margin-top: -180px; margin-left: 50px">
+							<div style="height: 175px; width: 200px; border: 1px solid red"></div>
+							<small style="margin-left: -50px;">UI testing</small>
+						</div>
+					</div>
+					<div style="width: 100px; height: 200px; float: left">
+						<div style="border: 1px solid #000; width: 350px; margin-left: -105px; margin-top: 50px"></div>
+					</div>
+					<div style="width: 300px; height: 200px; float: left">
+						<div style="margin-left: 120px;">
+							<img src='./images/server.png' style="width: 100px; border: none; background: none; box-shadow: none" alt='web server'>
+							<p style="font-size: 0.75em; margin-top: -20px">Backend</p>
+						</div>
+						<div class="fragment" style="margin-top: -180px; margin-left: 100px; ">
+							<div style="height: 175px; width: 200px; border: 1px solid blue;"></div>
+							<small>Web service testing</small>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Automation?</h2>
+				</section>
+
+				<section>
+					<h2>Wrapping up</h2>
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+					<small><p>Restful-booker - <a href="https://github.com/mwinteringham/restful-booker">https://github.com/mwinteringham/restful-booker</a></p></small>
+					<small><p>Slides - <a href="http://mwtestconsultancy.co.uk/presentations/understanding_web_services/">http://mwtestconsultancy.co.uk/presentations/understanding_web_services/</a></p></small>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

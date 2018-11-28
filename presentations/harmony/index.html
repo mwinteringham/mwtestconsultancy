@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>REST APIs and WebDriver: In Perfect Harmony</title>
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>REST APIs and WebDriver: In Perfect Harmony - Created by Mark Winteringham / @2bittester &#169; 2017</small></p>
+
+				<section>
+					<h2>REST APIs and WebDriver:</h2>
+					<h4>In Perfect Harmony</h4>
+				</section>
+
+				<section>
+					<img src="./images/hammer.jpg" style="border: 0px; width: 60%; box-shadow: none; background: none"/>
+
+					<h4>'I suppose it is tempting, if the only tool you have is a hammer, to treat everything as if it were a nail'</h4>
+					<div style="text-align: right; font-size: 0.4em">
+						<p>- Abraham Maslow, 1966</p>
+						<p><a href="https://en.wikipedia.org/wiki/Law_of_the_instrument#cite_note-maslow66-3">https://en.wikipedia.org/wiki/Law_of_the_instrument</a></p>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Tools bias us in how we solve a problem and that can be an issue</li>
+							<li>When designing an automated check we want to ask ourselves how can we ensure it is targeted, reliable, informative, maintainable and speedy</li>
+							<li>Diving into tools without thinking about the problem we want to solve and designing our check properly can make life harder for ourselves</li>
+							<li>I want to demonstrate ways in which we can analyse a check to identify incorrect uses of WebDriver and see where we can use HTTP and APIs to achieve that goal</li>
+							<li>https://en.wikipedia.org/wiki/Law_of_the_instrument</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Source code</h3>
+					<p><a href="https://github.com/mwinteringham/api-webdriver-harmony">https://github.com/mwinteringham/api-webdriver-harmony</a></p>
+				</section>
+
+				<!-- <section>
+						<img src="./images/iteration1.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+
+						<aside class="notes">
+							- Talk through the check and what it does (Bugzilla)
+							- Talk about the issues faced with this design of check
+						</aside>
+				</section> -->
+
+				<section>
+					<div style="text-align: left; margin-left: 260px">
+						<h3><span style="color: red; font-size: 1.4em">S</span>tate management</h3>
+						<h3><span style="color: red; font-size: 1.4em">A</span>lgorithm</h3>
+						<h3><span style="color: red; font-size: 1.4em">C</span>odified oracle</h3>
+						<h3><span style="color: red; font-size: 1.4em">R</span>eporting</h3>
+						<h3><span style="color: red; font-size: 1.4em">E</span>xecution</h3>
+						<h3><span style="color: red; font-size: 1.4em">D</span>eterministic</h3>
+					</div>
+				</section>
+
+				<section style="font-weight: bold">
+					<div style="position: absolute; margin-top: 93px; margin-left: 23px">
+						<small style="float: right; color: IndianRed; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid IndianRed; width: 908px; height: 97px; background-color: IndianRed; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 211px; margin-left: 23px">
+						<small style="float: right; color: DodgerBlue; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid DodgerBlue; width: 908px; height: 164px; background-color: DodgerBlue; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 396px; margin-left: 23px">
+						<small style="float: right; color: ForestGreen; padding: 5px">ALGORITHM</small>
+						<div style="border: 3px solid ForestGreen; width: 908px; height: 63px; background-color: ForestGreen; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 480px; margin-left: 23px">
+						<small style="float: right; color: Goldenrod; padding: 5px">CODIFIED<br />ORACLE</small>
+						<div style="border: 3px solid Goldenrod; width: 908px; height: 97px; background-color: Goldenrod; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration1.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+				</section>
+
+				<section>
+					<h3>State Management</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>Explaination of the state management section</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section style="font-weight: bold">
+
+					<div style="position: absolute; margin-top: 211px; margin-left: 23px">
+						<small style="float: right; color: DodgerBlue; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid DodgerBlue; width: 908px; height: 164px; background-color: DodgerBlue; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration1.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+				</section>
+
+				<!-- <section>
+					<p>POSTMAN DEMO</p>
+				</section>
+
+				<section>
+					<p>CODE DEMO - Update code to add API check</p>
+				</section> -->
+
+				<!-- <section>
+					<div style="position: absolute; margin-top: 10px; margin-left: 23px;">
+						<div style="border: 3px solid IndianRed; width: 908px; height: 109px; background-color: IndianRed; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration2.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+
+					<aside class="notes">
+						<ul>
+							<li>Show how instead of creating the data through webdriver I could create an HTTP request to do it</li>
+							<li>Show creating a bug via HTTP instead of via WebDriver</li>
+						</ul>
+					</aside>
+				</section> -->
+
+				<!-- <section>
+					<img src="./images/apiarch.png" style="border: none; width: 80%; box-shadow: none; background: none; margin-top: -25px"/>
+
+					<a href="https://github.com/mwinteringham/api-framework" class="fragment">https://github.com/mwinteringham/api-framework</a>
+
+					<aside class="notes">
+						<ul>
+							<li>Describe how everything is hung together</li>
+						</ul>
+					</aside>
+				</section> -->
+
+				<section>
+					<div style="width: 320px; float: left; margin-top: 20px;">
+						<img src="./images/api-framework-1.png" style="border: none; box-shadow: none; background: none; margin-top: -25px; margin-left: -125px"/>
+						<div style="border: 3px solid IndianRed; position: absolute; width: 95px; margin-left: 248px; margin-top: -75px"></div>
+					</div>
+
+					<div style="width: 320px; float: left; margin-top: 20px;" class="fragment">
+						<img src="./images/api-framework-2.png" style="border: none; box-shadow: none; background: none; margin-top: -25px; margin-left: 394px"/>
+						<div style="border: 3px solid DodgerBlue; position: absolute; width: 95px; margin-left: 294px; margin-top: -130px"></div>
+					</div>
+
+					<div style="width: 320px; float: left" class="fragment">
+						<img src="./images/api-framework-3.png" style="border: none; box-shadow: none; background: none; margin-top: -25px; margin-left: -637px"/>
+					</div>
+
+					<div class="fragment" style="margin-top: 300px">
+						<a href="https://github.com/mwinteringham/api-framework">https://github.com/mwinteringham/api-framework</a>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Describe how everything is hung together</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Dog fooding?</h3>
+
+					<img src="./images/dogfood.jpg" style="border: none; width: 80%; box-shadow: none; background: none; margin-top: -25px"/>
+
+					<aside class="notes">
+						<p>Talk about how you are using your own API to create data, is this dog fooding is this bad?</p>
+						<p>Well if we have API / integration / http level checks run before we have increased confidence</p>
+						<p>If not create an API outside of the product that has a direct line to the DB</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Algorithm</h3>
+				</section>
+
+				<!-- <section>
+					TO DO: State management 2
+					- We can also manage our browser state using HTTP
+					- Demonstrate how to login using HTTP and share Cookie credentials with WebDriver
+				</section> -->
+
+				<section>
+					<div style="position: absolute; margin-top: 25px; margin-left: 23px">
+						<small style="float: right; color: DodgerBlue; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid DodgerBlue; width: 908px; height: 95px; background-color: DodgerBlue; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 320px; margin-left: 23px">
+						<small style="float: right; color: ForestGreen; padding: 5px">ALGORITHM</small>
+						<div style="border: 3px solid ForestGreen; width: 908px; height: 63px; background-color: ForestGreen; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration2.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+				</section>
+
+				<!-- <section>
+					<div style="position: absolute; margin-top: 334px; margin-left: 23px;">
+						<div style="border: 3px solid ForestGreen; width: 908px; height: 41px; background-color: ForestGreen; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration3.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+
+					<aside class="notes">
+						- Explaination of the Algorithm section
+						- Show how I can use data from an HTTP request and drop it into the URL to navigate directly to a bug
+					</aside>
+				</section> -->
+
+				<!-- <section>
+					<p>Demonstrate response in POSTMAN</p>
+				</section>
+
+				<section>
+					<p>Update code to add algorithm</p>
+				</section> -->
+
+				<section>
+					<h3>State Management (again)</h3>
+				</section>
+
+				<section style="font-weight: bold">
+					<div style="position: absolute; margin-top: 7px; margin-left: 23px">
+						<small style="float: right; color: DodgerBlue; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid DodgerBlue; width: 908px; height: 135px; background-color: DodgerBlue; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 224px; margin-left: 23px">
+						<small style="float: right; color: IndianRed; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid IndianRed; width: 908px; height: 89px; background-color: IndianRed; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 334px; margin-left: 23px">
+						<small style="float: right; color: ForestGreen; padding: 5px">ALGORITHM</small>
+						<div style="border: 3px solid ForestGreen; width: 908px; height: 41px; background-color: ForestGreen; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration3.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+				</section>
+
+				<!-- <section>
+					<p>Demonstrate response in POSTMAN</p>
+				</section>
+
+				<section>
+					<p>Demonstrate response in POSTMAN</p>
+				</section> -->
+
+				<!-- <section>
+					<p>Update code to add state management</p>
+				</section> -->
+
+				<section style="font-weight: bold">
+					<div style="position: absolute; margin-top: 7px; margin-left: 23px">
+						<small style="float: right; color: MediumPurple; padding: 5px">STATE MANAGEMENT</small>
+						<div style="border: 3px solid MediumPurple; width: 908px; height: 309px; background-color: MediumPurple; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 368px; margin-left: 23px">
+						<small style="float: right; color: ForestGreen; padding: 5px">ALGORITHM</small>
+						<div style="border: 3px solid ForestGreen; width: 908px; height: 41px; background-color: ForestGreen; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration4.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+				</section>
+
+				<!-- <section>
+					<h3>Codified Oracles</h3>
+				</section>
+
+				<section>
+					<p>WHAT AM I TESTING?</p>
+					<p>TUTTU</p>
+				</section>
+
+				<section>
+					<p>Reference slide here - The original check</p>
+				</section>
+
+				<section>
+					<div style="position: absolute; margin-top: 17px; margin-left: 23px;">
+						<div style="border: 3px solid Goldenrod; width: 908px; height: 9px; background-color: Goldenrod; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 141px; margin-left: 23px;">
+						<div style="border: 3px solid Goldenrod; width: 908px; height: 9px; background-color: Goldenrod; opacity: 0.2"></div>
+					</div>
+
+					<div style="position: absolute; margin-top: 390px; margin-left: 23px;">
+						<div style="border: 3px solid Goldenrod; width: 908px; height: 64px; background-color: Goldenrod; opacity: 0.2"></div>
+					</div>
+
+					<img src="./images/iteration4.png" style="border: 1px solid grey; width: 100%; box-shadow: none; background: none; margin-top: -25px"/>
+
+					<aside class="notes">
+						TO DO: Codified oracles
+						- Explaination of the Codified oracles
+						- What am I testing? I can use the mnemonics TuTTu and TaTTa
+						- Maybe I am testing the UI and how it renders backend data, so I can use stored data from earlier requests
+					</aside>
+				</section> -->
+
+				<section>
+					<h3>Wrap up - Why is this worth doing?</h3>
+
+					<ul>
+						<li class="fragment">Deterministic</li>
+						<li class="fragment">Increased speed</li>
+						<li class="fragment">Reduced maintenance costs</li>
+					</ul>
+
+					<aside class="notes">
+						<li>Deterministic - A good check is deterministic which means we reduce the amount of randomness that might affect our check</li>
+						<li>By relying on HTTP for specific aspects of our check there is less randomness because we are dealing with less moving parts (Browser DOM, page load time, connection between architecture and WebDriver)</li>
+						<li>It also increase speed, one request can create my data rather than multiple lookups for elements to fill in</li>
+						<li>It also improves maintenance costs, a single request vs multiple elements that might change structurally</li>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/maze.png" style="border: 1px solid grey; width: 68%; box-shadow: none; background: none; margin-top: -25px"/>
+					<small style="font-size: 0.4em; margin: -20px 0px 0px 300px"><a href="http://yahccs.freewebspace.com/Puzzles/puzzles.html">http://yahccs.freewebspace.com/Puzzles/puzzles.html</a></small>
+
+					<aside class="notes">
+						<ul>
+							<li>But if I remove those WebDriver steps I'm no longer testing them. I.E The E2E testing fallacy</li>
+							<li>That's a good thing, a check should be targeted and efficient. It should tell me what has specifically changed so I can debug or exploratory test around</li>
+							<li>An E2E test or check that is trying to cover all bases exhaustively is going to make it harder for me to check specific things</li>
+							<li>If I remove something from my check that makes me think 'This is a risk I am no longer checking feature x', I create a new check</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Recommended reading</h3>
+					<br />
+					<ul>
+						<li><a href="http://www.alwaysagileconsulting.com/articles/end-to-end-testing-considered-harmful/">End-to-End Testing Considered Harmful</a> - Steve Smith</li>
+						<li><a href="https://vimeo.com/80533536">Integrated Tests Are A Scam</a>  - J.B. Rainsberger</li>
+					</ul>
+				</section>
+
+				<section>
+					<div style="float: left; width: 480px">
+						<img src="./images/swtc.png" style="width: 100%; border: 0px; box-shadow: none; background: none"/>
+					</div>
+
+					<div style="float: left; width: 480px">
+						<img src="./images/profile.png" class="fragment" style="border: 0px; width: 35%; margin-top: -30px; box-shadow: none; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcu3Z7PQAGsgKSR5YZ3AAAAABJRU5ErkJggg==); padding: 5px 10px 5px 5px;"/>
+					</div>
+
+					<div style="float: left; width: 480px">
+						<img src="./images/motlogo.png" class="fragment" style="width: 40%; border: 0px; box-shadow: none; background: none"/>
+					</div>
+
+					<div style="float: left; width: 480px">
+						<img src="./images/twitter.png" class="fragment" style="width: 50%; border: 0px; box-shadow: none; background: none"/>
+					</div>
+
+					<p><a href="http://www.mwtestconsultancy.co.uk" class="fragment" >www.mwtestconsultancy.co.uk</a></p>
+
+				</section>
+
+				<!-- <section>
+					<img src="./images/profile.png" style="border: 0px; width: 15%; box-shadow: none; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcu3Z7PQAGsgKSR5YZ3AAAAABJRU5ErkJggg==); padding: 5px 10px 5px 5px;"/>
+					<h3>Mark Winteringham</h3>
+					<p style='margin-top: -20px'>2bittester</p>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/www.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>mwtestconsultancy.co.uk</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/linkedin.png" style="width: 20%; border: 0px; box-shadow: none; background: none">
+						<p><small style='margin-top: -20px'>lnked.in/markwinteringham</small></p>
+					</div>
+
+				</section>
+
+				<section>
+					<img src="./images/swtc.png" style="border: 0px; width: 100%; box-shadow: none; background: none"/>
+				</section> -->
+
+				<section>
+					<h2>Questions?</h2>
+					<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> @2bittester</small></p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The ATDD paradox</title>
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>The automated acceptance testing paradox - Created by Mark Winteringham / @2bittester &#169; 2017</small></p>
+
+				<section>
+					<h2>The automated acceptance testing paradox</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>I'm going to talk about desires, building the right thing, assumption around test automation and strategies and there will be a game to play</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/profile.png" style="border: 0px; width: 15%; box-shadow: none; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcu3Z7PQAGsgKSR5YZ3AAAAABJRU5ErkJggg==); padding: 5px 10px 5px 5px;"/>
+					<h3>Mark Winteringham</h3>
+					<p style='margin-top: -20px'>2bittester</p>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/www.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>mwtestconsultancy.co.uk</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/twitter.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>@2bittester</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/linkedin.png" style="width: 20%; border: 0px; box-shadow: none; background: none">
+						<p><small style='margin-top: -20px'>lnked.in/markwinteringham</small></p>
+					</div>
+
+				</section>
+
+				<section>
+						<img src="./images/swtc.png" style="border: 0px; width: 100%; box-shadow: none; background: none"/>
+				</section>
+
+				<section>
+					<h2>A little bit of context</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>Since being introduced to BDD and it's tools many years ago I have a had a love hate relationship with it</li>
+							<li>However, the more I worked with BDD and misused it the more I realised I didn't truly understand it</li>
+							<li>So I took some time to explore BDD, Automation and Testing over the past year</li>
+							<li>Wrote a blog series on it to share my findings</li>
+							<li>Part of what came out of this was a talk at TB Manchester - Deadly sins of Scenarios</li>
+							<li>My observation was that one of the key things that trips up Testers are Acceptance tests</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>What's acceptable?</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>The goal of a software development team is to deliver something our business or customer desires</li>
+							<li>Failing to do so will result in our product or project failing</li>
+							<li>So how do we know what to deliver to our business or customer. How do we know what is acceptable to them</li>
+							<li>I'm going to show two screenshots of the same web page in different states and I want to know which is acceptable</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/uiwithnojs.png" style="width: 80%"/>
+
+					<aside class="notes">
+						<ul>
+							<li>Flipchart how many put their hand up for each without CSS</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/uiwithjs.png" style="width: 80%"/>
+
+					<aside class="notes">
+						<ul>
+							<li>Flipchart how many put their hand up for each with CSS</li>
+							<li>Ask why people think one is more acceptable than the other. Do both</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<div class="fragment">
+						<div style="width: 180px; border: 3px solid red; position: absolute; margin-top: 62px; margin-left: 724px"></div>
+						<div style="width: 165px; border: 3px solid red; position: absolute; margin-top: 252px; margin-left: 693px"></div>
+					</div>
+
+					<div class="fragment">
+						<div style="width: 90px; border: 3px solid green; position: absolute; margin-top: 110px; margin-left: 551px"></div>
+						<div style="width: 125px; border: 3px solid green; position: absolute; margin-top: 298px; margin-left: 542px"></div>
+					</div>
+
+					<p style="font-weight: bold">"Acceptance tests should reflect customers’ perception of when the job is done"</p>
+					<small>Gojko Adzic - https://gojko.net/2007/11/23/who-should-write-acceptance-tests/</small>
+					<p style="font-weight: bold">"Acceptance tests are tests that define the business value each story must deliver"</p>
+					<small>Lisa Crispin, Janet Gregory - Agile Testing pg493</small>
+
+					<aside class="notes">
+						<p>Acceptance tests are to help us validate that we have delivered what the business wants</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Why automate?</h2>
+				</section>
+
+				<section>
+					<img src="./images/agileautomation.png" style="width: 100%; border: 0px; box-shadow: none; background: none"/>
+
+					<aside class="notes">
+						<p>To assist in coverage</p>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/wheels.png" style="width: 45%; border: 0px; box-shadow: none; background: none"/>
+					<br />
+					<small style='font-size: 0.25em'><a href='http://jakegoulding.com/images/blog/bdd-cycle.png'>http://jakegoulding.com/images/blog/bdd-cycle.png</a></small>
+
+					<aside class="notes">
+						<p>To assist in feedback</p>
+					</aside>
+				</section>
+
+				<section>
+					<div style="float: left; margin-left: -200px; width: 675px">
+						<img src="./images/uiwithjs.png" style="width: 80%; margin-top: 30px"/>
+					</div>
+					<div style="float: left; margin-right: -200px; width: 675px">
+						<img src="./images/uiwithnojs.png" style="width: 80%; margin-top: 30px"/>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>1. A good tool is designed to do one thing well - Meaning things can slip through the net</li>
+							<li>2. A tool doesn't consider the assumptions and emotions of the business / end user / people that matter<li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h4>The automated acceptance testing paradox</h4>
+					<img src="./images/atddparadox1.png" class="fragment" style="position: absolute; margin-top: 300px; margin-left: 480px; border: 0px; box-shadow: none; background: none;"/>
+					<img src="./images/atddparadox2.png" class="fragment" style="position: absolute; border: 0px; box-shadow: none; background: none;"/>
+					<img src="./images/atddparadox3.png" class="fragment" style="position: absolute; border: 0px; box-shadow: none; background: none; margin-left: -20px"/>
+					<img src="./images/atddparadox4.png" class="fragment" style="border: 0px; box-shadow: none; background: none;"/>
+				</section>
+
+				<!-- <section>
+						<img src="./images/gsproblem.png" style="width: 90%; border: 0px; box-shadow: none; background: none"/>
+						<div style="text-align: right; margin-right: 50px;">
+							<small style='font-size: 0.25em;'>'The general system problem' Jerry Weinberg: An introduction to General Systems thinking, pg17</small>
+						</div>
+
+						<div class="fragment" style="position: absolute; margin-top: -200px; margin-left: 95px; color: white; background-color: red; padding: 5px;">
+							<p>Unit tests</p>
+						</div>
+
+						<div class="fragment" style="position: absolute; margin-top: -380px; margin-left: 350px; color: white; background-color: green; padding: 5px;">
+							<p>Acceptance tests</p>
+						</div>
+
+						<aside class="notes">
+							<ul>
+								<li>Where does this assumption that Acceptance tests cover business desire?</li>
+							</ul>
+						</aside>
+				</section> -->
+
+				<section>
+					<div style="float: left; width: 480px">
+						<img src="./images/system1.png" style="width: 50%; border: 0px; box-shadow: none; background: none; margin-top: 145px"/>
+					</div>
+					<div style="float: left; width: 480px" class="fragment">
+						<img src="./images/system2.png" style="width: 100%; border: 0px; box-shadow: none; background: none"/>
+					</div>
+
+					<aside class="notes">
+						<p>Mind map different risks around a requirement. Start with the initial risk that we deliver what the business wants</p>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/umbrella.png" style="width: 30%; border: 0px; box-shadow: none; background: none"/>
+					<h3>Automated Acceptance tests are for guiding not validating</h3>
+				</section>
+
+				<section>
+					<h4>'A failed check is an invitation to explore'</h4>
+
+					<aside class="notes">
+						<ul>
+							<li>First of all, for me, things that are automated are checks and we use them to help monitor change NOT validate the application</li>
+							<li>That helps me understand their role as guides in my testing</li>
+							<li>If an acceptance check fails then I need to explore that feature</li>
+							<li>If we don't question failing or passing acceptance checks, there are things we don't about what's been delivered</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/iceicebaby.png" style="width: 90%; border: 0px; box-shadow: none; background: none"/>
+
+					<aside class="notes">
+						<ul>
+							<li>This means I will probably need to engage with the business or a rep of the business</li>
+							<li>Acceptance checks as guides can be a heuristic to set me on a path to ask the right questions</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="./images/jigsaw1.png" style="position: absolute; border: 0px; box-shadow: none; background: none;"/>
+					<img src="./images/jigsaw2.png" class="fragment" style="position: absolute; border: 0px; margin-top: 25px; box-shadow: none; background: none;"/>
+					<img src="./images/jigsaw3.png" class="fragment" style="position: absolute; margin-left: -20px; margin-top: -2px; border: 0px; box-shadow: none; background: none;"/>
+					<img src="./images/jigsaw4.png" class="fragment" style="margin-left: -30px; margin-top: -60px; border: 0px; box-shadow: none; background: none;"/>
+				</section>
+
+				<section>
+					<h3>Wrapping up</h3>
+
+					<ul>
+						<li class="fragment">Be aware of your assumptions</li>
+						<li class="fragment">Use automated acceptance checks as guides</li>
+						<li class="fragment">Other testing activities are required</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> @2bittester</small></p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

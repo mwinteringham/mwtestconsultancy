@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Say TaTTa to your TuTTu - Anti-patterns in automation</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>Say TaTTa to your TuTTu - Created by <a href="http://mwtestconsultancy.co.uk">Mark Winteringham</a> / <a href="http://twitter.com/2bittester">@2bittester</a> &#169; 2016</small></p>
+
+				<section>
+					<h3>Say TaTTa to your TuTTu</h3>
+					<h4>Anti-patterns in automation</h4>
+				</section>
+
+				<section>
+					<div style="float: left; text-align: left">
+						<h3>About me...</h3>
+						<p><small><img src="./images/www.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://mwtestconsultancy.co.uk/blog">www.mwtestconsultancy.co.uk</a></small></p>
+						<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://twitter.com/2bittester">@2bittester</a></small></p>
+						<p><small><img src="./images/linkedin.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"> - <a href="linkedin.com/in/markwinteringham">linkedin.com/in/markwinteringham</a></small></p>
+					</div>
+
+					<div>
+						<img src="./images/profile.png" alt="profile.png" />
+					</div>
+				</section>
+
+				<section>
+					<h3>Anti-patterns in our Automation</h3>
+					<img src="./images/squareincircle.jpg" style="border: 0px; box-shadow: none; background: none" />
+
+					<aside class="notes">
+						<ul>
+							<li>I will talk about about a series of common misunderstandings we make with automated checking</li>
+							<li>Some of these anti-patterns stem from shallow understanding about test design in general</li>
+							<li>Ultimately this talk is all about mental models and how and when to use the right one</li>
+							<li>These are all mistakes I have made in the past as well</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h1>TuTTu</h1>
+				</section>
+
+				<section>
+					<h3>Automating a form check</h3>
+				    <pre><code>
+  Webdriver driver = new Webdriver();
+  driver.get("http://some.site.com/form");
+
+  driver.findElement(By.id("firstname")).sendKeys("Mark");
+  driver.findElement(By.id("lastname")).sendKeys("Winteringham");
+  driver.findElement(By.id("submit")).click();
+
+  String title = driver.getTitle();
+  assertThat(title, "The second page of the form");
+				    </pre></code>
+
+						<aside class="notes">
+							<ul>
+								<li>This script is created and run across multiple browsers to check browser compatability</li>
+							</ul>
+						</aside>
+				</section>
+
+				<section>
+					<h3>Where is the anti-pattern?</h3>
+					<br />
+					<ul>
+						<li class="fragment">Checking that each browser renders the form correctly so it can be filled in by a human</li>
+						<br />
+						<li class="fragment">Checking that each browser takes us to the same page after submission</li>
+						<br />
+						<li class="fragment">Checking that each browser is using JavaScript correctly to create the form</li>
+					</ul>
+
+					<aside class="notes">
+						<ol>
+							<li><p>Checking that each browser renders the form correctly so it can be filled in by a human</p>
+							<p>The anti-pattern here comes from the assumption around the perception of ‘rendering’ and WebDriver. WebDriver allows us to query a DOM that is being built in a browser so this means we CAN check to see if the DOM contains the HTML we require to submit our form but we CAN’T check if the HTML is rendered in a way that a human could have trouble submitting the form (due to CSS or accessibility issues). Which means that running the check across multiple browsers is redundant. It bears little influence on how the backend is serving the HTML since all browsers are capable of injecting HTML into a DOM (if it couldn’t no-one would use that browser!)</p>
+							<p>As a side note, WebDriver can inform us if an element can’t be reached, say for example if the HTML is missing but if the HTML is missing the issue lies with what is serving the HTML and not the browser (Unless it is created by JavaScript but we will come back to that). Therefore, it would be better to create an API level check with different User agents (if necessary) to determine if the correct HTML is returned by the backend, an approach which is cheaper and more stable.</p></li>
+							<li><p>Checking that each browser takes us to the same page after submission</p>
+							<p>The anti-pattern here is the assumption that each browser might handle a redirect from a backend differently (Which they generally don’t, again no-one would use them if they did). An API level check with different User agents (again, if necessary) to determine that the correct redirect path is returned would suffice.</p></li>
+							<li><p>Checking that each browser is using JavaScript correctly to create the form</p>
+							<p>So what if the form was created by JavaScript and not by the backend? There is a benefit to running the check across different browsers since they all have different JavaScript engines that behave in different ways, and we want to ensure that our form creation works with all of them.</p>
+							<p>However, the anti-pattern still appears in the submission of form and the assertion we’re being redirected to a new page since this is all being handled by the backend. We should consider breaking the check into two separate checks. A WebDriver based check for checking the JavaScript renders the HTML, and an API level check for checking the backend returns us a redirect.</p></li>
+						</ol>
+					</aside>
+				</section>
+
+				<section>
+					<h2><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>TuTTu is a hueristic</li>
+							<li>Helps to trigger your thinking to ask yourself, what am I actually testing</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Postman</h3>
+					<img src="./images/postmanrequest.png" style="border: 0px; height: 300px; margin-top: -5px; box-shadow: none; background: none">
+					<img src="./images/postmantest.png" style="border: 0px; height: 300px; margin-top: -5px; box-shadow: none; background: none">
+				</section>
+
+				<section>
+					<h3>Rest-assured</h3>
+					<pre><code>
+  given().
+    parameters("firstName", "Mark", "lastName", "Winteringham").
+  when().
+    post("/some.site.com/form").
+  then().
+    statusCode(304)
+    header(equalTo("http://some.site.com/form/2"));
+					</pre></code>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking validation is triggered on the form before submission'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a record is created in the database on form submission'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking an edit version of the form contains previous values'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a pop up appears when clicking a help icon next to a form field'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking the form uploads an attached PDF correctly'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">U</span>I or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">U</span>I?</p>
+				</section>
+
+				<section>
+					<h1>TaTTa</h1>
+				</section>
+
+				<section>
+					<h3>Rest-assured</h3>
+					<pre><code>
+  given().
+    parameters("firstName", "Mark", "lastName", "Winteringham").
+  when().
+    post("/some.site.com/form").
+  then().
+    statusCode(200)
+					</pre></code>
+				</section>
+
+				<section>
+					<h3>A Web Service example</h3>
+					<img src='./images/service.png' alt='services' style='border: none; background-color: white; padding: 10px;'/>
+					<small style='font-size: 0.4em; margin-left: 150px; margin-top: -20px'><a href='http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/' />http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/</a></small>
+
+					<aside class="notes">
+
+					</aside>
+				</section>
+
+				<section>
+					<h3>A '200' response</h3>
+					<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Connection: keep-alive
+
+&lt;body&gt;
+  &lt;p&gt;An error occurred&lt;/p&gt;
+&lt;/body&gt;</pre></code>
+				</section>
+
+				<section>
+					<h2><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>TaTTa offers the same mental trigger as TuTTu</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Rest-assured</h3>
+					<pre><code>
+  given().
+    parameters("firstName", "Mark", "lastName", "Winteringham").
+  when().
+    post("/some.site.com/form").
+  then().
+    statusCode(200)
+    body("html.body.p", isNot(equalTo("An error occurred")))
+					</pre></code>
+				</section>
+
+				<section>
+					<h3>Postman</h3>
+					<img src="./images/postmanrequest.png" style="border: 0px; height: 300px; margin-top: -5px; box-shadow: none; background: none">
+					<img src="./images/postmantest2.png" style="border: 0px; height: 300px; margin-top: -5px; box-shadow: none; background: none">
+				</section>
+
+				<section>
+					<h3>Unit check</h3>
+					<pre><code>
+  public void testStorage() {
+    Datastore store = new Datastore();
+    Boolean result = store.createNewRecord("Mark", "Winteringham");
+
+    assertTrue(result);
+  }
+
+</pre></code>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a third party Web service can be accessed'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a Web service evaluates data and returns a result'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a Web service returns a record in the correct structure'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a Web service handles overflow data such as an Integer'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI?</p>
+				</section>
+
+				<section>
+					<h3 style="text-transform: none">'Checking a redirect is returned after an unauthorised request is made'</h3>
+					<br />
+					<p><span style="color: red">T</span>esting the <span style="color: red">A</span>PI or <span style="color: red">T</span>esting <span style="color: red">T</span>hrough the <span style="color: red">A</span>PI?</p>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+				</section>
+
+				<section>
+					<h2>Training</h2>
+					<br />
+					<ul style="list-style: none; text-align: center;">
+						<li><span style="color: red; font-weight: bold">Testing Web Services</span></li>
+						<li>Friday 23rd September @ The Studio, Manchester</li>
+						<br />
+						<li><span style="color: red; font-weight: bold">Taking Automated Checking Beyond WebDriver</span></li>
+						<li>Wednesday 30th September @ Manchester</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Thank you</h2>
+					<p><small><img src="./images/www.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> <a href="http://mwtestconsultancy.co.uk/blog">www.mwtestconsultancy.co.uk</a></small></p>
+					<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> <a href="http://twitter.com/2bittester">@2bittester</a></small></p>
+					<p><small><img src="./images/linkedin.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"> <a href="linkedin.com/in/markwinteringham">linkedin.com/in/markwinteringham</a></small></p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

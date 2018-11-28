@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>What's so great about WebDriver?</title>
+
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>What's so great about WebDriver?</h3>
+					<br />
+					<p>
+						<small>Created by <a href="http://www.mwtestconsultancy.co.uk">Mark Winteringham</a> / <a href="http://twitter.com/mwtestconsult">@mwtestconsult</a></small>
+						<small>Slides available at <a href="http://www.mwtestconsultancy.co.uk/webdriver" alt="Slides available here" />www.mwtestconsultancy.co.uk/presentations/webdriver</a></small>
+					</p>
+
+					<aside class="notes">
+						<p>For those glass half full people out there this isn’t a talk about why WebDriver is good
+						For those glass half empty people it isn’t a talk about why WebDriver is bad
+
+						This is a talk about Models, Skillsets and a guy called Jim</p>
+					</aside>
+				</section>
+
+				<section>
+					<div style="float: left; text-align: left">
+						<h3>About me...</h3>
+						<p><small><img src="./images/www.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://mwtestconsultancy.co.uk/blog">www.mwtestconsultancy.co.uk</a></small></p>
+						<p><small><img src="./images/twitter.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"/> - <a href="http://twitter.com/mwtestconsult">@mwtestconsult</a></small></p>
+						<p><small><img src="./images/linkedin.png" style="border: 0px; height: 40px; margin-top: -5px; box-shadow: none; background: none"> - <a href="linkedin.com/in/markwinteringham">linkedin.com/in/markwinteringham</a></small></p>
+					</div>
+
+					<div>
+						<img src="./images/profile.png" alt="profile.png" />
+					</div>
+				</section>
+
+				<section>
+					<div>
+						<h3 style='font-size: 1.2em'>Automation: Time to change our models</h3>
+						<small style='margin-left: 750px'>Iain McCowatt</small>
+					</div>
+
+					<aside class="notes">
+						-Iain’s talk presents how Testers should have multiple mental models about how you could solve a problem with automation.  Or as he puts it ‘Look at the world through a different pair of lenses every time you have a problem’.  The more mental models you have and the ease in which you can switch between these models can determine how successful your testing might be.
+						- But as I revisited the talk there was a part in which he talked about how ‘Tools shape how you test’.  I began to form a questions about our testing community
+						- Let me introduce my question with an my interpretation of the above quote
+					</aside>
+				</section>
+
+				<section>
+					<h3>Mental models</h3>
+					<p style='font-size: 0.8em'>'Look at the world through a different pair of lenses every time you have a problem'</p>
+					<p><small><a href='www.ministryoftesting.com/2014/05/automation-time-change-models-iain-mccowatt/'>www.ministryoftesting.com/2014/05/automation-time-change-models-iain-mccowatt/</a></small></p>
+
+					<aside class="notes">
+						- But as I revisited the talk there was a part in which he talked about how ‘Tools shape how you test’.  I began to form a questions about our testing community
+						- Let me introduce my question with an my interpretation of the above quote
+					</aside>
+				</section>
+
+				<section>
+					<style>
+						.bubble { 
+						  width: 310px; 
+						  height: 125px; 
+						  display: table; 
+						}
+
+						.bubble p {
+						  border: 1px solid #000;
+						  display: table-cell; 
+						  vertical-align: middle; 
+						  text-align: center; 
+						}
+					</style>
+
+					<div style='width: 310px; float: left'>
+						<div style='margin-left: -50px'>
+							<div class='bubble'>
+								<p style='font-size: 0.65em'>'Automator Jim' knows WebDriver</p>
+							</div>
+						</div>
+					</div>
+					<div style='width: 310px; float: left'>
+						<div class='fragment'>
+							<div style='border: 2px solid blue; position: relative; width: 48px; margin-left: -52px; margin-top: 60px'></div>
+							<div style='margin-top: -64px'>
+								<div class='bubble'>
+									<p style='font-size: 0.65em'>Jim wants to automate checking a service validates a range of payloads</p>
+								</div>
+							</div>
+						</div>
+						<div class='fragment'>
+							<div style='border: 2px solid blue; width: 0px; height: 40px; margin-left: 150px'></div>
+							<div class='bubble'>
+								<p style='font-size: 0.65em'>Jim builds a script in WebDriver via the UI the service consumes</p>
+							</div>
+						</div>
+						<div class='fragment'>
+							<div style='border: 2px solid blue; width: 0px; height: 40px; margin-left: 150px'></div>
+							<div class='bubble'>
+								<p style='font-size: 0.65em'>It results in automation that's slow and brittle</p>
+							</div>
+						</div>
+						<div class='fragment'>
+							<div style='border: 2px solid blue; width: 0px; height: 40px; margin-left: 150px'></div>
+							<div class='bubble'>
+								<p style='font-size: 0.65em'>Jim continues to tinker with the script</p>
+							</div>
+						</div>
+						
+					</div>
+					<div style='width: 310px; float: left' class='fragment'>
+						<div style='margin-left: 50px; margin-top: 380px'>
+							<div style='border: 2px solid blue; margin: 0; width: 202px; height: 0px; margin-left: -52px'></div>
+							<div style='border: 2px solid blue; margin: 0; width: 0px; height: 40px; margin-left: 150px'></div>
+							<div class='bubble'>
+								<p style='font-size: 0.65em'>It's too hard!</p>
+							</div>
+							<div style='border: 2px solid blue; margin: 0; width: 0px; height: 40px; margin-left: 150px'></div>
+							<div style='border: 2px solid blue; margin: 0; width: 202px; height: 0px; margin-left: -52px'></div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>'We shape our tools and then our tools shape us'</h3>
+					<img src='./images/brick.png' alt='Hammer square into circle' style='border: none; width: 500px'/>
+					<h4 style='font-size: 0.9em; color: red' class='fragment'>What if Jim knew about a different tool or approach?</h4>
+
+					<aside class="notes">
+						<ul>
+							<li>He could have created a faster more stable test that would have done a better job</li>
+							<li>He has a limited amount of mental models because he only knows how to use one tool</li>
+							<li>Having knowledge of more tools and models could mean Jim could make better choices</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>'Be promiscuous'</h3>
+					<p>Learn more models, learn more tools</p>
+					<br />
+					<h4 style='color: red; font-size: 0.9em' class='fragment'>What if Jim isn't even aware that these tools exist or that he could benefit in learning them in the first place</h4>
+
+					<aside class="notes">
+						<p>How does he learn about tools that are available to him or even realise he could benefit from learning them
+						He would look at what training there is out there and what other testers are doing to solve similar problems</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4 style='margin-left: -200px; margin-right: -200px'>What if we, the testing community, have limited models about automation and are consequently feeding those same limited models back to testers like Jim?</h4>
+				</section>
+
+				<section>
+					<h4>Automation workshops/talks in conferences</h4>
+					<div style='width: 550px; float: left'>
+						<img src='./images/chart1.png' alt='Chart of conferences' style='border: none; box-shadow: none; background: none;'/>
+					</div>
+					<div style='width: 400px; float: left'>
+						<br />
+						<br />
+						<br />
+						<small>5 popular conferences 2012 - 2015</small>
+						<small>Talks and workshops explicitly talk about an automation tool</small>
+					</div>
+
+					<aside class="notes">
+						<p>Are conferences ignoring other workshops for other tools?
+						I don’t think so
+						I believe this is a symptom of supply and demand</p>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Automation tools in Job specs</h4>
+						<img src='./images/chart2.png' alt='Chart of job spec requirements' style='border: none; box-shadow: none; background: none; width: 650px'/>
+						<div style='line-height: 100%'>
+							<small>72 Jobs roles</small><br />
+							<small><strong>Keywords:</strong> Developer in test, Automation test engineer</small><br />
+							<small><strong>Source:</strong> cwjobs.co.uk – 21/7/15</small>
+						</div>
+					<aside class="notes">
+						All the items listed on the right appear in 2% or less of the job roles
+					</aside>
+				</section>
+
+				<section>
+					<h3>What's so great about WebDriver?</h3>
+					<br />
+					<br />
+					<div class='fragment'>
+						<h4>It offers us only one model of approach</h4>
+						<h4>Automating through the UI!</h4>
+					</div>
+
+					<aside class="notes">
+						<p>Why is WebDriver skill and training so much more prevalent than other tools?
+						Are we fixated with the thinking that all our automation problems can be solved through the automating UI instead others ways like ‘Automator Jim</p>
+					</aside>
+				</section>
+
+				<section>
+					<img src='./images/pyramid.png' alt='Chart of job spec requirements' style='border: none; box-shadow: none; background: none; width: 560px; float: left; margin-left: -100px'/>
+					<div class='fragment'>
+						<img src='./images/notequal.png' alt='Not equal' style='border: none; box-shadow: none; background: none; width: 40px; float: left; margin-top: 225px' />
+						<img src='./images/chart3.png' alt='Chart of job spec requirements' style='border: none; box-shadow: none; background: none; width: 600px; float: left; margin-right: -300px'/>
+					</div>
+				</section>
+
+				<section>
+					<h4>Where are the workshops or requirements for skills in:</h4>
+
+					<div class='fragment'>
+						<p style='color: red; margin-left: -500px'>Monitoring</p>
+						<p style='color: red; margin-right: -500px'>Deployment</p>
+					</div>
+
+					<div class='fragment'>
+						<p style='color: green; margin-left: -500px'>Configuration management</p>
+						<p style='color: green; margin-right: -500px'>Test data population</p>
+					</div>
+
+					<div class='fragment'>
+						<p style='color: red; margin-left: -500px'>Parsing data</p>
+						<p style='color: red; margin-right: -500px'>API testing</p>
+						<p style='color: green; margin-left: -500px'>Unit testing</p>
+					</div>
+
+					<aside class="notes">
+						<p>Based on the evidence in the previous slides it appears we have a very distorted view of what is important and what is not when it comes to automating and if we continue to follow the same path we will still have testers like ‘Automator Jim’ making the same mistakes again and again</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>So what could we do?</h3>
+					<br />
+					<div class='fragment'>
+						<h4>Personal</h4>
+						<div style='margin-left: -440px'>
+							<small>Look further afield to learn new tools</small>
+						</div>
+						<div style='margin-left: 505px; margin-top: -46px'>
+							<small>Tinker around with other tools</small>
+						</div>
+						<div>
+							<small>Think more about the problem you want to solve, is your current model enough?</small>
+						</div>
+					</div>
+					<br />
+					<div class='fragment'>
+						<h4>Community</h4>
+						<div style='margin-left: -346px'>
+							<small>Demand more diversity in automation training</small>
+						</div>
+						<div style='margin-left: 115px'>
+							<small>When writing job roles focus more on the problems that need solving</small>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h4>Detox ourselves from WebDriver... maybe with a bit of Watir</h4>
+					<img src='./images/badumtsh.png' alt='drummer' style='border: 1px solid #000' />
+				</section>
+
+				<section>
+					<h3>Thank you</h3>
+					<h4>Questions?</h4>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'socket.io/socket.io.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

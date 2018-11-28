@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The deadly sins of Acceptance scenarios</title>
+		<meta name="author" content="Mark Winteringham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<p style='font-size: 0.6em; position: relative; bottom: -93.5%;'><small>The deadly sins of BDD scenarios - Created by Mark Winteringham / @2bittester &#169; 2017</small></p>
+
+				<section>
+					<h2>The deadly sins of</h2>
+					<hr />
+					<h3>BDD scenarios</h3>
+					<!-- <img src="./images/red-line.png" style="border: 0px; height: 40px; box-shadow: none; background: none; width: 820px; position: absolute; margin-left: -400px" />
+					<h3>Acceptance scenarios</h3>
+					<img src="./images/red-line.png" style="border: 0px; height: 40px; box-shadow: none; background: none; width: 420px; position: absolute; margin-left: -200px" />
+					<h3>scenarios</h3>
+					<img src="./images/red-line.png" style="border: 0px; height: 40px; box-shadow: none; background: none; width: 675px; position: absolute; margin-left: -330px" />
+					<h3>acceptance tests</h3>
+					<img src="./images/dammit.png" style="border: 0px; box-shadow: none; background: none; width: 675px; position: absolute; margin-left: -330px; margin-top: -250px; -ms-transform: rotate(-10deg); /* IE 9 */ -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */ transform: rotate(-10deg);" /> -->
+
+					<!-- <aside class="notes">
+						<ul>
+							<li>This has not been an easy talk to put together</li>
+							<li>Frustrations of the mistakes we make as testers</li>
+							<li>Confusing in putting this talk together</li>
+						</ul>
+					</aside> -->
+				</section>
+
+				<section>
+					<img src="./images/profile.png" style="border: 0px; width: 15%; box-shadow: none; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcu3Z7PQAGsgKSR5YZ3AAAAABJRU5ErkJggg==); padding: 5px 5px 5px 5px;"/>
+					<h3>Mark Winteringham</h3>
+					<p style='margin-top: -20px'>2bittester</p>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/www.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>mwtestconsultancy.co.uk</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/twitter.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>@2bittester</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/linkedin.png" style="width: 20%; border: 0px; box-shadow: none; background: none">
+						<p><small style='margin-top: -20px'>lnked.in/markwinteringham</small></p>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Working in software testing for 10 years</li>
+							<li>I teach and talk on test automation practises and tools</li>
+							<li>Some of this I blog about on my site</li>
+							<li>I also co-run the Software testing clinic</li>
+							<li>You can get in touch with me via Twitter</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section>
+					<img src="./images/scenario-star.png" style="border: 0px; margin-top: -5px; box-shadow: none; background: none; -ms-transform: rotate(-10deg); /* IE 9 */ -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */ transform: rotate(-10deg);"/>
+					<img class="fragment" src="./images/bdd-star.png" style="border: 0px; margin-top: -5px; box-shadow: none; background: none; -ms-transform: rotate(10deg); /* IE 9 */ -webkit-transform: rotate(10deg); /* Chrome, Safari, Opera */ transform: rotate(10deg);"/>
+					<br />
+					<img class="fragment" src="./images/atdd-star.png" style="border: 0px; margin-top: -5px; box-shadow: none; background: none; -ms-transform: rotate(10deg); /* IE 9 */ -webkit-transform: rotate(10deg); /* Chrome, Safari, Opera */ transform: rotate(10deg);"/>
+					<img class="fragment" src="./images/ac-star.png" style="border: 0px; margin-top: -5px; box-shadow: none; background: none; -ms-transform: rotate(-10deg); /* IE 9 */ -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */ transform: rotate(-10deg);"/>
+					<img class="fragment" src="./images/argh-star.png" style="position: absolute; border: 0px; margin-top: -175px; margin-left: -470px; box-shadow: none; background: none;"/>
+
+					<aside class="notes">
+						<ul style="font-size: 0.6em">
+							<li>I was first exposed to scenarios 6 years ago</li>
+							<li>And they were a part of BDD</li>
+							<li>Which in part was related to ATDD</li>
+							<li>Which had something to do with Acceptance Criteria/Acceptance tests</li>
+							<li>It was all very confusing to begin with which meant that I misused scenarios</li>
+							<li>Now, if I am getting confused then it's likely so are others</li>
+							<li>Which is a problem as testing is hugely being affected by these tools and approaches and we struggle to explain them</li>
+							<li>I want to help clear the confusion</li>
+							<li>Rather than talking about how these tools and approaches work</li>
+							<li>I'm going to present a series of sins that I myself have committed and most likely so have you</li>
+							<li>With a hope that you can use the sins as a heuristic to evaluate your current testing activities</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Sin 1</h3>
+					<img src='./images/scenario_intro_1.png' alt='scenario intro 1' style="border: 20px solid #282c34; background: none; box-shadow: none"/>
+					<div class="fragment">
+						<p>OR</p>
+						<h4>Using scenarios as test cases</h4>
+					</div>
+				</section>
+
+				<section>
+					<img src='./images/test_case_example_1.png' alt='test case example' style="border: 20px solid #282c34; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<img src='./images/test_case_example_2.png' alt='test case example 2' style="width: 80%; border: 20px solid #282c34; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<img src='./images/pimpmyridefail.png' alt='test case example 2' style="width: 80%; border: none; background: none; box-shadow: none"/>
+					<p style="font-size: 0.3em; text-align: right; margin-right: 100px; margin-top: -20px">http://theverybesttop10.com/pimp-my-ride-fails/</p>
+
+					<aside class="notes">
+						<p>Same mistakes as before</p>
+					</aside>
+				</section>
+
+				<section>
+					<img src='./images/platebalancing.jpeg' alt='test case example 2' style="width: 80%; border: 5px solid white; background: none; box-shadow: none"/>
+					<p style="font-size: 0.3em; text-align: right; margin-right: 100px; margin-top: -20px">https://sullivanstory.files.wordpress.com/2013/10/image-axd.jpeg</p>
+
+					<aside class="notes">
+						<p>Maintenance overheads</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>How to atone?</h3>
+					<br />
+					<ul>
+						<li>Stop using scenarios as test scripts</li>
+						<li class="fragment">Start getting the team involved in developing scenarios</li>
+						<li class="fragment">Be wary of tools</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>Requirements discovery / requirements discussion</li>
+							<li>Refuctoring your cukes - Matt Wynne</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Sin 2</h3>
+					<img src='./images/scenario_intro_2.png' alt='scenario intro 2' style="border: 20px solid #282c34; background: none; box-shadow: none"/>
+					<div class="fragment">
+						<p>OR</p>
+						<h4>Documenting acceptance criteria as scenarios</h4>
+					</div>
+				</section>
+
+				<section>
+					<img src='./images/scenario_acs.png' alt='Examples with no a/c' style="width: 65%; border: 20px solid #282c34; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<img src='./images/noise.jpg' alt='Blah blah blah blah' style="width: 55%; border: none; background: none; box-shadow: none"/>
+					<p style="font-size: 0.3em; text-align: right; margin-right: 240px; margin-top: -20px">https://www.flickr.com/photos/dalbera/3600301569/</p>
+				</section>
+
+				<section>
+					<h4>'We need to create a new scenario for this requirement'</h4>
+					<br />
+					<h3 class="fragment" style="color: red">Scope creep!</h3>
+				</section>
+
+				<section>
+					<h3>How to atone?</h3>
+					<img src='./images/examplemapping.png' alt='Example mapping' style="width: 70%; border: none; background: none; box-shadow: none"/>
+					<p style="font-size: 0.7em; text-decoration: underline">https://cucumber.io/blog/2015/12/08/example-mapping-introduction</p>
+				</section>
+
+				<section>
+					<img src='./images/example-mapping-example.png' alt='Example mapping' style="width: 70%; border: 20px solid #282c34; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<h3>Sin 3</h3>
+					<img src='./images/scenario_intro_3.png' alt='scenario intro 3' style="border: 20px solid #282c34; background: none; box-shadow: none"/>
+					<div class="fragment">
+						<p>OR</p>
+						<h4>Automated scenarios as acceptance tests</h4>
+						<p>equals</p>
+						<h4>Awesome automation</h4>
+					</div>
+				</section>
+
+				<section>
+					<div style="width: 475px; float: left">
+						<h4>Imperative</h4>
+						<img src='./images/imperative.png' alt='imperative scenario' style="border: 5px solid #282c34; background: none; box-shadow: none"/>
+					</div>
+					<div style="width: 475px; float: left">
+						<h4>Declarative</h4>
+						<img src='./images/declarative.png' alt='declarative scenario' style="border: 5px solid #282c34; background: none; box-shadow: none"/>
+					</div>
+					<aside class="notes">
+						<p>Imperative - Lots of steps, very granular</p>
+						<p>Declarative - High level, focused on user value than actions</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>"You can't specify love"</h3>
+
+					<aside class="notes">
+						<p>At a peer conference in NY recently we were discussing BDD</p>
+						<p>Use love analogy - My wife tells me what I can do to show my love to her, but if I automate it she's going to pissed!</p>
+					</aside>
+				</section>
+
+				<section>
+					<img src='./images/wifeautomation.png' alt='Wife automation' style="border: none; background: none; box-shadow: none"/>
+					<p style="font-size: 0.3em; text-align: right; margin-right: 23px; margin-top: -20px">http://uk.businessinsider.com/programmer-automates-his-job-2015-11</p>
+				</section>
+
+				<!-- <section>
+					<h3>ATDD perspective</h3>
+					<img src='./images/wheels.png' alt='Wheels within wheels' style="margin-top: -10px; border: none; background: none; box-shadow: none"/>
+				</section>
+
+				<section>
+					<h3>ATDD perspective</h3>
+					<img src='./images/gsproblem.png' alt='GS Problems' style="margin-top: -10px; border: 10px solid white; background: none; box-shadow: none"/>
+					<p style="font-size: 0.3em; text-align: right; margin-right: 105px; margin-top: -20px">An introduction to General Systems Thinking: Weinberg, J. (1975), pg. 18</p>
+				</section> -->
+
+				<section>
+					<img src='./images/muscles-in-mirror.jpeg' style="width: 40%; border: 1px solid grey; background: none; box-shadow: none" alt='muscles in mirror' />
+					<h4>Illusions of coverage</h4>
+
+					<aside class="notes">
+						<p>'Bias towards doneness'</p>
+						<p>You're getting the worse out of your automation and your scenarios</p>
+					</aside>
+				</section>
+
+				<section>
+						<img src='./images/fartmodel.png' alt='Fart model' style="width: 80%; margin-top: -10px; border: 10px solid white; background: none; box-shadow: none"/>
+						<p style="font-size: 0.3em; text-align: right; margin-right: 85px; margin-top: -20px">Regression Testing, the F.A.R.T Model - https://www.youtube.com/watch?v=P2PUXqasvGI</p>
+						<h4>Regression checking antipatterns</h4>
+				</section>
+
+				<section>
+					<h3>How to atone?</h3>
+					<br />
+					<ul>
+						<li class="fragment">Decouple your automation strategy from your scenarios</li>
+						<li class="fragment">Identify risks first, tools second</li>
+						<li class="fragment">Put the human back in the centre of your automation</li>
+					</ul>
+				</section>
+
+				<!-- <section>
+					<h3>Let's recap</h3>
+					<h4>Scenarios <span class="fragment">!= Acceptance tests</span></h4>
+
+					<aside class="notes">
+						<ul>
+							<li>Originally this talk was focused on scenarios</li>
+							<li>As a by product they can be used as tests</li>
+							<li>But the primary role of scenarios is similar to using a diagram</li>
+						</ul>
+					</aside>
+				</section> -->
+
+				<section>
+					<h3>Let's recap</h3>
+					<p>We help deliver what the business wants as a team by using scenarios to enable discussion and collaboration not by:</p>
+					<ul>
+						<li class="fragment">Using scenarios/examples as test scripts</li>
+						<li class="fragment">Using scenarios as A/Cs</li>
+						<li class="fragment">Basing your automation on scenarios alone</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>Main benefit
+							- requirements discovery
+							- requirements discussion</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- <section>
+					<h3>Thanks to:</h3>
+					<p>Alan Parkinson</p>
+					<p>Lisa Crispin</p>
+					<p>TestBash bosses</p>
+					<p>Dan Ashby / Tony Bruce</p>
+					<p>Attendees of the WITS Peer Workshop:</p>
+					<small>Isaiah Decastro, Robert Guzman, Simon P. Schrijver, Justin Rohrman, James Bach, Anders Dinsen, Richard Bradshaw, Ash Coleman, Jesse Alford, Bernie Berger, Paul Holland, Natalie Bennett, Maaret Pyhäjärvi, Mark Winteringham, Anna Royzman, Angel Trinh, Naveed Bashir, Tristan Delgato</small>
+				</section> -->
+
+				<section>
+					<h1>Thank you</h1>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/www.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>mwtestconsultancy.co.uk</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/twitter.png" style="width: 20%; border: 0px; box-shadow: none; background: none"/>
+						<p><small style='margin-top: -20px'>@2bittester</small></p>
+					</div>
+
+					<div style="float: left; width: 320px; border-top: 1px solid grey">
+						<img src="./images/linkedin.png" style="width: 20%; border: 0px; box-shadow: none; background: none">
+						<p><small style='margin-top: -20px'>lnked.in/markwinteringham</small></p>
+					</div>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+        			{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
+
+http://www.slideshare.net/alan_parkinson/testing-requirements-with-bdd
+https://ebiinterfaces.wordpress.com/2015/02/13/ux-design-bioinformatics-and-cars/
