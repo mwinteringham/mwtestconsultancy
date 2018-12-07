@@ -2,7 +2,7 @@
 layout: post
 title:  "Automation in Testing is live!"
 date:   2018-02-04 18:45:00 +0100
-permalink: automation-in-testing
+permalink: /automation-in-testing/index.html
 tags: automation automation-in-testing
 image: /img/article/tools.jpg
 ---

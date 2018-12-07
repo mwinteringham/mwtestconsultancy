@@ -2,7 +2,7 @@
 layout: post
 title:  "Introducing the Selenium to Rest-assured adapter"
 date:   2018-11-07 10:00:00 +0100
-permalink: selenium-to-rest-assured-adapter
+permalink: /selenium-to-rest-assured-adapter/index.html
 tags: selenium rest-assured api-testing automation
 image: /img/article/multiplug.jpg
 description: Learn about a new adapter that allows you to easily convert Cookies between Selenium and Rest-assured

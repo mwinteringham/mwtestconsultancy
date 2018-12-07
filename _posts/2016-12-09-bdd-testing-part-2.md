@@ -2,7 +2,7 @@
 layout: post
 title:  "Is BDD Testing? Collaboration and testers"
 date:   2016-12-09 12:00:00 +0100
-permalink: bdd-testing-part-2
+permalink: /bdd-testing-part-2/index.html
 tags: BDD
 image: /img/article/bdd.jpg
 ---

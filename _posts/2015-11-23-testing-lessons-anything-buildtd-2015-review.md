@@ -2,7 +2,7 @@
 layout: post
 title:  "Testing lessons learnt: Anything build party & TestLab @ AgileTD 2015"
 date:   2015-11-23 21:06:00 +0100
-permalink: testing-lessons-anything-buildtd-2015-review
+permalink: /testing-lessons-anything-buildtd-2015-review/index.html
 tags: conference
 image: /img/article/rube.jpg
 ---

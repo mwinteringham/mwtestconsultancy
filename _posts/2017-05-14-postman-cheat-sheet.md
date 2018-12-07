@@ -2,7 +2,7 @@
 layout: post
 title:  "Postman cheat sheet - Quick guide to automating APIs"
 date:   2017-05-14 16:56:00 +0100
-permalink: postman-cheat-sheet
+permalink: /postman-cheat-sheet/index.html
 tags: API-testing postman
 image: /img/article/cheatsheet.jpg
 ---

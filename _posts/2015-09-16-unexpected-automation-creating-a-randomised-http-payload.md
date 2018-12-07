@@ -2,7 +2,7 @@
 layout: post
 title:  "Unexpected Automation: Creating a randomised HTTP payload"
 date:   2015-09-16 00:36:00 +0100
-permalink: unexpected-automation-creating-a-randomised-http-payload
+permalink: /unexpected-automation-creating-a-randomised-http-payload/index.html
 tags: node
 image: /img/article/dice.jpg
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Postman - Sharing payloads"
 date:   2016-10-27 14:29:00 +0100
-permalink: postman-sharing-payloads
+permalink: /postman-sharing-payloads/index.html
 tags: automation postman API-testing
 image: /img/article/sharing.jpg
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Unexpected Automation: Creating an automated form filler with Chrome Extensions"
 date:   2017-03-02 13:15:00 +0100
-permalink: automated-form-filler
+permalink: /automated-form-filler/index.html
 tags: automation unexpected-automation chrome-extensions
 image: /img/article/steelwork.jpg
 ---

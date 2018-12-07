@@ -2,7 +2,7 @@
 layout: post
 title:  "Quick copying HTTP requests from Developer tools to Postman"
 date:   2017-01-11 13:00:00 +0100
-permalink: copying-http-requests-dev-tools-postman
+permalink: /copying-http-requests-dev-tools-postman/index.html
 tags: postman proxies
 image: /img/article/photocopy.jpg
 ---

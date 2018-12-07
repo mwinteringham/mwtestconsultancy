@@ -2,7 +2,7 @@
 layout: post
 title:  "API test framework templates - A quick start repository"
 date:   2017-01-17 17:53:00 +0100
-permalink: api-test-framework
+permalink: /api-test-framework/index.html
 tags: automation API-testing
 image: /img/article/steelwork.jpg
 ---

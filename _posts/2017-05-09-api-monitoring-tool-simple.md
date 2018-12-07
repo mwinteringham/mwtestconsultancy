@@ -2,7 +2,7 @@
 layout: post
 title:  "Unexpected Automation: Create a simple API monitoring tool in 5 steps"
 date:   2017-05-09 11:08:00 +0100
-permalink: api-monitoring-tool-simple
+permalink: /api-monitoring-tool-simple/index.html
 tags: API-testing postman unexpected-automation
 image: /img/article/heartbeat.jpg
 ---

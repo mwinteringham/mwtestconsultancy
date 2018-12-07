@@ -2,7 +2,7 @@
 layout: post
 title:  "Postman - Parsing HTML responses"
 date:   2016-11-13 15:44:00 +0100
-permalink: postman-parsing-html-responses
+permalink: /postman-parsing-html-responses/index.html
 tags: automation postman API-testing
 image: /img/article/decipher.png
 ---

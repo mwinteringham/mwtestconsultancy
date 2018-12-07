@@ -2,7 +2,7 @@
 layout: post
 title:  "Wiremock chrome extension: Simple UI for programming stubs"
 date:   2017-02-02 12:00:00 +0100
-permalink: wiremock-chrome-extension
+permalink: /wiremock-chrome-extension/index.html
 tags: exploratory-testing chrome-extensions
 image: /img/article/wiremock.png
 ---

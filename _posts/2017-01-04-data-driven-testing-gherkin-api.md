@@ -2,7 +2,7 @@
 layout: post
 title:  "Data driven testing: Moving your Gherkin scenarios to API"
 date:   2017-01-04 22:16:00 +0100
-permalink: data-driven-testing-gherkin-api
+permalink: /data-driven-testing-gherkin-api/index.html
 tags: automation postman API-testing
 image: /img/article/cucumbers.jpg
 ---

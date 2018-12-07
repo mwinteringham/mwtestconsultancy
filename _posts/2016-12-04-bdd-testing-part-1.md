@@ -2,7 +2,7 @@
 layout: post
 title:  "Is BDD Testing? A model for testers"
 date:   2016-12-04 12:00:00 +0100
-permalink: bdd-testing-part-1
+permalink: /bdd-testing-part-1/index.html
 tags: BDD
 image: /img/article/bdd.jpg
 ---

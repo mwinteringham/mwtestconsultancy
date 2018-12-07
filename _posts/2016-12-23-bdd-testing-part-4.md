@@ -2,7 +2,7 @@
 layout: post
 title:  "Is BDD testing? Answers and test strategy"
 date:   2016-12-23 12:12:00 +0100
-permalink: bdd-testing-part-4
+permalink: /bdd-testing-part-4/index.html
 tags: BDD
 image: /img/article/bdd.jpg
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Anti-pattern: Cross browser checking"
 date:   2016-06-04 14:21:00 +0100
-permalink: cross-browser-checking-anti-pattern
+permalink: /cross-browser-checking-anti-pattern/index.html
 tags: automation
 image: /img/article/devices.png
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Unexpected Automation: Quickly creating test data in MongoDB"
 date:   2015-07-07 21:57:00 +0100
-permalink: unexpected-automation-quickly-creating-test-data-in-mongodb
+permalink: /unexpected-automation-quickly-creating-test-data-in-mongodb/index.html
 tags: automation
 image: /img/article/containers.jpg
 ---

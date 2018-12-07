@@ -2,7 +2,7 @@
 layout: post
 title:  "Debug API checks quickly with proxy tools"
 date:   2017-09-28 20:26:00 +0100
-permalink: debug-api-check-proxy-tools
+permalink: /debug-api-check-proxy-tools/index.html
 tags: API-testing
 image: /img/article/police.jpg
 ---

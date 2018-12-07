@@ -2,7 +2,7 @@
 layout: post
 title:  "Unexpected Automation: Creating dashboards with ExpressJS and JQuery - Part 1"
 date:   2015-03-19 13:51:00 +0100
-permalink: unexpected-automation-custom-dashboards-with-expressjs-and-jquery
+permalink: /unexpected-automation-custom-dashboards-with-expressjs-and-jquery/index.html
 tags: automation node
 image: /img/article/cockpit.jpg
 ---

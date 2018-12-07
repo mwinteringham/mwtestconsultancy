@@ -2,7 +2,7 @@
 layout: post
 title:  "Restful-Booker: Your one stop API testing demo"
 date:   2017-08-18 07:10:00 +0100
-permalink: api-testing-demo
+permalink: /api-testing-demo/index.html
 tags: API-testing automation postman
 image: /img/article/tubemap.jpg
 ---

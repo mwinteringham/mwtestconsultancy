@@ -2,7 +2,7 @@
 layout: post
 title:  "Proxies: Setting up POSTMAN proxy"
 date:   2015-07-27 17:32:00 +0100
-permalink: proxies-setting-up-postman-proxy
+permalink: /proxies-setting-up-postman-proxy/index.html
 tags: proxies
 image: /img/article/binocular.jpg
 ---

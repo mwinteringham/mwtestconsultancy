@@ -2,7 +2,7 @@
 layout: post
 title:  "Is BDD testing? Outside in development and testers"
 date:   2016-12-13 17:35:00 +0100
-permalink: bdd-testing-part-3
+permalink: /bdd-testing-part-3/index.html
 tags: BDD
 image: /img/article/bdd.jpg
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Proxies: Setting up and using BurpSuite"
 date:   2015-07-27 20:00:00 +0100
-permalink: proxies-setting-up-burpsuite-proxy
+permalink: /proxies-setting-up-burpsuite-proxy/index.html
 tags: proxies
 image: /img/article/binocular.jpg
 ---

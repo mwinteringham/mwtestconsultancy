@@ -2,7 +2,7 @@
 layout: post
 title:  "Say TaTTa to your TuTTu: Liverpool tester gathering"
 date:   2016-11-22 15:45:00 +0100
-permalink: say-tatta-to-your-tuttu-talk
+permalink: /say-tatta-to-your-tuttu-talk/index.html
 tags: automation video public-talk workshop
 image: /img/article/tuttu.jpg
 ---
