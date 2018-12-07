@@ -2,7 +2,7 @@
 layout: post
 title:  "How to build an automated API test framework - Part 1"
 date:   2016-04-28 15:07:00 +0100
-permalink: automated-api-framework-part-1
+permalink: /automated-api-framework-part-1/index.html
 tags: automation API-testing
 image: /img/article/scaffolding.jpg
 ---
