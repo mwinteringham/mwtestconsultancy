@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "The test automation pyramid is a heuristic not a strategy"
-date:   2019-01-30 10:00:00 +0100
+date:   2019-01-31 00:08:00 +0100
 permalink: /the-test-automation-pyramid-is-a-heuristic-not-a-strategy/index.html
 tags: automation pyramid automation-strategy
-image: /img/article/pyramid.jpg
+image: /img/article/pyramids.png
 description: The automation pyramid is better used as a health check heuristic than a basis for a strategy
 ---
 
