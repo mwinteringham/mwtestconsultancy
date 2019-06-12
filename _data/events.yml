@@ -1,47 +1,39 @@
-- startdate: 2019-01-29
-  enddate: 2019-01-31
+- startdate: 2019-09-30
+  enddate: 2019-10-02
   name: Automation in Testing
-  url:  https://www.addq.se/utbildningar/automation-in-testing/
-  country:  Stockholm, Sweden
-  location: Westmanska Palatset, Holländargatan 17 i Stockholm
+  url:  https://ministryoftesting.com/events/testbash-manchester-2019
+  country: Manchester, UK
+  location: The Lowry, Manchester
   year: 2019
 
-- startdate: 2019-02-14
-  enddate: 2019-02-15
-  name: Approval Testing - Superpower your feedback
-  url: http://europeantestingconference.eu/2019/
-  country:  Valencia, Spain
-  location: Fundación Bancaja, Valencia, Spain
-  year: 2019
-
-- startdate: 2019-03-13
-  enddate: 2019-03-15
+- startdate: 2019-09-09
+  enddate: 2019-09-11
   name: Automation in Testing
-  url:  https://app1.edoobox.com/en/HoT/Testing%20Classes%20-%20Switzerland/Workshop.ed.311770/
-  country:  Zurich, Switzerland
-  location: OBC Suisse AG, Europaallee 41, 8021 Zürich
+  url:  https://ministryoftesting.com/events/testbash-germany-2019
+  country: Munich, Germany
+  location: Excelsior, Schützenstraße 11, 80335 München, Germany
   year: 2019
-
-- startdate: 2019-04-01
-  enddate: 2019-04-03
+  
+- startdate: 2019-09-16
+  enddate: 2019-09-18
+  name: Automation in Testin
+  url:  https://rebelsof.it/courses/HoT/CH/Training.ed.364599/
+  country: Zurich, Switzerland
+  location: OBC Swiss AG, Europaallee 41, 8004 Zürich, Switzerland
+  year: 2019
+  
+- startdate: 2019-10-21
+  enddate: 2019-10-23
   name: Automation in Testing
-  url:  https://www.ministryoftesting.com/events/testbash-brighton-2019
-  country:  Brighton, U.K.
-  location: Clarendon Centre Brighton
+  url:  https://ministryoftesting.com/events/testbash-australia-2019
+  country: Sydney, Australia
+  location: Fishburners, Sydney NSW 2000, Australia
   year: 2019
-
-- startdate: 2019-04-04
-  enddate: 2019-04-04
-  name: Approval Testing - Superpower your feedback
-  url: https://www.ministryoftesting.com/events/testbash-brighton-2019
-  country:  Brighton, U.K.
-  location: Clarendon Centre Brighton
-  year: 2019
-
-- startdate: 2019-04-15
-  enddate: 2019-04-17
+  
+- startdate: 2019-10-26
+  enddate: 2019-10-28
   name: Automation in Testing
-  url:  http://black-koi.consulting/training.html
-  country:  Malmo, Sweden
-  location: St. Gertrud, Malmö
-  year: 2019
+  url:  https://ministryoftesting.com/events/testbash-new-zealand-2019
+  country: Wellington, New Zealand
+  location: PWC Centre, 10 Waterloo Quay, Wellington, 6011
+  year: 2019  
