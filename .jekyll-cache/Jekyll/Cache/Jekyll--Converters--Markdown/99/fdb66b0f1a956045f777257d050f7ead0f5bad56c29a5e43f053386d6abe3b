@@ -1,0 +1,61 @@
+I"<p><a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman - Parsing HTML response" width="320" height="132" class="alignright size-full wp-image-335" /></a></p>
+
+<p>I recently did a blog post on <a href="http://www.mwtestconsultancy.co.uk/postman-sharing-payloads/">sharing and comparing values in XML and JSON payloads</a> after getting some questions around the topic.  Another common question I get in my training sessions that are similar to parsing payloads is around parsing HTML so that you can store values or assert on them for checking purposes, so again I thought I would share my solution on how you can parse an HTML response.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>Let’s say we have a web page like the one below that we are running checks against:</p>
+
+<p><a href="/img/2016/11/parsing-html-postman-example.png"><img src="/img/2016/11/parsing-html-postman-example-1024x458.png" alt="Parsing HTML response - a screenshot of w3schools list page" width="768" height="344" class="aligncenter size-large wp-image-345" /></a></p>
+
+<p>What if we wanted to check, say for example, that the correct text was added to the first and second items of the ordered list?  When HTML is retrieved by <a href="https://www.getpostman.com/">Postman</a> it’s stored as a string in a variable named <code class="language-plaintext highlighter-rouge">responseBody</code> meaning we could do a string comparison asserting that the sub-string ‘First item’ and ‘Second item’ exist in <code class="language-plaintext highlighter-rouge">responseBody</code>.  However, this is a very simplistic way of asserting with little flexibility.  What if there was more than one ‘First item’ or ‘Second item’ on the page, what if you wanted to get the values from those items to use in a future request?</p>
+
+<h2 id="parsing-html-payloads">Parsing HTML payloads</h2>
+
+<p>Firstly, click <a href="https://app.getpostman.com/run-collection/c00dd05c5cfd6f192b24">here to download the Postman collection</a> to access the requests and tests.  You will find a single request that requests the page then runs a couple of checks.  So let’s take a look at the code in the Test tab:</p>
+
+<p><strong>1. Native JavaScript solution</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">GET www.w3schools.com/html/html_lists.asp</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var responseHTML = document.createElement("html");
+responseHTML.innerHTML = responseBody;
+
+inputs = responseHTML.querySelector(".w3col &gt; ol &gt; li:nth-child(1)");
+
+tests["First item in list is named 'First item'"] = inputs.innerHTML === "First item";
+</code></pre></div></div>
+<p>Let’s review this test code:</p>
+<ol>
+  <li>Since <a href="https://www.getpostman.com/">Postman</a> uses JavaScript we can build <a href="https://en.wikipedia.org/wiki/Document_Object_Model">DOM</a> (Document object model) on the fly by calling <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"><code class="language-plaintext highlighter-rouge">document.createElement("html")</code></a> and then adding the <code class="language-plaintext highlighter-rouge">responseBody</code> into the DOM to fill it with the HTML under tests</li>
+  <li>We can use the method <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"><code class="language-plaintext highlighter-rouge">querySelector</code> </a> to execute a <a href="http://www.w3schools.com/cssref/css_selectors.asp">CSS locator</a> search for the first list item we want to assert against</li>
+</ol>
+
+<p><strong>2. JQuery solution</strong></p>
+
+<p>The first solution uses native JavaScript functions but you Postman also supports <a href="http://jquery.com">jQuery</a> and you can use it to achieve the same outcome as the native JavaScript approach.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GET www.w3schools.com/html/html_lists.asp</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var html = $.parseHTML(responseBody); 
+var jqResponseHTML = $(html);
+result = jqResponseHTML.find('.w3col &gt; ol &gt; li:nth-child(2)');
+
+tests["First item in list is named 'Second item'"] = result[0].innerHTML == "Second item";
+</code></pre></div></div>
+<p>Let’s review this test code:</p>
+<ol>
+  <li>We use <a href="https://api.jquery.com/jquery.parsehtml/"><code class="language-plaintext highlighter-rouge">parseHTML()</code></a> to convert the <code class="language-plaintext highlighter-rouge">responseBody</code> string into a <a href="https://en.wikipedia.org/wiki/Document_Object_Model">DOM</a> and then call <code class="language-plaintext highlighter-rouge">$(html)</code> to allow us to access <a href="http://jquery.com">jQuery</a> functions</li>
+  <li>The <a href="http://jquery.com">jQuery</a> function <a href="https://api.jquery.com/find/"><code class="language-plaintext highlighter-rouge">find()</code></a> allows us to do a <a href="http://www.w3schools.com/cssref/css_selectors.asp">CSS locator</a> search for the second list item we want to assert against</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The above examples show that parsing HTML by using either approach results in a quick and easy way to create a searchable DOM based on your requested HTML with all the standard JavaScript and/or <a href="http://jquery.com">jQuery</a> methods you need to assert and store information from your original request.</p>
+
+<h3 id="references">References</h3>
+
+<ol>
+  <li>W3Schools - <a href="http://www.w3schools.com">http://www.w3schools.com</a></li>
+  <li>JavaScript API - <a href="https://developer.mozilla.org">https://developer.mozilla.org</a></li>
+  <li>jQuery API - <a href="https://api.jquery.com">https://api.jquery.com</a></li>
+</ol>
+:ET

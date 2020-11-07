@@ -1,0 +1,56 @@
+I"T<p>Last year I gave a talk at the Selenium Conference in Berlin about using API calls to help speed up automated checks and make them more deterministic. The main point of the talk was that some of the actions we carry out in the UI, such as creating data or configuring an app to be in a certain state, can sometimes be carried out on the HTTP API level. The talk itself went down very well and I’m glad to hear that a lot of people have tried out the techniques that I presented in Berlin.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="315" style="display:block;  margin: 0 auto;" src="https://www.youtube.com/embed/ugAlCZBMOvM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+<p><br /></p>
+
+<p>Which brings me to the adapter. At one part in the talk, I demonstrate how we can use HTTP tools like <a href="http://rest-assured.io/">Rest-assured</a> to:</p>
+<ol>
+  <li>Make an initial HTTP call to log into our application</li>
+  <li>Take the Cookies from the response and store them in the browser using Selenium.</li>
+  <li>Refresh the UI to use the Cookies to log into the application.</li>
+</ol>
+
+<p>This results in you being able to log in quickly and cleanly but it does require a bit of work to support converting the Cookies. Since the talk, I’ve had numerous requests for help around sharing Cookies between Rest-assured and <a href="https://www.seleniumhq.org/">Selenium</a>. So I have created a small adapter to help people writing checks to quickly share Cookies between Rest-assured and Selenium.</p>
+
+<h2 id="what-does-the-adapter-do">What does the adapter do?</h2>
+<p>The adapter is <a href="https://github.com/mwinteringham/selenium-to-restassured/releases">a small Jar file</a> that you can add to your project that gives you two options. You can either convert Cookies from Rest-assured to Selenium:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">io</span><span class="o">.</span><span class="na">restassured</span><span class="o">.</span><span class="na">http</span><span class="o">.</span><span class="na">Cookie</span> <span class="n">cookieToConvert</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getDetailedCookie</span><span class="o">(</span><span class="s">"COOKIE NAME"</span><span class="o">)</span>
+
+<span class="nc">CookieAdapter</span> <span class="n">cookieAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CookieAdapter</span><span class="o">();</span>
+<span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Cookie</span> <span class="n">convertedCookie</span> <span class="o">=</span> <span class="n">cookieAdapter</span><span class="o">.</span><span class="na">convertToSelenium</span><span class="o">(</span><span class="n">cookieToConvert</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>This can be handy when you have made an HTTP login request and you want to take the response Cookies and store them in the browser. Once you have the converted cookies you can add them to your browser like so:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">addCookie</span><span class="o">(</span><span class="n">convertedCookie</span><span class="o">);</span>
+<span class="n">driver</span><span class="o">.</span><span class="na">navigate</span><span class="o">().</span><span class="na">refresh</span><span class="o">();</span> <span class="c1">// We refresh the page so it reads the newly added cookies</span>
+</code></pre></div></div>
+
+<p>Alternatively, you can convert from Selenium to Rest-assured:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Cookie</span> <span class="n">cookieToConvert</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">getCookieNamed</span><span class="o">(</span><span class="s">"COOKIE NAME"</span><span class="o">);</span>
+
+<span class="nc">CookieAdapter</span> <span class="n">cookieAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CookieAdapter</span><span class="o">();</span>
+<span class="n">io</span><span class="o">.</span><span class="na">restassured</span><span class="o">.</span><span class="na">http</span><span class="o">.</span><span class="na">Cookie</span> <span class="n">adaptedCookie</span> <span class="o">=</span> <span class="n">cookieAdapter</span><span class="o">.</span><span class="na">convertToRestAssured</span><span class="o">(</span><span class="n">seleniumCookie</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>I find this particularly helpful if I am doing API testing with an application that has a complex login process. I can log into the application via the UI, grab the necessary logged in Cookies from the browser, close the browser down, and then use the Cookies in my HTTP requests like so:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">cookie</span><span class="o">(</span><span class="n">convertedCookie</span><span class="o">)</span> <span class="c1">// I add in the converted cookie here</span>
+  <span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"http://my-url"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="where-can-i-find-it">Where can I find it?</h2>
+
+<p>The adapter can be found on GitHub in the following repository: <a href="https://github.com/mwinteringham/selenium-to-restassured">https://github.com/mwinteringham/selenium-to-restassured</a></p>
+
+<p>To install, simply head to the releases folder and pull down the latest JAR and add it to your project. Hopefully, there will be proper Maven support in the future.</p>
+
+<h2 id="feedback-welcome">Feedback welcome</h2>
+
+<p>So there you have it! It’s a small project but it’s a work in progress. So if you are planning to use it, or are currently using it, I’d love to hear your feedback to improve it further. Any issues or feature requests, please raise them in the issues section of the repository <a href="https://github.com/mwinteringham/selenium-to-restassured/issues">https://github.com/mwinteringham/selenium-to-restassured/issues</a></p>
+:ET

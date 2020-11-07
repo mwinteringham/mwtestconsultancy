@@ -1,0 +1,11 @@
+I"�<p>I recently blogged about one of my favourite tools POSTMAN and how to set up its proxy server.  POSTMAN is a great a tool but there are a few limitations I find with it:</p>
+<ol>
+	<li>It's a Chrome app so therefore you can't use it with other browsers or other tools (I use proxies to debug HTTP calls from IDEs a lot to compare and contrast for debug purposes)</li>
+	<li>Whilst POSTMAN saves requests it doesn't save responses which can be a problem when you are trying to capture context specific requests, such as deleting data that has been specifically setup before that request.</li>
+</ol>
+<p>So while I use POSTMAN regularly there are times I require a different proxy server that offer solutions to the problems above and that proxy is <a href="http://portswigger.net/">BurpSuite</a>.  So in spirit of balance and because I think others may benefit from using <a href="http://portswigger.net/">BurpSuite</a> I thought I would blog about setting up the BurpSuite proxy and demonstrate some of the features that I use regularly.</p>
+<h3>Install BurpSuite</h3>
+<p>Unless a client has a pro license I tend to use the free version of <a href="http://portswigger.net/">BurpSuite</a> since it contains all the features I need.  You can download the free version for the <a href="https://portswigger.net/burp/download.html">Portswigger site</a> and it is a standalone JAR file that you can double click on to load up.</p>
+<h3>Setting up BurpSuite Proxy</h3>
+<p><a href="http://portswigger.net/">BurpSuite</a> proxy comes out of the box pre-configured and I find that those settings work for me, so the act of loading up BurpSuite means that its proxy server is on.  However, as default <a href="http://portswigger.net/">BurpSuite</a> enables it interceptor which can be used for things like <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man in the middle attacks</a> or data driven testing, but I tend to use proxies in a passive manner so I prefer to turn it off.</p>
+:ET

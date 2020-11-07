@@ -1,0 +1,116 @@
+I"�<p><a href="https://www.getpostman.com/"><img src="/img/2016/10/postman.png" alt="Postman logo" width="320" height="132" class="alignright size-full wp-image-335" /></a></p>
+
+<p>As part of my workshops, I offer support afterwards to help answer questions attendees have once they are back at work and applying what they’ve learnt in the real world.  I was asked a question recently about Postman around sharing and comparing payloads across requests.  It’s a question that has popped up a few times, so I thought I would share my solutions towards how you can get Postman to store payloads and then retrieve them to use as a comparator in later requests.</p>
+
+<h2 id="the-problem">The problem</h2>
+<p>For this example, I will be using <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a> which you can clone down and run yourself by following <a href="https://github.com/mwinteringham/restful-booker/blob/master/README.md">these instructions</a>.</p>
+
+<p>As part of my testing of <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a> I have two endpoints that send me back the following responses:</p>
+
+<p><code class="language-plaintext highlighter-rouge">POST /booking</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "bookingid": 12,
+  "booking": {
+    "firstname": "Sally",
+    "lastname": "Brown",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2013-02-23",
+      "checkout": "2014-10-23"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">GET /booking/12</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "firstname": "Sally",
+  "lastname": "Brown",
+  "totalprice": 111,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2013-02-23",
+    "checkout": "2014-10-23"
+  },
+  "additionalneeds": "Breakfast"
+}
+</code></pre></div></div>
+
+<p>So I need to work out how I can compare the booking object that exists in the <code class="language-plaintext highlighter-rouge">POST /booking</code> response body to the booking object in the <code class="language-plaintext highlighter-rouge">GET /booking/{id}</code> and since <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a> supports both XML and JSON how I can compare both formats.</p>
+
+<h2 id="comparing-xml-payloads">Comparing XML Payloads</h2>
+
+<p>Firstly, click <a href="https://app.getpostman.com/run-collection/59b533b915c9c72ba26d">here to download the Postman collection</a> to access the requests and tests.  You will find that there are two requests, the first is creating a booking and the second is retrieving a booking.  So let’s take a look at the code in the Test tab:</p>
+
+<p><strong>1. Create XML booking</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var parsedResponse = xml2Json(responseBody);
+postman.setGlobalVariable("created_id", parsedResponse['created-booking'].bookingid);
+
+postman.setGlobalVariable("original_response", responseBody);
+</code></pre></div></div>
+
+<p>Let’s review this test code:</p>
+<ol>
+  <li>Responsebody is a special variable in Postman that stores the response body <strong>as a string</strong> meaning if we want to do something programmatic with the response body we need to parse it</li>
+  <li><code class="language-plaintext highlighter-rouge">xml2Json</code> allows to easily convert an XML object into a object meaning we can call <code class="language-plaintext highlighter-rouge">parsedResponse['created-booking'].bookingid</code> to get the id we need for the next request</li>
+  <li><code class="language-plaintext highlighter-rouge">setGlobalVariable</code> allows us to store values <strong>as strings</strong> this means if we want to store a payload we have to store it as a string.  Attempting to store an object as a global variable will result in the string <code class="language-plaintext highlighter-rouge">[object Object]</code> being stored.</li>
+</ol>
+
+<p><strong>2. Get booking and assert</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var currentResponse = xml2Json(responseBody);
+var previousResponse = xml2Json(globals.original_response);
+
+var flattenCurrentResponse = JSON.stringify(currentResponse.booking);
+var flattenPreviousResponse = JSON.stringify(previousResponse['created-booking'].booking);
+
+tests["Assert responses match"] = flattenCurrentResponse === flattenPreviousResponse;
+</code></pre></div></div>
+<p>Let’s review this test code:</p>
+
+<ol>
+  <li>We can get our stored environment variable by calling <code class="language-plaintext highlighter-rouge">globals.orginal_response</code> to get the response as a string</li>
+  <li>We have to use <code class="language-plaintext highlighter-rouge">JSON.stringify</code> to convert our objects back to strings as comparing objects in JavaScript is a tricky thing to do</li>
+</ol>
+
+<h2 id="sharing-json-payloads">Sharing JSON Payloads</h2>
+
+<p>Firstly, click <a href="https://app.getpostman.com/run-collection/9d41fa57b3c1da1595ff">here to download the Postman collection</a> to access the requests and tests.  You will find that there are two requests, the first is creating a booking and the second is retrieving a booking.  So let’s take a look at the code in the Test tab:</p>
+
+<p><strong>1. Create XML booking</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var parsedResponse = JSON.parse(responseBody);
+postman.setGlobalVariable("created_id", parsedResponse.bookingid);
+
+postman.setGlobalVariable("original_response", responseBody);
+</code></pre></div></div>
+
+<p>Let’s review this test code:</p>
+<ol>
+  <li>We use <code class="language-plaintext highlighter-rouge">JSON.parse</code> to parse the body as <code class="language-plaintext highlighter-rouge">responseBody</code> is stored <strong>as a string</strong></li>
+</ol>
+
+<p><strong>2. Get booking and assert</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var currentResponse = JSON.parse(responseBody);
+var previousResponse = JSON.parse(globals.original_response);
+
+var flattenCurrentResponse = JSON.stringify(currentResponse);
+var flattenPreviousResponse = JSON.stringify(previousResponse.booking);
+
+tests["Assert responses match"] = flattenCurrentResponse === flattenPreviousResponse;
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So there you have two demonstrations of storing bodies across requests.  The actual code required is quite simple but does require a few workarounds especially around the storing and retrieval of stored variables.</p>
+
+<h3 id="references">References</h3>
+
+<ol>
+  <li>Environmental variables - https://www.getpostman.com/docs/environments</li>
+  <li>Reading environmental variables in the Test panel -http://stackoverflow.com/questions/21418529/how-do-i-read-environment-variables-in-postman-tests</li>
+  <li>Comparing Javascript Objects - http://stackoverflow.com/questions/1068834/object-comparison-in-javascript</li>
+</ol>
+:ET

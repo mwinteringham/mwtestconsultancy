@@ -1,0 +1,2 @@
+I"<p>And we’re back!  So far we’ve looked at using ExpressJS to create a small Web framework which contains various endpoints that encapsulate actions to get data from Event Generator’s log files and database.  Now we need to create the UI to complete the work.</p>
+:ET

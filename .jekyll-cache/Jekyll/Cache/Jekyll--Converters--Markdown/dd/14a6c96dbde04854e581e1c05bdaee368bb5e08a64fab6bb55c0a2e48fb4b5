@@ -1,0 +1,67 @@
+I"�<h2 id="what-do-we-mean-by-exploratory-testing">What do we mean by Exploratory testing</h2>
+<p>Exploratory testing is an approach towards testing that enables testers to concurrently learn, design, execute tests and record notes. It has the purpose of uncovering information relating to risks to share with the wider team to help them make informed decisions about their products.</p>
+
+<p>Exploratory testing also offers a structured approach to testing that gives testers the freedom to explore whilst ensuring that activities can be tracked and managed by the team. This means testers have more time to test instead of attempting to specify all tests up front before execution.</p>
+
+<h2 id="why-you-should-take-this-course">Why you should take this course</h2>
+<p>Applications are becoming more and more complex and the time to delivery is becoming shorter. With the advent of approaches such as continuous delivery and deployment, it’s becoming more and more important for test teams to have an agile approach towards testing.</p>
+
+<p>Adopting Exploratory testing can help relieve the frustrations around the lack of challenge in testing roles, managing large collections of test cases, and shallow coverage that allows bugs to slip through the net.</p>
+
+<p>The exploratory testing 101 tutorial will give you hands on experience of how a team goes about organising, executing and reporting exploratory testing in a way that is effective for both you and your team.</p>
+
+<h2 id="what-you-will-learn-on-this-course">What You Will Learn On This Course</h2>
+
+<h3 id="online">Online</h3>
+
+<p>To maximise our face to face time, we’ve created a series of short online videos to set the foundation for ET 101. You will be introduced to different concepts and activities that will help you understand the exercises throughout the ET 101 course.</p>
+
+<p>By the end of the video series, you will be able to:</p>
+
+<ul>
+  <li>Discuss the role of testing and how it fits within a modern software development team</li>
+  <li>Explain the basic principles of exploratory testing</li>
+  <li>Describe various artefacts that are important to exploratory testing such as Charters, Heuristics and Oracles</li>
+  <li>Describe various skills that are required to be successful with exploratory testing</li>
+</ul>
+
+<h3 id="tutorial-morning">Tutorial morning</h3>
+
+<p>The morning starts with the group at a broad look at the role of testing and discussing what is the role of testing in modern software development teams? By understanding the purpose of testing we can begin to learn how exploratory testing fits into that purpose. There will be hands on exercises that focus on identifying and planning exploratory testing activities.</p>
+
+<p>By the end of the morning session attendees will be able to:</p>
+
+<ul>
+  <li>Describe what software testers do</li>
+  <li>Debate the difference between testing and checking</li>
+  <li>Apply different techniques for discovering risks</li>
+  <li>Hypothesise different types of risks that might affect a product or project</li>
+  <li>Describe different templates to use when creating Test Charters</li>
+  <li>Construct Charters based on specific Risks</li>
+  <li>Carry out Exploratory testing sessions</li>
+</ul>
+
+<h3 id="tutorial-afternoon">Tutorial afternoon</h3>
+
+<p>The afternoon builds on the planning exercises of the morning and gives attendees the opportunity to execute exploratory testing sessions. With each iteration of exploratory testing we will deep dive into ways in which you can improve your test design skills, observation of information and note taking.</p>
+
+<p>By the end of the afternoon session attendees will be able to:</p>
+
+<ul>
+  <li>Apply using heuristics and oracles to a testing situation</li>
+  <li>Correlate between heuristics and test ideas</li>
+  <li>Explain why note-taking in testing is important</li>
+  <li>Apply different note-taking approaches to different testing scenarios</li>
+  <li>Evaluate the pros and cons of note-taking approaches when testing ideas and testing products</li>
+</ul>
+
+<h2 id="what-you-will-need-to-bring">What You Will Need To Bring</h2>
+<p>Please bring a laptop, OS X, Linux or Windows with all the prerequisites installed that will be sent to you.</p>
+
+<h2 id="is-this-course-for-you">Is This Course For You?</h2>
+
+<p><strong>I’m not a tester, should I attend?</strong></p>
+
+<p>Whilst the course is focused on supporting practitioners of exploratory testing, taking the time to understand how this approach works can be useful in supporting testers in your team as well as assist in team planning and strategy.</p>
+
+:ET

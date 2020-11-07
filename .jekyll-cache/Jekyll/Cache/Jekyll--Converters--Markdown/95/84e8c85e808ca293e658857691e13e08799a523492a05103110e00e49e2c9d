@@ -1,0 +1,127 @@
+I"@1<p>So here we are.  The final post on building an automated API framework.  We’ve covered a lot of ground already so if you if you haven’t already I would recommend reading <a href="http://www.mwtestconsultancy.co.uk/automated-api-framework-part-1">the first post on creating a framework with basic checks</a> followed by <a href="http://www.mwtestconsultancy.co.uk/automated-api-framework-part-2">the second post on extending the framework to handle POST requests</a>.  If you are all caught up then let’s continue…</p>
+
+<p>Before we start let’s take a look at what we have so far:</p>
+
+<p><img src="/wp-content/uploads/2016/05/file-structure-itp2.png" alt="" /></p>
+
+<ul>
+  <li><em>spec</em> stores our automated checks</li>
+  <li><em>api</em> a library of API endpoints we use in <em>spec</em> to communication with <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a></li>
+  <li><em>payloads</em> a suite of builders to create payloads for POST requests</li>
+  <li><em>gemfile</em> / <em>Rakefile</em> manages the running of our framework and it’s dependencies</li>
+</ul>
+
+<p>In the <a href="http://www.mwtestconsultancy.co.uk/category/api-web-service-testing/">previous posts</a> we’ve focused on creating basic checks around GET and POST endpoints, but what if we need to create something more complex?</p>
+
+<h1 id="extending-the-framework-further">Extending the framework further</h1>
+<p>For our next check, we want to turn our attention to the DELETE endpoint of <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a>.  The DELETE action itself is simple but there are a few actions we need to cover before executing the DELETE such as:</p>
+
+<ul>
+  <li>Create a booking for deletion and store the ID for later use</li>
+  <li>Send a request to the /auth endpoint to get a token to use in the DELETE request</li>
+</ul>
+
+<p>Before we create the check itself lets extend our API library.  First, We need to add an additional method in <em>api/booking.rb</em></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">delete_booking</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="k">begin</span>
+      <span class="k">return</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'http://localhost:3001/booking/'</span> <span class="o">+</span> <span class="nb">id</span><span class="p">.</span><span class="nf">to_s</span><span class="p">,</span> <span class="ss">:cookie</span> <span class="o">=&gt;</span> <span class="s1">'token='</span> <span class="o">+</span> <span class="n">token</span>
+    <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+      <span class="k">return</span> <span class="n">e</span><span class="p">.</span><span class="nf">response</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>Next, we need to create a new file in <em>api/</em> named <em>authorise.rb</em> and add the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="k">module</span> <span class="nn">Authorise</span>
+
+  <span class="k">def</span> <span class="nf">post_credentials</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">begin</span>
+      <span class="k">return</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://localhost:3001/auth'</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="ss">:content_type</span> <span class="o">=&gt;</span> <span class="ss">:json</span>
+    <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+      <span class="k">return</span> <span class="n">e</span><span class="p">.</span><span class="nf">to_s</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Next, <code class="language-plaintext highlighter-rouge">/auth</code> requires a payload with our username and password so let’s create a new builder in <em>payloads</em></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AuthorisePayload</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:username</span><span class="p">,</span> <span class="ss">:password</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="nb">instance_eval</span> <span class="o">&amp;</span><span class="n">block</span> <span class="k">if</span> <span class="nb">block_given?</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">toJson</span>
+    <span class="k">return</span> <span class="s2">"{
+        </span><span class="se">\"</span><span class="s2">username</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="si">#{</span><span class="n">username</span><span class="si">}</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">password</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="si">#{</span><span class="n">password</span><span class="si">}</span><span class="se">\"</span><span class="s2">
+    }"</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Also don’t forget to add <code class="language-plaintext highlighter-rouge">require './api/authorise'</code> and <code class="language-plaintext highlighter-rouge">require './payloads/authorise_payload'</code> to <em>spec_helper.rb</em></p>
+
+<h1 id="creating-the-delete-check">Creating the DELETE check</h1>
+
+<p>With the <em>api</em> and <em>payloads</em> files added let’s create our check first include the <code class="language-plaintext highlighter-rouge">Authorise</code> module from <em>api</em> in <em>integration_spec.rb</em> by adding the following under the <code class="language-plaintext highlighter-rouge">Booking</code> include</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">include</span> <span class="no">Authorise</span>
+</code></pre></div></div>
+
+<p>Then create the check itself</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">it</span><span class="p">(</span><span class="s1">'DELETE /booking/{id} should return a 200'</span><span class="p">)</span> <span class="k">do</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="no">BookingPayload</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">firstname</span> <span class="o">=</span> <span class="s1">'Sally'</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">lastname</span> <span class="o">=</span> <span class="s1">'Jenkins'</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">totalprice</span> <span class="o">=</span> <span class="mi">111</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">depositpaid</span> <span class="o">=</span> <span class="kp">true</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">checkin</span> <span class="o">=</span> <span class="s1">'11-11-2010'</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">checkout</span> <span class="o">=</span> <span class="s1">'12-11-2010'</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">additionalneeds</span> <span class="o">=</span> <span class="s1">'Breakfast'</span>
+    <span class="k">end</span>
+
+    <span class="n">created_response</span> <span class="o">=</span> <span class="no">Booking</span><span class="p">.</span><span class="nf">create_booking</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="nf">toJson</span><span class="p">,</span> <span class="ss">:json</span><span class="p">)</span>
+
+    <span class="n">auth_payload</span> <span class="o">=</span> <span class="no">AuthorisePayload</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">username</span> <span class="o">=</span> <span class="s2">"admin"</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">password</span> <span class="o">=</span> <span class="s2">"password123"</span>
+    <span class="k">end</span>
+
+    <span class="n">auth_response</span> <span class="o">=</span> <span class="no">Authorise</span><span class="p">.</span><span class="nf">post_credentials</span><span class="p">(</span><span class="n">auth_payload</span><span class="p">.</span><span class="nf">toJson</span><span class="p">)</span>
+
+    <span class="n">delete_response</span> <span class="o">=</span> <span class="no">Booking</span><span class="p">.</span><span class="nf">delete_booking</span><span class="p">(</span><span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">created_response</span><span class="p">.</span><span class="nf">body</span><span class="p">)[</span><span class="s2">"bookingid"</span><span class="p">].</span><span class="nf">to_i</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">auth_response</span><span class="p">.</span><span class="nf">body</span><span class="p">)[</span><span class="s2">"token"</span><span class="p">])</span>
+    
+    <span class="n">expect</span><span class="p">(</span><span class="n">delete_response</span><span class="p">.</span><span class="nf">code</span><span class="p">).</span><span class="nf">to</span> <span class="n">be</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>So let’s talk through what’s going on in this check:</p>
+<ol>
+  <li>First, we create a booking payload and use <code class="language-plaintext highlighter-rouge">create_booking</code> to create the booking we plan to delete.  We also store the response in <code class="language-plaintext highlighter-rouge">created_response</code> for later use.</li>
+  <li>Next are the payload and request to authenticate with <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a>.  Again, we store the response in <code class="language-plaintext highlighter-rouge">auth_response</code> for use in the delete request</li>
+  <li>Finally, we take the booking ID for <code class="language-plaintext highlighter-rouge">created_response</code> to determine which booking to delete and we take the token value from <code class="language-plaintext highlighter-rouge">auth_response</code> to use in our Cookie header to allow us to make the request.  We then assert on the response code.</li>
+</ol>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>So what we have created is a check that depends on multiple requests to be called that share various bits of information to be used to build further requests.  Using this process we can create user workflows through the application that are much more sophisticated than a simple check on a single API call.</p>
+
+<h2 id="going-forward">Going forward</h2>
+
+<p>And that’s it! A copy of the framework can be found <a href="https://github.com/mwinteringham/api-framework">here on GitHub</a> for you to compare against.  Before I finished I challenge you to take your copy of the framework and extend it.  Why not try:</p>
+<ul>
+  <li>Creating a check for the PUT endpoint in <a href="https://github.com/mwinteringham/restful-booker">restful-booker</a></li>
+  <li>Extend the API library to work on different environments</li>
+  <li>Use the framework structure to create a series of checks against a different application</li>
+</ul>
+:ET

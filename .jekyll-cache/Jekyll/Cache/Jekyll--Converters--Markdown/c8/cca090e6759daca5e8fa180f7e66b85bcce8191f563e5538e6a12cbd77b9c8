@@ -1,0 +1,48 @@
+I"�<p>Recently I was reading a discussion on the Testing community’s automation slack channel in which one of the members was asking others about options around extending their smoke checks to run against multiple browsers.  The others gave great advice around using tools such as <a href="saucelabs.com">Sauce labs</a> or Virtual machines which are perfectly valid, but unknowingly they fell into a trap.  They were demonstrating what I believe is an important anti-pattern when it comes to checking which I want to discuss today.</p>
+
+<h3 id="what-is-this-anti-pattern-and-why-is-it-an-anti-pattern">What is this anti-pattern and why is it an anti-pattern?</h3>
+
+<p>Consider we write a check that does the following using WebDriver that we want to run across different browser:</p>
+
+<ol>
+  <li>Complete and submit a plain HTML form</li>
+  <li>Assert that the backend redirects us to a new page</li>
+</ol>
+
+<p>Running this check across multiple browsers is the anti-pattern.  Why? Well it boils down to what it is we think we are checking, so let’s take a look at some different assumptions we could make about what we are checking:</p>
+
+<h3 id="1-checking-that-each-browser-renders-the-form-correctly-so-it-can-be-filled-in-by-a-human">1. Checking that each browser renders the form correctly so it can be filled in by a human</h3>
+
+<p>The anti-pattern here comes from the assumption around the perception of ‘rendering’ and WebDriver.  WebDriver allows us to query a DOM that is being built in a browser so this means we CAN check to see if the DOM contains the HTML we require to submit our form but we CAN’T check if the HTML is rendered in a way that a human could have trouble submitting the form (due to CSS or accessibility issues).  Which means that running the check across multiple browsers is redundant.  It bears little influence on how the backend is serving the HTML since all browsers are capable of injecting HTML into a DOM (if it couldn’t no-one would use that browser!)</p>
+
+<p>As a side note, WebDriver can inform us if an element can’t be reached, say for example if the HTML is missing but if the HTML is missing the issue lies with what is serving the HTML and not the browser (Unless it is created by JavaScript but we will come back to that).  Therefore, it would be better to create an API level check with different User agents (if necessary) to determine if the correct HTML is returned by the backend, an approach which is cheaper and more stable.</p>
+
+<h3 id="2-checking-that-each-browser-takes-us-to-the-same-page-after-submission">2. Checking that each browser takes us to the same page after submission</h3>
+
+<p>The anti-pattern here is the assumption that each browser might handle a redirect from a backend differently (Which they generally don’t, again no-one would use them if they did).  An API level check with different User agents (again, if necessary) to determine that the correct redirect path is returned would suffice.</p>
+
+<h3 id="3-checking-that-each-browser-is-using-javascript-correctly-to-create-the-form">3. Checking that each browser is using JavaScript correctly to create the form</h3>
+
+<p>So what if the form was created by JavaScript and not by the backend?  There is a benefit to running the check across different browsers since they all have different JavaScript engines that behave in different ways, and we want to ensure that our form creation works with all of them.</p>
+
+<p>However, the anti-pattern still appears in the submission of form and the assertion we’re being redirected to a new page since this is all being handled by the backend.  We should consider breaking the check into two separate checks.  A WebDriver based check for checking the JavaScript renders the HTML, and an API level check for checking the backend returns us a redirect.</p>
+
+<h3 id="avoiding-this-anti-pattern---the-tuttu-mnemonic">Avoiding this anti-pattern - The TuTTu mnemonic</h3>
+
+<p>We fall into this anti-pattern because we don’t spend enough time diving into the question of what it is we are specifically checking in our applications and <a href="https://twitter.com/FriendlyTester">Richard Bradshaw aka @friendlytester</a> explains how we can remedy this in the  Whiteboard testing video <a href="https://www.youtube.com/watch?v=InCyDS_uOGk">‘What to check and where’</a> and I encourage you to watch it.  Ultimately, if you are not asking yourself ‘what is this checking checking?’ then you are at risk of falling into the anti-pattern above as well as others.</p>
+
+<p>So how do we ensure that we are aware of what we are checking?  To help, I’ve created a question/heuristic you can ask yourself in the form of a mnemonic: <strong>TuTTu</strong> (pronounced tutu) which stands for:</p>
+
+<h3 id="testing-the-ui-or-testing-through-the-ui">Testing the UI or Testing <em>Through</em> the UI?</h3>
+
+<ul>
+  <li>If my WebDriver check is testing a JavaScript feature creates HTML at runtime <strong>then I am Testing the UI</strong> which means cross-browser testing is valid.</li>
+  <li>If my WebDriver check is testing a form submission to ensure my data is being stored correctly <strong>then I am Testing through the UI</strong> which means cross-browser testing is invalid.</li>
+</ul>
+
+<p>I use this question to avoid the cross browser anti-pattern and only run the checks that <strong>test the UI</strong> across different browser.  The other checks I would only run against one browser, or better still, as suggested by <a href="https://twitter.com/FriendlyTester">Richard</a>, push those checks down to a lower level.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>So let’s go back to the slack conversation I mentioned earlier.  As I said before the advice being given around tooling was perfectly valid, but they had fallen into the trap I’ve illustrated above. The person asking the question is an ex-work colleague and a friend of mine so I have prior knowledge of the smoke checks they were asking about and I knew that the checks he wants to run are <strong>Testing <em>through</em> the UI</strong> (they focus on the integration of parts, not specific UI components).  If the <strong>TuTTu</strong> question had been asked then this information may have come to light and we would know that cross browser checking for these smoke checks might not be the best course of action.</p>
+:ET

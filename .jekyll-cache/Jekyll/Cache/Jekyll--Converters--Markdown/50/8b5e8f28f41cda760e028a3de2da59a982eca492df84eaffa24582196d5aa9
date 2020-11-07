@@ -1,0 +1,2 @@
+I"<p>Recently I was reading a discussion on the Testing community’s automation slack channel in which one of the members was asking others about options around extending their smoke checks to run against multiple browsers.  The others gave great advice around using tools such as <a href="saucelabs.com">Sauce labs</a> or Virtual machines which are perfectly valid, but unknowingly they fell into a trap.  They were demonstrating what I believe is an important anti-pattern when it comes to checking which I want to discuss today.</p>
+:ET

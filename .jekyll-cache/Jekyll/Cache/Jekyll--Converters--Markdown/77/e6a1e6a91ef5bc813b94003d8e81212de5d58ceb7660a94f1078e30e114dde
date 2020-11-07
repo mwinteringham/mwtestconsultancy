@@ -1,0 +1,10 @@
+I"�<h3>You get an API testing demo, you get an API testing demo, everybody gets an API testing demo!</h3>
+
+<p>For those who’ve attended my API training course, they get the opportunity to test their newly discovered skills against a purpose built Web API called <a href="github.com/mwinteringham/restful-booker">restful-booker</a>. It comes jam packed with features and bugs to find and it has always been <a href="github.com/mwinteringham/restful-booker">available via open source here</a>. However, not everyone has a technical background or wants to mess around installing Node and setting up databases. That’s why after a chat about all things API testing with <a href="http://eviltester.com/">Evil Tester</a>, I updated <a href="github.com/mwinteringham/restful-booker">restful-booker</a> and have released it on <a href="https://restful-booker.herokuapp.com/">Heroku</a> as an API testing demo for everyone to use at any time. How great is that!</p>
+
+<h3>Sounds awesome, let me at it!</h3>
+
+<p>You can find the deployed API at <a href="https://restful-booker.herokuapp.com/">https://restful-booker.herokuapp.com/</a> and it’s available for you to practise your API testing skills, try out tools such as <a href="https://www.getpostman.com/">Postman</a> or run your brand new API checking framework against. So go check out the documentation at <a href="https://restful-booker.herokuapp.com/">https://restful-booker.herokuapp.com/</a> and have a play :)</p>
+
+<p>Finally, if you find any issues that cause the server to die or have any suggestions to improve the API then please <a href="https://twitter.com/2bittester">get in touch</a> or <a href="github.com/mwinteringham/restful-booker">fork the code and open a pull request</a>.</p>
+:ET
