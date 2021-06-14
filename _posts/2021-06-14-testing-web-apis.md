@@ -25,7 +25,7 @@ As I mentioned earlier, the book is available as part of the Manning early acces
 But you might be thinking; Why buy a copy of the book in early access? Well, there are a few reasons:
   1. Your feedback will help. The early access program gives you the ability to ask me questions to help me improve and expand each chapter of the book. You might need help from me to clarify points, or you might notice errors in my writing or code examples. Whatever feedback you can give me will help me write the best book I can, which I can only do if I get feedback from readers. 
   2. Publishing is not an easy industry. The whole process has shown me that Manning, the publisher, has put a lot of faith and resources into the process to help me get this far. By purchasing a copy of the book, it helps show the publisher that they can trust me to deliver a book of value to everyone involved.
-  * You get to learn about API testing! The book will be packed full of examples and practical exercises, including chapters on testing API designs, automation and testing in production.
+  3. You get to learn about API testing! The book will be packed full of examples and practical exercises, including chapters on testing API designs, automation and testing in production.
 
 <div class="text-center">
 <a href="http://mng.bz/WrEx" class="btn btn-info">Purchase Testing Web APIs now</a>
