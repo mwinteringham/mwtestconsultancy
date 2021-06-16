@@ -11,7 +11,7 @@ description: I'm proud to announce the launch of my debut book, Testing Web APIs
 It's certainly been quiet on my blog for a while, but that doesn't mean I haven't been productive. I believe the lack of recent updates has come from an increase in writing and teaching over the past few years. So whilst I would like to blog more, the reasons for not doing so are not negative. My motivation for this post is to share some exciting news about the work I've been doing lately. I recently signed a publishing deal with Testing Web APIs for my new book, 'Testing Web APIs' which is now available through the Manning early access program (or MEAP).
 
 <div class="text-center">
-<a href="http://mng.bz/WrEx" class="btn btn-info">Purchase Testing Web APIs now</a>
+<a href="https://bit.ly/3fYhPha" class="btn btn-info">Purchase Testing Web APIs now</a>
 </div>
 
 ## What is the book about?
@@ -28,9 +28,9 @@ But you might be thinking; Why buy a copy of the book in early access? Well, the
   3. You get to learn about API testing! The book will be packed full of examples and practical exercises, including chapters on testing API designs, automation and testing in production.
 
 <div class="text-center">
-<a href="http://mng.bz/WrEx" class="btn btn-info">Purchase Testing Web APIs now</a>
+<a href="https://bit.ly/3fYhPha" class="btn btn-info">Purchase Testing Web APIs now</a>
 </div>  
 
 ## Pick up a copy today
 
-If you'd like to learn more about Testing Web APIs and help me improve my booking. Testing Web APIs is available as part of Manning's **Deal of the Day** for 24 hours, meaning you can grab a copy for 45% off. Simply [head to Manning's Deal of the Day webpage to learn more](http://mng.bz/WrEx).
+If you'd like to learn more about Testing Web APIs and help me improve my booking. You can [purchase a copy of Testing Web APIs on the Manning books website](https://bit.ly/3fYhPha).
